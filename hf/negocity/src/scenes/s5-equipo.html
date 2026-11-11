@@ -1,0 +1,109 @@
+<template>
+  <style>
+    /*@CSS@*/
+    .s5-chip { position: absolute; left: 70px; top: 190px; }
+    .s5-title { position: absolute; left: 70px; top: 282px; font-size: 100px; }
+    .s5-title .ln { display: block; white-space: nowrap; }
+    /* A · equipo */
+    #s5-ph { left: 452px; top: 520px; width: 560px; height: 1160px; }
+    .s5-hello { position: absolute; left: 30px; top: 90px; right: 30px; display: flex; align-items: center; gap: 18px; }
+    .s5-hello .avatar { width: 84px; height: 84px; font-size: 44px; }
+    .s5-hello b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 40px; line-height: 1.05; }
+    .s5-hello span { display: flex; align-items: center; gap: 10px; font-size: 28px; font-weight: 700; color: var(--ink-2); }
+    .s5-sec { position: absolute; left: 34px; top: 214px; font-weight: 800; font-size: 30px; color: var(--ink-2); }
+    .s5-task { position: absolute; left: 24px; width: 482px; height: 104px; display: flex; align-items: center; gap: 20px; padding: 0 24px; font-weight: 700; font-size: 32px; white-space: nowrap; }
+    .s5-cb { position: relative; width: 56px; height: 56px; border-radius: 50%; flex: none; }
+    .s5-cb .ok { position: absolute; inset: 0; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 36px; display: flex; align-items: center; justify-content: center; }
+    #s5-btn { position: absolute; left: 24px; top: 640px; width: 482px; height: 100px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 14px; font-weight: 800; font-size: 32px; }
+    #s5-btn svg { width: 38px; height: 38px; }
+    .s5-m { position: absolute; left: 60px; width: 372px; height: 124px; display: flex; align-items: center; gap: 18px; padding: 0 22px; border-radius: 40px; }
+    .s5-m .avatar { width: 80px; height: 80px; font-size: 40px; }
+    .s5-m b { display: block; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 36px; line-height: 1.1; }
+    .s5-m span { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 28px; color: var(--ink-2); white-space: nowrap; }
+    .s5-off { width: 16px; height: 16px; border-radius: 50%; background: var(--cream-3); box-shadow: inset 2px 2px 4px rgba(0,0,0,.2); }
+    /* B · contactos */
+    .s5-c { position: absolute; left: 60px; width: 960px; height: 152px; display: flex; align-items: center; gap: 24px; padding: 0 30px; }
+    .s5-c .avatar { width: 96px; height: 96px; font-size: 48px; }
+    .s5-c b { display: block; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 42px; line-height: 1.1; white-space: nowrap; }
+    .s5-tag { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 22px; background: rgba(9,103,44,.12); color: var(--green); font-weight: 800; font-size: 28px; margin-top: 8px; }
+    .s5-act { margin-left: auto; display: flex; gap: 18px; }
+    .s5-ab { width: 88px; height: 88px; border-radius: 50%; font-size: 44px; color: var(--green); display: flex; align-items: center; justify-content: center; }
+    #s5-search { position: absolute; left: 60px; top: 1210px; width: 960px; height: 104px; border-radius: 52px; display: flex; align-items: center; gap: 18px; padding: 0 36px; font-weight: 700; font-size: 34px; color: var(--ink-3); }
+    #s5-search svg { width: 44px; height: 44px; color: var(--green); }
+  </style>
+  <div id="root" data-composition-id="s5-equipo" data-width="1080" data-height="1920">
+    <section id="s5-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div class="g-rings" id="s5-rings" style="left:-520px;top:300px"></div>
+      <div id="s5-all" class="fill" data-layout-allow-overflow>
+        <!-- A · tu equipo desde su celular -->
+        <div id="s5-A" class="fill">
+          <div id="s5-chipA" class="chip s5-chip">{{icon:users}}Equipo</div>
+          <h2 id="s5-tA" class="t-display s5-title"><span class="ln"><span class="t-word s5-wa">Tu </span><span class="t-word s5-wa">equipo,</span></span><span class="ln t-green"><span class="t-word s5-wa">desde </span><span class="t-word s5-wa">su </span><span class="t-word s5-wa">celular</span></span></h2>
+          <div class="s5-m neu" id="s5-m0" style="top:640px"><span class="avatar">A</span><div><b>Ana</b><span><i class="dot-live"></i>En turno</span></div></div>
+          <div class="s5-m neu" id="s5-m1" style="top:790px"><span class="avatar" style="background:#000">L</span><div><b>Luis</b><span><i class="dot-live"></i>En turno</span></div></div>
+          <div class="s5-m neu" id="s5-m2" style="top:940px"><span class="avatar">S</span><div><b>Sofi</b><span><i class="s5-off"></i>Descanso</span></div></div>
+          <div id="s5-ph" class="phone">
+            <div class="screen">
+              <div class="island"></div>
+              <div class="s5-hello"><span class="avatar">A</span><div><b>Hola, Ana</b><span><i class="dot-live"></i>Turno de hoy</span></div></div>
+              <div class="s5-sec">Tareas de hoy</div>
+              <div class="s5-task neu-sm" id="s5-k0" style="top:268px"><div class="s5-cb neu-in"><div class="ok" id="s5-o0">{{icon:check}}</div></div>Abrir caja</div>
+              <div class="s5-task neu-sm" id="s5-k1" style="top:390px"><div class="s5-cb neu-in"><div class="ok" id="s5-o1">{{icon:check}}</div></div>Registrar visitas</div>
+              <div class="s5-task neu-sm" id="s5-k2" style="top:512px"><div class="s5-cb neu-in"><div class="ok" id="s5-o2">{{icon:check}}</div></div>Recibir pedido de pan</div>
+              <div id="s5-btn" class="neu-green" data-layout-ignore>{{icon:qr}}Escanear tarjeta</div>
+            </div>
+          </div>
+        </div>
+        <!-- B · proveedores y contactos a la mano -->
+        <div id="s5-B" class="fill">
+          <div id="s5-chipB" class="chip s5-chip">{{icon:book}}Directorio</div>
+          <h2 id="s5-tB" class="t-display s5-title"><span class="ln"><span class="t-word s5-wb">Tus </span><span class="t-word s5-wb">contactos,</span></span><span class="ln t-green"><span class="t-word s5-wb">siempre </span><span class="t-word s5-wb">a </span><span class="t-word s5-wb">la </span><span class="t-word s5-wb">mano</span></span></h2>
+          <div class="s5-c neu" id="s5-c0" style="top:530px"><span class="avatar">P</span><div><b>Panadería La Espiga</b><span class="s5-tag">Proveedor</span></div><div class="s5-act"><div class="s5-ab neu-sm" id="s5-call">{{icon:phone}}</div><div class="s5-ab neu-sm">{{icon:chat}}</div></div></div>
+          <div class="s5-c neu" id="s5-c1" style="top:700px"><span class="avatar" style="background:#000">D</span><div><b>Don Beto · Café</b><span class="s5-tag">Proveedor</span></div><div class="s5-act"><div class="s5-ab neu-sm">{{icon:phone}}</div><div class="s5-ab neu-sm">{{icon:chat}}</div></div></div>
+          <div class="s5-c neu" id="s5-c2" style="top:870px"><span class="avatar">M</span><div><b>Mariana Ruiz</b><span class="s5-tag">Contadora</span></div><div class="s5-act"><div class="s5-ab neu-sm">{{icon:phone}}</div><div class="s5-ab neu-sm">{{icon:chat}}</div></div></div>
+          <div class="s5-c neu" id="s5-c3" style="top:1040px"><span class="avatar" style="background:#000">G</span><div><b>Gas del Valle</b><span class="s5-tag">Servicio</span></div><div class="s5-act"><div class="s5-ab neu-sm">{{icon:phone}}</div><div class="s5-ab neu-sm">{{icon:chat}}</div></div></div>
+          <div id="s5-search" class="neu-in" data-layout-ignore>{{icon:search}}Buscar contacto…</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s5-rings", { rotation: 0 }, { rotation: 16, duration: DUR, ease: "none" }, 0);
+      // A · entrada desde abajo (la escena anterior salió hacia arriba)
+      rise(tl, "#s5-chipA", 0.02, { y: 120, d: 0.45 });
+      blurIn(tl, ".s5-wa", 0.06, 0.07, 0.24);
+      tl.fromTo("#s5-ph", { opacity: 0, y: 520, rotation: -6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.65, ease: "expo.out" }, 0.06);
+      [0, 1, 2].forEach((i) => tl.fromTo("#s5-m" + i, { opacity: 0, scale: 0.95, x: -320 }, { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "expo.out" }, 0.22 + i * 0.09));
+      [0, 1, 2].forEach((i) => rise(tl, "#s5-k" + i, 0.36 + i * 0.07, { y: 30, d: 0.4 }));
+      // las tareas se van palomeando mientras "trabaja desde su celular"
+      const tk = [W("5", 2), W("5", 3) + 0.1, W("5", 5)];
+      [0, 1, 2].forEach((i) => {
+        tl.fromTo("#s5-o" + i, { scale: 0 }, { scale: 1, duration: 0.34, ease: "back.out(2.6)" }, tk[i]);
+        tl.to("#s5-k" + i, { scale: 0.97, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut" }, tk[i]);
+      });
+      // B · el celular se va y el directorio se despliega
+      const tB = W("5", 6) - 0.22;
+      tl.to("#s5-tA, #s5-chipA", { opacity: 0, filter: "blur(12px)", duration: 0.18, ease: "power2.in" }, tB);
+      tl.to("#s5-ph", { x: 760, rotation: 10, opacity: 0, duration: 0.36, ease: "power3.in" }, tB);
+      tl.to("#s5-m0, #s5-m1, #s5-m2", { x: -480, opacity: 0, duration: 0.3, stagger: 0.04, ease: "power3.in" }, tB);
+      tl.fromTo("#s5-chipB", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, tB + 0.2);
+      blurIn(tl, ".s5-wb", tB + 0.22, 0.07, 0.24);
+      const tc = [W("5", 8) - 0.22, W("5", 8) - 0.1, W("5", 10) - 0.2, W("5", 10) - 0.08];
+      [0, 1, 2, 3].forEach((i) => tl.fromTo("#s5-c" + i, { opacity: 0, rotationX: -82, y: -60, transformPerspective: 1400, transformOrigin: "50% 0%" }, { opacity: 1, rotationX: 0, y: 0, duration: 0.55, ease: "back.out(1.3)" }, Math.max(tB + 0.3, tc[i])));
+      tl.fromTo("#s5-search", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, tc[3] + 0.25);
+      // "a la mano" → un toque y ya está llamando
+      const tM = W("5", 13) - 0.05;
+      tl.to("#s5-call", { scale: 0.86, duration: 0.1, ease: "power2.in" }, tM);
+      tl.to("#s5-call", { scale: 1, backgroundImage: "linear-gradient(145deg, #0C7B36, #07561F)", color: "#FFFEFA", duration: 0.3, ease: "back.out(3)" }, tM + 0.1);
+      tl.to("#s5-c0", { scale: 1.03, duration: 0.3, ease: "power2.out" }, tM + 0.1);
+      tl.fromTo("#s5-call svg", { rotation: 0 }, { rotation: 14, duration: 0.08, yoyo: true, repeat: 5, ease: "sine.inOut" }, tM + 0.35);
+      // salida: se pliega hacia el centro (da paso a "todo conectado")
+      tl.to("#s5-B", { scale: 0.6, opacity: 0, filter: "blur(16px)", duration: 0.25, ease: "power3.in", transformOrigin: "540px 800px" }, DUR - 0.27);
+      window.__timelines["s5-equipo"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,98 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s6-chip { position: absolute; left: 70px; top: 190px; }
+    #s6-title { position: absolute; left: 70px; top: 282px; font-size: 124px; white-space: nowrap; }
+    #s6-url { position: absolute; left: 70px; top: 440px; width: 940px; height: 116px; border-radius: 58px; display: flex; align-items: center; gap: 16px; padding: 0 18px 0 34px; white-space: nowrap; }
+    #s6-url .lk { font-size: 44px; color: var(--green); }
+    #s6-url b { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 44px; letter-spacing: -.01em; }
+    #s6-noinst { margin-left: auto; height: 80px; padding: 0 26px 0 18px; border-radius: 40px; background: linear-gradient(145deg, #0C7B36, #07561F); color: var(--cream); display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 31px; box-shadow: 6px 8px 16px rgba(9,103,44,.4); }
+    #s6-noinst svg { width: 38px; height: 38px; }
+    #s6-lines { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s6-disc { position: absolute; left: 380px; top: 690px; width: 320px; height: 320px; border-radius: 50%; }
+    #s6-icon { position: absolute; left: 430px; top: 740px; width: 220px; height: 220px; border-radius: 56px; display: block; box-shadow: 12px 16px 34px rgba(9,103,44,.45); }
+    .s6-node { position: absolute; height: 112px; padding: 0 34px 0 16px; border-radius: 56px; display: flex; align-items: center; gap: 16px; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 40px; white-space: nowrap; }
+    .s6-node .ic { width: 80px; height: 80px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 44px; display: flex; align-items: center; justify-content: center; flex: none; }
+    .s6-mini { position: absolute; width: 104px; height: 104px; border-radius: 50%; color: var(--green); font-size: 52px; display: flex; align-items: center; justify-content: center; }
+    .s6-pulse { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 14px 3px rgba(71,123,238,.7); }
+    #s6-iris { position: absolute; left: 490px; top: 800px; width: 100px; height: 100px; border-radius: 50%; background: #000; }
+  </style>
+  <div id="root" data-composition-id="s6-conectado" data-width="1080" data-height="1920">
+    <section id="s6-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div id="s6-all" class="fill" data-layout-allow-overflow>
+        <div id="s6-chip" class="chip">{{icon:grid}}Un solo sistema</div>
+        <h2 id="s6-title" class="t-display"><span class="t-word s6-w">Todo </span><span class="t-word s6-w t-green">conectado</span></h2>
+        <div id="s6-url" class="neu"><span class="lk">{{icon:lock}}</span><b>negocity.com.mx</b><span id="s6-noinst">{{icon:check}}Sin instalar nada</span></div>
+
+        <svg id="s6-lines" viewBox="0 0 1080 1920" fill="none" data-layout-ignore>
+          <circle id="s6-orbit" cx="540" cy="850" r="330" stroke="#09672C" stroke-opacity=".22" stroke-width="4" stroke-dasharray="2074" stroke-dashoffset="2074" transform="rotate(-90 540 850)"/>
+          <g stroke="#09672C" stroke-width="6" stroke-linecap="round">
+            <path class="s6-ln" id="s6-l0" d="M540 850 L250 690"/><path class="s6-ln" id="s6-l1" d="M540 850 L800 690"/><path class="s6-ln" id="s6-l2" d="M540 850 L540 1108"/>
+            <path class="s6-ln" id="s6-l3" d="M540 850 L196 936" stroke-opacity=".5" stroke-width="4"/><path class="s6-ln" id="s6-l4" d="M540 850 L884 936" stroke-opacity=".5" stroke-width="4"/>
+            <path class="s6-ln" id="s6-l5" d="M540 850 L300 1090" stroke-opacity=".5" stroke-width="4"/><path class="s6-ln" id="s6-l6" d="M540 850 L780 1090" stroke-opacity=".5" stroke-width="4"/>
+          </g>
+        </svg>
+        <div id="s6-pulses" class="fill" data-layout-ignore></div>
+
+        <div class="s6-mini neu-sm" id="s6-n3" style="left:144px;top:884px">{{icon:heart}}</div>
+        <div class="s6-mini neu-sm" id="s6-n4" style="left:832px;top:884px">{{icon:users}}</div>
+        <div class="s6-mini neu-sm" id="s6-n5" style="left:248px;top:1038px">{{icon:book}}</div>
+        <div class="s6-mini neu-sm" id="s6-n6" style="left:728px;top:1038px">{{icon:chart}}</div>
+
+        <div class="s6-node neu" id="s6-n0" style="left:88px;top:634px"><span class="ic">{{icon:user}}</span>Clientes</div>
+        <div class="s6-node neu" id="s6-n1" style="left:590px;top:634px"><span class="ic">{{icon:receipt}}</span>Administración</div>
+        <div class="s6-node neu" id="s6-n2" style="left:410px;top:1064px"><span class="ic">{{icon:db}}</span>Datos</div>
+
+        <div id="s6-disc" class="neu"></div>
+        <img id="s6-icon" src="assets/brand/logo-icon-green.png" alt="Negocity" />
+      </div>
+      <div id="s6-iris"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const C = [540, 850], ends = [[250, 690], [800, 690], [540, 1108], [196, 936], [884, 936], [300, 1090], [780, 1090]];
+      document.querySelectorAll(".s6-ln").forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+      const draw = (i, t, d = 0.4) => tl.to("#s6-l" + i, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+      const node = (i, t) => tl.fromTo("#s6-n" + i, { opacity: 0, scale: 0.6, x: (C[0] - ends[i][0]) * 0.5, y: (C[1] - ends[i][1]) * 0.5 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, t);
+
+      // el centro: Negocity
+      rise(tl, "#s6-chip", 0.02, { x: 0, y: -60, d: 0.45 });
+      tl.fromTo("#s6-disc", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, 0.02);
+      tl.fromTo("#s6-icon", { opacity: 0, scale: 0.4, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.08);
+      // "Clientes, administración y datos"
+      const tn = [W("6", 0) - 0.02, W("6", 1) - 0.12, W("6", 3) - 0.12];
+      [0, 1, 2].forEach((i) => { draw(i, tn[i]); node(i, tn[i] + 0.12); });
+      // "todo conectado" → se cierra el sistema completo
+      const tT = W("6", 4) - 0.2;
+      blurIn(tl, ".s6-w", tT, 0.1, 0.26);
+      [3, 4, 5, 6].forEach((i, k) => { draw(i, tT + 0.05 + k * 0.06, 0.35); node(i, tT + 0.14 + k * 0.06); });
+      tl.to("#s6-orbit", { attr: { "stroke-dashoffset": 0 }, duration: 0.9, ease: "power2.inOut" }, tT + 0.1);
+      tl.to("#s6-icon", { scale: 1.1, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, tT + 0.25);
+      // pulsos de datos viajando por las líneas
+      const host = document.querySelector("#s6-pulses");
+      ends.forEach((e, i) => {
+        for (let k = 0; k < 2; k++) {
+          const d = document.createElement("div"); d.className = "s6-pulse"; host.appendChild(d);
+          const out = (i + k) % 2 === 0, a = out ? C : e, b = out ? e : C, t0 = tT + 0.45 + i * 0.07 + k * 0.62;
+          tl.fromTo(d, { x: a[0], y: a[1], opacity: 0, scale: 0.6 }, { x: b[0], y: b[1], opacity: 1, scale: 1, duration: 0.55, ease: "power1.inOut" }, t0);
+          tl.to(d, { opacity: 0, duration: 0.08 }, t0 + 0.5);
+        }
+      });
+      // "Sin instalar nada" → abre en el navegador
+      const tU = W("6", 6) - 0.2;
+      tl.fromTo("#s6-url", { opacity: 0, scale: 0.95, y: -50 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "expo.out" }, tU);
+      tl.fromTo("#s6-noinst", { opacity: 0, scale: 0.6, x: 40 }, { opacity: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(2)" }, W("6", 7) - 0.05);
+      // cierre: todo vuelve al centro y la puerta negra del ícono se abre al mundo final
+      const tX = DUR - 0.62;
+      ends.forEach((e, i) => tl.to("#s6-n" + i, { x: C[0] - e[0], y: C[1] - e[1], scale: 0.1, opacity: 0, duration: 0.3, ease: "power3.in" }, tX));
+      tl.to("#s6-lines, #s6-pulses", { opacity: 0, duration: 0.2 }, tX);
+      tl.to("#s6-title, #s6-chip, #s6-url", { opacity: 0, filter: "blur(14px)", y: -40, duration: 0.22, ease: "power2.in" }, tX);
+      tl.fromTo("#s6-iris", { scale: 0 }, { scale: 46, duration: 0.42, ease: "power3.in" }, tX + 0.2);
+      window.__timelines["s6-conectado"] = tl;
+    })();
+  </script>
+</template>

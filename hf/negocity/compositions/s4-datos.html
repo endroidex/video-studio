@@ -1,0 +1,191 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+    #s4-chip { position: absolute; left: 70px; top: 190px; }
+    #s4-live { position: absolute; left: 760px; top: 190px; color: #000; padding: 0 28px 0 22px; }
+    #s4-title { position: absolute; left: 70px; top: 282px; font-size: 104px; }
+    #s4-title .ln { display: block; white-space: nowrap; }
+    .s4-lbl { font-weight: 700; font-size: 30px; color: var(--ink-2); white-space: nowrap; }
+    /* quién vuelve */
+    #s4-ring { position: absolute; left: 60px; top: 540px; width: 440px; height: 330px; padding: 28px 30px; }
+    #s4-ringsvg { position: absolute; left: 30px; top: 86px; width: 216px; height: 216px; }
+    #s4-pct { position: absolute; left: 30px; top: 86px; width: 216px; height: 216px; display: flex; align-items: center; justify-content: center; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 62px; letter-spacing: -.03em; }
+    .s4-av { position: absolute; left: 276px; width: 136px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 6px; font-weight: 700; font-size: 28px; }
+    .s4-av .avatar { width: 48px; height: 48px; font-size: 28px; }
+    /* cuánto vendes */
+    #s4-kpi { position: absolute; left: 530px; top: 540px; width: 490px; height: 330px; padding: 28px 34px; overflow: hidden; }
+    #s4-kpi .s4-lbl { color: rgba(255,254,250,.82); }
+    #s4-num { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 104px; letter-spacing: -.035em; line-height: 1; margin-top: 16px; white-space: nowrap; }
+    #s4-sparkl { position: absolute; left: 0; bottom: 0; width: 490px; height: 120px; }
+    #s4-up { position: absolute; right: 26px; top: 24px; height: 54px; padding: 0 18px; border-radius: 27px; background: rgba(255,254,250,.18); display: flex; align-items: center; font-weight: 800; font-size: 28px; }
+    /* mejores días */
+    #s4-bars { position: absolute; left: 60px; top: 900px; width: 960px; height: 290px; padding: 26px 34px; }
+    .s4-bar { position: absolute; bottom: 62px; width: 84px; border-radius: 22px 22px 10px 10px; background: linear-gradient(180deg, #2a2a2a, #000); box-shadow: 6px 8px 16px rgba(0,0,0,.22); }
+    .s4-bar.best { background: linear-gradient(180deg, #0F8A3D, #07561F); box-shadow: 6px 8px 18px rgba(9,103,44,.45); }
+    .s4-day { position: absolute; bottom: 18px; width: 84px; text-align: center; font-weight: 800; font-size: 28px; color: var(--ink-2); }
+    #s4-best { position: absolute; left: 612px; top: 22px; height: 58px; padding: 0 20px 0 14px; border-radius: 29px; background: var(--green); color: var(--cream); display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 28px; white-space: nowrap; box-shadow: 6px 8px 16px rgba(9,103,44,.4); }
+    #s4-best svg { width: 30px; height: 30px; }
+    /* en tiempo real */
+    #s4-toast { position: absolute; left: 610px; top: 498px; height: 96px; padding: 0 30px 0 16px; border-radius: 48px; display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+    #s4-toast .d { width: 66px; height: 66px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 38px; display: flex; align-items: center; justify-content: center; }
+    #s4-toast b { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 36px; }
+    #s4-toast span { font-weight: 700; font-size: 28px; color: var(--ink-2); }
+  </style>
+  <div id="root" data-composition-id="s4-datos" data-width="1080" data-height="1920">
+    <section id="s4-main" class="clip" data-start="0" data-duration="5.4" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div class="g-rings" id="s4-rings" style="left:480px;top:1260px"></div>
+      <div id="s4-all" class="fill" data-layout-allow-overflow>
+        <div id="s4-chip" class="chip"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Estadísticas</div>
+        <div id="s4-live" class="chip"><span class="dot-live" id="s4-dot"></span>En vivo</div>
+        <h2 id="s4-title" class="t-display"><span class="ln"><span class="t-word s4-w">Tus </span><span class="t-word s4-w">números,</span></span><span class="ln t-green"><span class="t-word s4-w">en </span><span class="t-word s4-w">tiempo </span><span class="t-word s4-w">real</span></span></h2>
+
+        <div id="s4-ring" class="neu">
+          <div class="s4-lbl">Clientes que vuelven</div>
+          <svg id="s4-ringsvg" viewBox="0 0 216 216"><circle cx="108" cy="108" r="88" fill="none" stroke="#E9E3D0" stroke-width="26"/><circle id="s4-arc" cx="108" cy="108" r="88" fill="none" stroke="#09672C" stroke-width="26" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553" transform="rotate(-90 108 108)"/></svg>
+          <div id="s4-pct">0%</div>
+          <div class="s4-av neu-sm" id="s4-v0" style="top:96px"><span class="avatar">M</span>5ª vez</div>
+          <div class="s4-av neu-sm" id="s4-v1" style="top:168px"><span class="avatar" style="background:#000">J</span>3ª vez</div>
+          <div class="s4-av neu-sm" id="s4-v2" style="top:240px"><span class="avatar">R</span>8ª vez</div>
+        </div>
+
+        <div id="s4-kpi" class="neu-green">
+          <div class="s4-lbl">Ventas de hoy</div>
+          <div id="s4-num">$0</div>
+          <div id="s4-up">+12%</div>
+          <svg id="s4-sparkl" viewBox="0 0 490 120" preserveAspectRatio="none"><path id="s4-spath" d="M0 96 C40 90 60 70 100 76 S170 96 210 62 S290 70 330 44 S410 52 440 26 S480 22 490 16" fill="none" stroke="#FFFEFA" stroke-opacity=".55" stroke-width="6" stroke-linecap="round" stroke-dasharray="640" stroke-dashoffset="640"/></svg>
+        </div>
+
+        <div id="s4-bars" class="neu">
+          <div class="s4-lbl">Tus mejores días</div>
+          <div id="s4-best"><svg class="ico" viewBox="0 0 24 24" ><path d="M12 3.500l2.600 5.400 5.900.800-4.300 4.100 1.050 5.850L12 16.900l-5.250 2.750 1.050-5.850-4.300-4.100 5.900-.800z"/></svg>Sábado</div>
+          <div class="s4-bar" id="s4-b0" style="left:52px;height:62px"></div><div class="s4-day" style="left:52px">L</div>
+          <div class="s4-bar" id="s4-b1" style="left:178px;height:77px"></div><div class="s4-day" style="left:178px">M</div>
+          <div class="s4-bar" id="s4-b2" style="left:304px;height:56px"></div><div class="s4-day" style="left:304px">M</div>
+          <div class="s4-bar" id="s4-b3" style="left:430px;height:90px"></div><div class="s4-day" style="left:430px">J</div>
+          <div class="s4-bar" id="s4-b4" style="left:556px;height:107px"></div><div class="s4-day" style="left:556px">V</div>
+          <div class="s4-bar best" id="s4-b5" style="left:682px;height:140px"></div><div class="s4-day" style="left:682px;color:var(--green)">S</div>
+          <div class="s4-bar" id="s4-b6" style="left:808px;height:96px"></div><div class="s4-day" style="left:808px">D</div>
+        </div>
+
+        <div id="s4-toast" class="neu-sm"><div class="d"><svg class="ico" viewBox="0 0 24 24" ><path d="M3 4h2.500l2.200 10h9.800l2-7H7"/><circle cx="9" cy="19" r="1.600"/><circle cx="17" cy="19" r="1.600"/></svg></div><div><b>+$85</b> <span>Nueva venta</span></div></div>
+        <div id="s4-sp0" class="spark" style="left:986px;top:520px;width:38px;height:38px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      </div>
+      <div class="sweep" id="s4-sweep"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=23.8333, DUR=5.4, SEG={"4": {"s": 23.947, "e": 28.762, "text": "Mira quién vuelve, tus mejores días y cuánto vendes, en tiempo real.", "w": [{"t": "Mira", "s": 23.947, "e": 24.169}, {"t": "quién", "s": 24.243, "e": 24.391}, {"t": "vuelve,", "s": 24.428, "e": 25.058}, {"t": "tus", "s": 25.095, "e": 25.206}, {"t": "mejores", "s": 25.28, "e": 25.725}, {"t": "días", "s": 25.762, "e": 26.095}, {"t": "y", "s": 26.169, "e": 26.317}, {"t": "cuánto", "s": 26.391, "e": 26.762}, {"t": "vendes,", "s": 26.799, "e": 27.317}, {"t": "en", "s": 27.354, "e": 27.503}, {"t": "tiempo", "s": 27.577, "e": 27.873}, {"t": "real.", "s": 28.317, "e": 28.762}]}}, SEED=751;
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const money = (v) => "$" + Math.round(v).toLocaleString("en-US");
+      tl.fromTo("#s4-rings", { rotation: 0 }, { rotation: -12, duration: DUR, ease: "none" }, 0);
+      rise(tl, "#s4-chip", 0.02, { x: 160, y: 0, d: 0.45 });
+      blurIn(tl, ".s4-w", 0.06, 0.07, 0.24);
+      tl.fromTo("#s4-sweep", { x: -400, opacity: 0.8, rotation: 18 }, { x: 1300, opacity: 0.8, rotation: 18, duration: 0.8, ease: "power1.inOut" }, 0.1);
+
+      // "quién vuelve" → anillo de clientes recurrentes
+      const tR = Math.max(0.12, W("4", 1) - 0.2);
+      tl.fromTo("#s4-ring", { opacity: 0, scale: 0.95, x: -260, rotation: -5 }, { opacity: 1, scale: 1, x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, tR);
+      const pc = { v: 0 }, pct = $("#s4-pct");
+      tl.to("#s4-arc", { attr: { "stroke-dashoffset": 553 * (1 - 0.68) }, duration: 0.9, ease: "power3.out" }, tR + 0.18);
+      tl.to(pc, { v: 68, duration: 0.9, ease: "power3.out", onUpdate: () => (pct.textContent = Math.round(pc.v) + "%") }, tR + 0.18);
+      [0, 1, 2].forEach((i) => rise(tl, "#s4-v" + i, tR + 0.3 + i * 0.09, { x: 60, y: 0, d: 0.4 }));
+
+      // "tus mejores días" → barras que crecen
+      const tB = W("4", 3) - 0.18;
+      tl.fromTo("#s4-bars", { opacity: 0, scale: 0.95, y: 220 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "expo.out" }, tB);
+      for (let i = 0; i < 7; i++) tl.fromTo("#s4-b" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "back.out(1.5)", transformOrigin: "50% 100%" }, tB + 0.2 + i * 0.06);
+      tl.fromTo("#s4-best", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, tB + 0.2 + 5 * 0.06 + 0.4);
+
+      // "y cuánto vendes" → ventas contando
+      const tK = W("4", 6) - 0.2, nv = { v: 0 }, num = $("#s4-num");
+      tl.fromTo("#s4-kpi", { opacity: 0, scale: 0.95, x: 280, rotation: 5 }, { opacity: 1, scale: 1, x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, tK);
+      tl.to(nv, { v: 18450, duration: 0.85, ease: "power3.out", onUpdate: () => (num.textContent = money(nv.v)) }, tK + 0.15);
+      tl.to("#s4-spath", { attr: { "stroke-dashoffset": 0 }, duration: 0.9, ease: "power2.out" }, tK + 0.2);
+      tl.fromTo("#s4-up", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, tK + 0.7);
+
+      // "en tiempo real" → llega una venta y todo se actualiza
+      const tL = W("4", 9) - 0.15;
+      tl.fromTo("#s4-live", { opacity: 0, scale: 0.8, x: 80 }, { opacity: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(1.8)" }, tL);
+      tl.fromTo("#s4-dot", { scale: 1 }, { scale: 1.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((DUR - tL - 0.4) / 0.3)) }, tL + 0.2);
+      tl.fromTo("#s4-toast", { opacity: 0, scale: 0.8, y: -70 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.6)" }, tL + 0.22);
+      tl.to(nv, { v: 18535, duration: 0.45, ease: "power2.out", onUpdate: () => (num.textContent = money(nv.v)) }, tL + 0.5);
+      tl.fromTo("#s4-num", { scale: 1 }, { scale: 1.06, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 60%" }, tL + 0.5);
+      tl.to("#s4-b6", { height: 118, duration: 0.45, ease: "back.out(2)" }, tL + 0.55);
+      tl.fromTo("#s4-sp0", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.5)" }, tL + 0.6);
+      tl.to("#s4-sp0", { scale: 0, rotation: 40, duration: 0.3, ease: "power2.in" }, tL + 1.0);
+      tl.to(nv, { v: 18597, duration: 0.4, ease: "power2.out", onUpdate: () => (num.textContent = money(nv.v)) }, tL + 1.25);
+      tl.to("#s4-b6", { height: 128, duration: 0.4, ease: "back.out(2)" }, tL + 1.28);
+      // salida hacia arriba (cambia la dirección respecto a la escena anterior)
+      tl.to("#s4-all", { y: -260, opacity: 0, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, DUR - 0.27);
+      window.__timelines["s4-datos"] = tl;
+    })();
+  </script>
+</template>

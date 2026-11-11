@@ -1,0 +1,34 @@
+{
+ "marto": {
+  "id": "ojGau167OE7nUATM1xDa",
+  "name": "Marto - Español & Conversational",
+  "gender": "male",
+  "accent": "mexican",
+  "desc": "Professional voiceover artist in Mexican Spanish, with a warm, natural, and approachable sound. Ideal for emotional narrations, social media videos, commercials"
+ },
+ "antonio": {
+  "id": "htFfPSZGJwjBv1CL0aMD",
+  "name": "Antonio - Confident, Gentle and Clear",
+  "gender": "male",
+  "accent": "mexican",
+  "desc": "With a confident yet gentle delivery, Antonio excels at creating trust, clarity, and natural flow in dialogues. Antonio is a warm, articulate male voice with a "
+ },
+ "angelica": {
+  "id": "twZzvyYIl5ntDHC1Vatv",
+  "name": "Angelica - Friendly, Energetic & Professional",
+  "gender": "female",
+  "accent": "mexican",
+  "desc": "Expressive and Engaging Mexican voice ideal for social media, tv, commercials, podcasts and storytelling projects."
+ },
+ "azucena": {
+  "id": "ay4iqk10DLwc8KGSrf2t",
+  "name": "Azucena Ortega - Confident and Engaging",
+  "gender": "female",
+  "accent": "mexican",
+  "desc": "Latin Spanish female with a Mexican Accent. Great for Commercials."
+ },
+ "_default": {
+  "alias": "marto",
+  "motivo": "masculina, cálida y de confianza; locutor profesional mexicano"
+ }
+}

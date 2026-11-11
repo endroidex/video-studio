@@ -1,0 +1,19 @@
+# Video Studio — reglas del dueño (leer antes de trabajar)
+
+## ElevenLabs: SOLO con orden explícita
+- Usar ElevenLabs **únicamente** cuando el usuario pida explícitamente crear un video con ElevenLabs.
+- **Nunca** para pruebas, demos, muestras ni comparaciones: gasta sus créditos (plan Starter, 40 000 caracteres/mes).
+- Las llamadas de pago están bloqueadas en `scripts/eleven.py`; se habilitan con `ELEVEN_APPROVED=1` solo en el comando
+  del video pedido. Consultas gratuitas (uso, lista de voces) sí se permiten.
+- **Música: nunca con ElevenLabs.** Se genera con `scripts/audio_lib.py` / `tools/audio.py`.
+- Para pruebas y borradores: voz local (`chatterbox` por defecto, `kokoro`, `piper`).
+
+## Voz
+- Voz elegida para ElevenLabs: `marto` (masculina, cálida, de confianza; `voices.json` → `_default`).
+- Ritmo **natural**: no acelerar la voz. Si el video dura un poco más de lo pedido, no importa.
+- Pronunciación: `pronunciations.json` (p. ej. "Negocity" se dice **Négocity**, acento en "Ne"; en pantalla siempre "Negocity").
+
+## Flujo
+- Estilo de referencia: `referencias/estilos/ejemplo_02_dark_premium.md`. Motores: HyperFrames (`hf/`) y Remotion (`src/`).
+- No generar videos ni demos sin que el usuario lo pida.
+- Detalles técnicos: `README.md`. Instalación en una sesión nueva: `bash setup.sh`.

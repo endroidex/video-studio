@@ -1,0 +1,80 @@
+{
+  "title": "La regla 50/30/20",
+  "voice": "es_MX-claude-high",
+  "speed": 1.08,
+  "music": "lofi",
+  "scenes": [
+    {
+      "tag": "01 · el gancho",
+      "voice": "Ganas dinero cada mes, pero a fin de mes *no* te queda *nada.*",
+      "headline": "¿Y MI *DINERO?*",
+      "widget": {"type": "phone", "items": [
+        {"title": "Nómina recibida", "body": "+ $15,000", "icon": "$", "color": "#3BAA6E", "at": "ganas"},
+        {"title": "Delivery", "body": "− $420", "icon": "🍔", "at": "pero"},
+        {"title": "Suscripciones", "body": "− $890", "icon": "▶", "at": "mes"},
+        {"title": "Saldo", "body": "$0.00", "icon": "!", "at": "nada"}
+      ], "stamp": "SIN AHORRO", "stampAt": "nada", "stampX": 520, "stampY": 1180}
+    },
+    {
+      "tag": "02 · la regla",
+      "voice": "La solución es la regla *cincuenta, treinta, veinte.* Así se reparte tu sueldo.",
+      "headline": "REGLA *50/30/20*",
+      "widget": {"type": "donut", "center": "100%", "items": [
+        {"label": "necesidades", "value": 50, "at": "cincuenta"},
+        {"label": "gustos", "value": 30, "at": "treinta"},
+        {"label": "ahorro", "value": 20, "at": "veinte"}
+      ]}
+    },
+    {
+      "tag": "paso 1 · necesidades",
+      "voice": "El *cincuenta* por ciento va a lo esencial: renta, comida, transporte y servicios.",
+      "headline": "LO *ESENCIAL*",
+      "badge": 1,
+      "widget": {"type": "checklist", "title": "// 50% del sueldo", "items": [
+        {"label": "Renta", "at": "renta"},
+        {"label": "Comida", "at": "comida"},
+        {"label": "Transporte", "at": "transporte"},
+        {"label": "Servicios", "at": "servicios"}
+      ]}
+    },
+    {
+      "tag": "paso 2 · gustos",
+      "voice": "El *treinta* es para disfrutar, sin culpa. Salidas, series, caprichos.",
+      "headline": "SIN *CULPA*",
+      "badge": 2,
+      "widget": {"type": "chat", "items": [
+        {"from": "them", "text": "¿Cenamos el viernes? 🍕", "at": "disfrutar"},
+        {"from": "me", "text": "¡Va! Está en mi 30% 😎", "at": "salidas"}
+      ]}
+    },
+    {
+      "tag": "paso 3 · ahorro",
+      "voice": "Y el *veinte* se ahorra primero, el mismo día que cobras. Automático.",
+      "headline": "PÁGATE *PRIMERO*",
+      "badge": 3,
+      "widget": {"type": "stat", "value": 3000, "prefix": "$", "label": "al mes de un sueldo de $15,000", "ringValue": 0.2, "endSfx": "cash",
+        "stamp": "AUTOMÁTICO", "stampAt": "automático", "stampX": 90, "stampY": 1300}
+    },
+    {
+      "tag": "el resultado",
+      "voice": "En un año, eso son *treinta y seis mil* pesos que antes desaparecían.",
+      "headline": "EN *UN AÑO*",
+      "widget": {"type": "bars", "items": [
+        {"label": "mes 1", "value": 3000, "display": "3k"},
+        {"label": "mes 3", "value": 9000, "display": "9k"},
+        {"label": "mes 6", "value": 18000, "display": "18k"},
+        {"label": "mes 12", "value": 36000, "display": "36k", "at": "treinta"}
+      ]}
+    },
+    {
+      "tag": "resumen",
+      "voice": "Cincuenta, treinta, veinte. *Guárdalo* y empieza este mes.",
+      "headline": "*GUÁRDALO*",
+      "widget": {"type": "steps", "cols": 1, "items": [
+        {"label": "50% necesidades", "sub": "renta, comida", "at": "cincuenta"},
+        {"label": "30% gustos", "sub": "sin culpa", "at": "treinta"},
+        {"label": "20% *ahorro*", "sub": "primero", "at": "veinte"}
+      ], "stamp": "EMPIEZA HOY", "stampAt": "empieza", "stampX": 380, "stampY": 1180}
+    }
+  ]
+}

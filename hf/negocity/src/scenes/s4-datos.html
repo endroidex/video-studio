@@ -1,0 +1,126 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s4-chip { position: absolute; left: 70px; top: 190px; }
+    #s4-live { position: absolute; left: 760px; top: 190px; color: #000; padding: 0 28px 0 22px; }
+    #s4-title { position: absolute; left: 70px; top: 282px; font-size: 104px; }
+    #s4-title .ln { display: block; white-space: nowrap; }
+    .s4-lbl { font-weight: 700; font-size: 30px; color: var(--ink-2); white-space: nowrap; }
+    /* quién vuelve */
+    #s4-ring { position: absolute; left: 60px; top: 540px; width: 440px; height: 330px; padding: 28px 30px; }
+    #s4-ringsvg { position: absolute; left: 30px; top: 86px; width: 216px; height: 216px; }
+    #s4-pct { position: absolute; left: 30px; top: 86px; width: 216px; height: 216px; display: flex; align-items: center; justify-content: center; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 62px; letter-spacing: -.03em; }
+    .s4-av { position: absolute; left: 276px; width: 136px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 6px; font-weight: 700; font-size: 28px; }
+    .s4-av .avatar { width: 48px; height: 48px; font-size: 28px; }
+    /* cuánto vendes */
+    #s4-kpi { position: absolute; left: 530px; top: 540px; width: 490px; height: 330px; padding: 28px 34px; overflow: hidden; }
+    #s4-kpi .s4-lbl { color: rgba(255,254,250,.82); }
+    #s4-num { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 104px; letter-spacing: -.035em; line-height: 1; margin-top: 16px; white-space: nowrap; }
+    #s4-sparkl { position: absolute; left: 0; bottom: 0; width: 490px; height: 120px; }
+    #s4-up { position: absolute; right: 26px; top: 24px; height: 54px; padding: 0 18px; border-radius: 27px; background: rgba(255,254,250,.18); display: flex; align-items: center; font-weight: 800; font-size: 28px; }
+    /* mejores días */
+    #s4-bars { position: absolute; left: 60px; top: 900px; width: 960px; height: 290px; padding: 26px 34px; }
+    .s4-bar { position: absolute; bottom: 62px; width: 84px; border-radius: 22px 22px 10px 10px; background: linear-gradient(180deg, #2a2a2a, #000); box-shadow: 6px 8px 16px rgba(0,0,0,.22); }
+    .s4-bar.best { background: linear-gradient(180deg, #0F8A3D, #07561F); box-shadow: 6px 8px 18px rgba(9,103,44,.45); }
+    .s4-day { position: absolute; bottom: 18px; width: 84px; text-align: center; font-weight: 800; font-size: 28px; color: var(--ink-2); }
+    #s4-best { position: absolute; left: 612px; top: 22px; height: 58px; padding: 0 20px 0 14px; border-radius: 29px; background: var(--green); color: var(--cream); display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 28px; white-space: nowrap; box-shadow: 6px 8px 16px rgba(9,103,44,.4); }
+    #s4-best svg { width: 30px; height: 30px; }
+    /* en tiempo real */
+    #s4-toast { position: absolute; left: 610px; top: 498px; height: 96px; padding: 0 30px 0 16px; border-radius: 48px; display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+    #s4-toast .d { width: 66px; height: 66px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 38px; display: flex; align-items: center; justify-content: center; }
+    #s4-toast b { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 36px; }
+    #s4-toast span { font-weight: 700; font-size: 28px; color: var(--ink-2); }
+  </style>
+  <div id="root" data-composition-id="s4-datos" data-width="1080" data-height="1920">
+    <section id="s4-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div class="g-rings" id="s4-rings" style="left:480px;top:1260px"></div>
+      <div id="s4-all" class="fill" data-layout-allow-overflow>
+        <div id="s4-chip" class="chip">{{icon:chart}}Estadísticas</div>
+        <div id="s4-live" class="chip"><span class="dot-live" id="s4-dot"></span>En vivo</div>
+        <h2 id="s4-title" class="t-display"><span class="ln"><span class="t-word s4-w">Tus </span><span class="t-word s4-w">números,</span></span><span class="ln t-green"><span class="t-word s4-w">en </span><span class="t-word s4-w">tiempo </span><span class="t-word s4-w">real</span></span></h2>
+
+        <div id="s4-ring" class="neu">
+          <div class="s4-lbl">Clientes que vuelven</div>
+          <svg id="s4-ringsvg" viewBox="0 0 216 216"><circle cx="108" cy="108" r="88" fill="none" stroke="#E9E3D0" stroke-width="26"/><circle id="s4-arc" cx="108" cy="108" r="88" fill="none" stroke="#09672C" stroke-width="26" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553" transform="rotate(-90 108 108)"/></svg>
+          <div id="s4-pct">0%</div>
+          <div class="s4-av neu-sm" id="s4-v0" style="top:96px"><span class="avatar">M</span>5ª vez</div>
+          <div class="s4-av neu-sm" id="s4-v1" style="top:168px"><span class="avatar" style="background:#000">J</span>3ª vez</div>
+          <div class="s4-av neu-sm" id="s4-v2" style="top:240px"><span class="avatar">R</span>8ª vez</div>
+        </div>
+
+        <div id="s4-kpi" class="neu-green">
+          <div class="s4-lbl">Ventas de hoy</div>
+          <div id="s4-num">$0</div>
+          <div id="s4-up">+12%</div>
+          <svg id="s4-sparkl" viewBox="0 0 490 120" preserveAspectRatio="none"><path id="s4-spath" d="M0 96 C40 90 60 70 100 76 S170 96 210 62 S290 70 330 44 S410 52 440 26 S480 22 490 16" fill="none" stroke="#FFFEFA" stroke-opacity=".55" stroke-width="6" stroke-linecap="round" stroke-dasharray="640" stroke-dashoffset="640"/></svg>
+        </div>
+
+        <div id="s4-bars" class="neu">
+          <div class="s4-lbl">Tus mejores días</div>
+          <div id="s4-best">{{icon:star}}Sábado</div>
+          <div class="s4-bar" id="s4-b0" style="left:52px;height:62px"></div><div class="s4-day" style="left:52px">L</div>
+          <div class="s4-bar" id="s4-b1" style="left:178px;height:77px"></div><div class="s4-day" style="left:178px">M</div>
+          <div class="s4-bar" id="s4-b2" style="left:304px;height:56px"></div><div class="s4-day" style="left:304px">M</div>
+          <div class="s4-bar" id="s4-b3" style="left:430px;height:90px"></div><div class="s4-day" style="left:430px">J</div>
+          <div class="s4-bar" id="s4-b4" style="left:556px;height:107px"></div><div class="s4-day" style="left:556px">V</div>
+          <div class="s4-bar best" id="s4-b5" style="left:682px;height:140px"></div><div class="s4-day" style="left:682px;color:var(--green)">S</div>
+          <div class="s4-bar" id="s4-b6" style="left:808px;height:96px"></div><div class="s4-day" style="left:808px">D</div>
+        </div>
+
+        <div id="s4-toast" class="neu-sm"><div class="d">{{icon:cart}}</div><div><b>+$85</b> <span>Nueva venta</span></div></div>
+        <div id="s4-sp0" class="spark" style="left:986px;top:520px;width:38px;height:38px">{{icon:spark}}</div>
+      </div>
+      <div class="sweep" id="s4-sweep"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const money = (v) => "$" + Math.round(v).toLocaleString("en-US");
+      tl.fromTo("#s4-rings", { rotation: 0 }, { rotation: -12, duration: DUR, ease: "none" }, 0);
+      rise(tl, "#s4-chip", 0.02, { x: 160, y: 0, d: 0.45 });
+      blurIn(tl, ".s4-w", 0.06, 0.07, 0.24);
+      tl.fromTo("#s4-sweep", { x: -400, opacity: 0.8, rotation: 18 }, { x: 1300, opacity: 0.8, rotation: 18, duration: 0.8, ease: "power1.inOut" }, 0.1);
+
+      // "quién vuelve" → anillo de clientes recurrentes
+      const tR = Math.max(0.12, W("4", 1) - 0.2);
+      tl.fromTo("#s4-ring", { opacity: 0, scale: 0.95, x: -260, rotation: -5 }, { opacity: 1, scale: 1, x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, tR);
+      const pc = { v: 0 }, pct = $("#s4-pct");
+      tl.to("#s4-arc", { attr: { "stroke-dashoffset": 553 * (1 - 0.68) }, duration: 0.9, ease: "power3.out" }, tR + 0.18);
+      tl.to(pc, { v: 68, duration: 0.9, ease: "power3.out", onUpdate: () => (pct.textContent = Math.round(pc.v) + "%") }, tR + 0.18);
+      [0, 1, 2].forEach((i) => rise(tl, "#s4-v" + i, tR + 0.3 + i * 0.09, { x: 60, y: 0, d: 0.4 }));
+
+      // "tus mejores días" → barras que crecen
+      const tB = W("4", 3) - 0.18;
+      tl.fromTo("#s4-bars", { opacity: 0, scale: 0.95, y: 220 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "expo.out" }, tB);
+      for (let i = 0; i < 7; i++) tl.fromTo("#s4-b" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "back.out(1.5)", transformOrigin: "50% 100%" }, tB + 0.2 + i * 0.06);
+      tl.fromTo("#s4-best", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, tB + 0.2 + 5 * 0.06 + 0.4);
+
+      // "y cuánto vendes" → ventas contando
+      const tK = W("4", 6) - 0.2, nv = { v: 0 }, num = $("#s4-num");
+      tl.fromTo("#s4-kpi", { opacity: 0, scale: 0.95, x: 280, rotation: 5 }, { opacity: 1, scale: 1, x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, tK);
+      tl.to(nv, { v: 18450, duration: 0.85, ease: "power3.out", onUpdate: () => (num.textContent = money(nv.v)) }, tK + 0.15);
+      tl.to("#s4-spath", { attr: { "stroke-dashoffset": 0 }, duration: 0.9, ease: "power2.out" }, tK + 0.2);
+      tl.fromTo("#s4-up", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, tK + 0.7);
+
+      // "en tiempo real" → llega una venta y todo se actualiza
+      const tL = W("4", 9) - 0.15;
+      tl.fromTo("#s4-live", { opacity: 0, scale: 0.8, x: 80 }, { opacity: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(1.8)" }, tL);
+      tl.fromTo("#s4-dot", { scale: 1 }, { scale: 1.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((DUR - tL - 0.4) / 0.3)) }, tL + 0.2);
+      tl.fromTo("#s4-toast", { opacity: 0, scale: 0.8, y: -70 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.6)" }, tL + 0.22);
+      tl.to(nv, { v: 18535, duration: 0.45, ease: "power2.out", onUpdate: () => (num.textContent = money(nv.v)) }, tL + 0.5);
+      tl.fromTo("#s4-num", { scale: 1 }, { scale: 1.06, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 60%" }, tL + 0.5);
+      tl.to("#s4-b6", { height: 118, duration: 0.45, ease: "back.out(2)" }, tL + 0.55);
+      tl.fromTo("#s4-sp0", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.5)" }, tL + 0.6);
+      tl.to("#s4-sp0", { scale: 0, rotation: 40, duration: 0.3, ease: "power2.in" }, tL + 1.0);
+      tl.to(nv, { v: 18597, duration: 0.4, ease: "power2.out", onUpdate: () => (num.textContent = money(nv.v)) }, tL + 1.25);
+      tl.to("#s4-b6", { height: 128, duration: 0.4, ease: "back.out(2)" }, tL + 1.28);
+      // salida hacia arriba (cambia la dirección respecto a la escena anterior)
+      tl.to("#s4-all", { y: -260, opacity: 0, filter: "blur(18px)", duration: 0.25, ease: "power3.in" }, DUR - 0.27);
+      window.__timelines["s4-datos"] = tl;
+    })();
+  </script>
+</template>

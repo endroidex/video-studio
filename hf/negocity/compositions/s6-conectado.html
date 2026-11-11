@@ -1,0 +1,163 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+    #s6-chip { position: absolute; left: 70px; top: 190px; }
+    #s6-title { position: absolute; left: 70px; top: 282px; font-size: 124px; white-space: nowrap; }
+    #s6-url { position: absolute; left: 70px; top: 440px; width: 940px; height: 116px; border-radius: 58px; display: flex; align-items: center; gap: 16px; padding: 0 18px 0 34px; white-space: nowrap; }
+    #s6-url .lk { font-size: 44px; color: var(--green); }
+    #s6-url b { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 44px; letter-spacing: -.01em; }
+    #s6-noinst { margin-left: auto; height: 80px; padding: 0 26px 0 18px; border-radius: 40px; background: linear-gradient(145deg, #0C7B36, #07561F); color: var(--cream); display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 31px; box-shadow: 6px 8px 16px rgba(9,103,44,.4); }
+    #s6-noinst svg { width: 38px; height: 38px; }
+    #s6-lines { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s6-disc { position: absolute; left: 380px; top: 690px; width: 320px; height: 320px; border-radius: 50%; }
+    #s6-icon { position: absolute; left: 430px; top: 740px; width: 220px; height: 220px; border-radius: 56px; display: block; box-shadow: 12px 16px 34px rgba(9,103,44,.45); }
+    .s6-node { position: absolute; height: 112px; padding: 0 34px 0 16px; border-radius: 56px; display: flex; align-items: center; gap: 16px; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 40px; white-space: nowrap; }
+    .s6-node .ic { width: 80px; height: 80px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 44px; display: flex; align-items: center; justify-content: center; flex: none; }
+    .s6-mini { position: absolute; width: 104px; height: 104px; border-radius: 50%; color: var(--green); font-size: 52px; display: flex; align-items: center; justify-content: center; }
+    .s6-pulse { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 14px 3px rgba(71,123,238,.7); }
+    #s6-iris { position: absolute; left: 490px; top: 800px; width: 100px; height: 100px; border-radius: 50%; background: #000; }
+  </style>
+  <div id="root" data-composition-id="s6-conectado" data-width="1080" data-height="1920">
+    <section id="s6-main" class="clip" data-start="0" data-duration="6.0" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div id="s6-all" class="fill" data-layout-allow-overflow>
+        <div id="s6-chip" class="chip"><svg class="ico" viewBox="0 0 24 24" ><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></svg>Un solo sistema</div>
+        <h2 id="s6-title" class="t-display"><span class="t-word s6-w">Todo </span><span class="t-word s6-w t-green">conectado</span></h2>
+        <div id="s6-url" class="neu"><span class="lk"><svg class="ico" viewBox="0 0 24 24" ><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><b>negocity.com.mx</b><span id="s6-noinst"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>Sin instalar nada</span></div>
+
+        <svg id="s6-lines" viewBox="0 0 1080 1920" fill="none" data-layout-ignore>
+          <circle id="s6-orbit" cx="540" cy="850" r="330" stroke="#09672C" stroke-opacity=".22" stroke-width="4" stroke-dasharray="2074" stroke-dashoffset="2074" transform="rotate(-90 540 850)"/>
+          <g stroke="#09672C" stroke-width="6" stroke-linecap="round">
+            <path class="s6-ln" id="s6-l0" d="M540 850 L250 690"/><path class="s6-ln" id="s6-l1" d="M540 850 L800 690"/><path class="s6-ln" id="s6-l2" d="M540 850 L540 1108"/>
+            <path class="s6-ln" id="s6-l3" d="M540 850 L196 936" stroke-opacity=".5" stroke-width="4"/><path class="s6-ln" id="s6-l4" d="M540 850 L884 936" stroke-opacity=".5" stroke-width="4"/>
+            <path class="s6-ln" id="s6-l5" d="M540 850 L300 1090" stroke-opacity=".5" stroke-width="4"/><path class="s6-ln" id="s6-l6" d="M540 850 L780 1090" stroke-opacity=".5" stroke-width="4"/>
+          </g>
+        </svg>
+        <div id="s6-pulses" class="fill" data-layout-ignore></div>
+
+        <div class="s6-mini neu-sm" id="s6-n3" style="left:144px;top:884px"><svg class="ico" viewBox="0 0 24 24" ><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg></div>
+        <div class="s6-mini neu-sm" id="s6-n4" style="left:832px;top:884px"><svg class="ico" viewBox="0 0 24 24" ><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.500-3.600 3.100-5.500 6.500-5.500s6 1.900 6.500 5.500"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17.500 14.500c2.300.200 3.700 1.600 4 4"/></svg></div>
+        <div class="s6-mini neu-sm" id="s6-n5" style="left:248px;top:1038px"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12"/><circle cx="12" cy="9" r="2"/><path d="M9 13.500c.500-1.200 1.600-1.800 3-1.800s2.500.600 3 1.800"/></svg></div>
+        <div class="s6-mini neu-sm" id="s6-n6" style="left:728px;top:1038px"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+
+        <div class="s6-node neu" id="s6-n0" style="left:88px;top:634px"><span class="ic"><svg class="ico" viewBox="0 0 24 24" ><circle cx="12" cy="8.500" r="4"/><path d="M4 20.500c.800-4 4-6 8-6s7.200 2 8 6"/></svg></span>Clientes</div>
+        <div class="s6-node neu" id="s6-n1" style="left:590px;top:634px"><span class="ic"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>Administración</div>
+        <div class="s6-node neu" id="s6-n2" style="left:410px;top:1064px"><span class="ic"><svg class="ico" viewBox="0 0 24 24" ><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.700 3.100 3 7 3s7-1.300 7-3V6M5 12v6c0 1.700 3.100 3 7 3s7-1.300 7-3v-6"/></svg></span>Datos</div>
+
+        <div id="s6-disc" class="neu"></div>
+        <img id="s6-icon" src="assets/brand/logo-icon-green.png" alt="Negocity" />
+      </div>
+      <div id="s6-iris"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=35.0667, DUR=6.0, SEG={"6": {"s": 35.171, "e": 40.282, "text": "Clientes, administración y datos, todo conectado. Sin instalar nada.", "w": [{"t": "Clientes,", "s": 35.171, "e": 35.838}, {"t": "administración", "s": 36.097, "e": 36.727}, {"t": "y", "s": 36.801, "e": 36.838}, {"t": "datos,", "s": 36.875, "e": 37.615}, {"t": "todo", "s": 37.764, "e": 37.912}, {"t": "conectado.", "s": 37.986, "e": 38.801}, {"t": "Sin", "s": 38.912, "e": 39.023}, {"t": "instalar", "s": 39.134, "e": 39.467}, {"t": "nada.", "s": 39.541, "e": 40.282}]}}, SEED=1158;
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+
+      const tl = gsap.timeline({ paused: true });
+      const C = [540, 850], ends = [[250, 690], [800, 690], [540, 1108], [196, 936], [884, 936], [300, 1090], [780, 1090]];
+      document.querySelectorAll(".s6-ln").forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+      const draw = (i, t, d = 0.4) => tl.to("#s6-l" + i, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+      const node = (i, t) => tl.fromTo("#s6-n" + i, { opacity: 0, scale: 0.6, x: (C[0] - ends[i][0]) * 0.5, y: (C[1] - ends[i][1]) * 0.5 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, t);
+
+      // el centro: Negocity
+      rise(tl, "#s6-chip", 0.02, { x: 0, y: -60, d: 0.45 });
+      tl.fromTo("#s6-disc", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, 0.02);
+      tl.fromTo("#s6-icon", { opacity: 0, scale: 0.4, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.08);
+      // "Clientes, administración y datos"
+      const tn = [W("6", 0) - 0.02, W("6", 1) - 0.12, W("6", 3) - 0.12];
+      [0, 1, 2].forEach((i) => { draw(i, tn[i]); node(i, tn[i] + 0.12); });
+      // "todo conectado" → se cierra el sistema completo
+      const tT = W("6", 4) - 0.2;
+      blurIn(tl, ".s6-w", tT, 0.1, 0.26);
+      [3, 4, 5, 6].forEach((i, k) => { draw(i, tT + 0.05 + k * 0.06, 0.35); node(i, tT + 0.14 + k * 0.06); });
+      tl.to("#s6-orbit", { attr: { "stroke-dashoffset": 0 }, duration: 0.9, ease: "power2.inOut" }, tT + 0.1);
+      tl.to("#s6-icon", { scale: 1.1, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, tT + 0.25);
+      // pulsos de datos viajando por las líneas
+      const host = document.querySelector("#s6-pulses");
+      ends.forEach((e, i) => {
+        for (let k = 0; k < 2; k++) {
+          const d = document.createElement("div"); d.className = "s6-pulse"; host.appendChild(d);
+          const out = (i + k) % 2 === 0, a = out ? C : e, b = out ? e : C, t0 = tT + 0.45 + i * 0.07 + k * 0.62;
+          tl.fromTo(d, { x: a[0], y: a[1], opacity: 0, scale: 0.6 }, { x: b[0], y: b[1], opacity: 1, scale: 1, duration: 0.55, ease: "power1.inOut" }, t0);
+          tl.to(d, { opacity: 0, duration: 0.08 }, t0 + 0.5);
+        }
+      });
+      // "Sin instalar nada" → abre en el navegador
+      const tU = W("6", 6) - 0.2;
+      tl.fromTo("#s6-url", { opacity: 0, scale: 0.95, y: -50 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "expo.out" }, tU);
+      tl.fromTo("#s6-noinst", { opacity: 0, scale: 0.6, x: 40 }, { opacity: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(2)" }, W("6", 7) - 0.05);
+      // cierre: todo vuelve al centro y la puerta negra del ícono se abre al mundo final
+      const tX = DUR - 0.62;
+      ends.forEach((e, i) => tl.to("#s6-n" + i, { x: C[0] - e[0], y: C[1] - e[1], scale: 0.1, opacity: 0, duration: 0.3, ease: "power3.in" }, tX));
+      tl.to("#s6-lines, #s6-pulses", { opacity: 0, duration: 0.2 }, tX);
+      tl.to("#s6-title, #s6-chip, #s6-url", { opacity: 0, filter: "blur(14px)", y: -40, duration: 0.22, ease: "power2.in" }, tX);
+      tl.fromTo("#s6-iris", { scale: 0 }, { scale: 46, duration: 0.42, ease: "power3.in" }, tX + 0.2);
+      window.__timelines["s6-conectado"] = tl;
+    })();
+  </script>
+</template>

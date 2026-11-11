@@ -1,0 +1,174 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+    .s5-chip { position: absolute; left: 70px; top: 190px; }
+    .s5-title { position: absolute; left: 70px; top: 282px; font-size: 100px; }
+    .s5-title .ln { display: block; white-space: nowrap; }
+    /* A · equipo */
+    #s5-ph { left: 452px; top: 520px; width: 560px; height: 1160px; }
+    .s5-hello { position: absolute; left: 30px; top: 90px; right: 30px; display: flex; align-items: center; gap: 18px; }
+    .s5-hello .avatar { width: 84px; height: 84px; font-size: 44px; }
+    .s5-hello b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 40px; line-height: 1.05; }
+    .s5-hello span { display: flex; align-items: center; gap: 10px; font-size: 28px; font-weight: 700; color: var(--ink-2); }
+    .s5-sec { position: absolute; left: 34px; top: 214px; font-weight: 800; font-size: 30px; color: var(--ink-2); }
+    .s5-task { position: absolute; left: 24px; width: 482px; height: 104px; display: flex; align-items: center; gap: 20px; padding: 0 24px; font-weight: 700; font-size: 32px; white-space: nowrap; }
+    .s5-cb { position: relative; width: 56px; height: 56px; border-radius: 50%; flex: none; }
+    .s5-cb .ok { position: absolute; inset: 0; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 36px; display: flex; align-items: center; justify-content: center; }
+    #s5-btn { position: absolute; left: 24px; top: 640px; width: 482px; height: 100px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 14px; font-weight: 800; font-size: 32px; }
+    #s5-btn svg { width: 38px; height: 38px; }
+    .s5-m { position: absolute; left: 60px; width: 372px; height: 124px; display: flex; align-items: center; gap: 18px; padding: 0 22px; border-radius: 40px; }
+    .s5-m .avatar { width: 80px; height: 80px; font-size: 40px; }
+    .s5-m b { display: block; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 36px; line-height: 1.1; }
+    .s5-m span { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 28px; color: var(--ink-2); white-space: nowrap; }
+    .s5-off { width: 16px; height: 16px; border-radius: 50%; background: var(--cream-3); box-shadow: inset 2px 2px 4px rgba(0,0,0,.2); }
+    /* B · contactos */
+    .s5-c { position: absolute; left: 60px; width: 960px; height: 152px; display: flex; align-items: center; gap: 24px; padding: 0 30px; }
+    .s5-c .avatar { width: 96px; height: 96px; font-size: 48px; }
+    .s5-c b { display: block; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 42px; line-height: 1.1; white-space: nowrap; }
+    .s5-tag { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 22px; background: rgba(9,103,44,.12); color: var(--green); font-weight: 800; font-size: 28px; margin-top: 8px; }
+    .s5-act { margin-left: auto; display: flex; gap: 18px; }
+    .s5-ab { width: 88px; height: 88px; border-radius: 50%; font-size: 44px; color: var(--green); display: flex; align-items: center; justify-content: center; }
+    #s5-search { position: absolute; left: 60px; top: 1210px; width: 960px; height: 104px; border-radius: 52px; display: flex; align-items: center; gap: 18px; padding: 0 36px; font-weight: 700; font-size: 34px; color: var(--ink-3); }
+    #s5-search svg { width: 44px; height: 44px; color: var(--green); }
+  </style>
+  <div id="root" data-composition-id="s5-equipo" data-width="1080" data-height="1920">
+    <section id="s5-main" class="clip" data-start="0" data-duration="5.8334" data-track-index="1">
+      <div class="g-cream"></div><div class="g-dots"></div>
+      <div class="g-rings" id="s5-rings" style="left:-520px;top:300px"></div>
+      <div id="s5-all" class="fill" data-layout-allow-overflow>
+        <!-- A · tu equipo desde su celular -->
+        <div id="s5-A" class="fill">
+          <div id="s5-chipA" class="chip s5-chip"><svg class="ico" viewBox="0 0 24 24" ><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.500-3.600 3.100-5.500 6.500-5.500s6 1.900 6.500 5.500"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17.500 14.500c2.300.200 3.700 1.600 4 4"/></svg>Equipo</div>
+          <h2 id="s5-tA" class="t-display s5-title"><span class="ln"><span class="t-word s5-wa">Tu </span><span class="t-word s5-wa">equipo,</span></span><span class="ln t-green"><span class="t-word s5-wa">desde </span><span class="t-word s5-wa">su </span><span class="t-word s5-wa">celular</span></span></h2>
+          <div class="s5-m neu" id="s5-m0" style="top:640px"><span class="avatar">A</span><div><b>Ana</b><span><i class="dot-live"></i>En turno</span></div></div>
+          <div class="s5-m neu" id="s5-m1" style="top:790px"><span class="avatar" style="background:#000">L</span><div><b>Luis</b><span><i class="dot-live"></i>En turno</span></div></div>
+          <div class="s5-m neu" id="s5-m2" style="top:940px"><span class="avatar">S</span><div><b>Sofi</b><span><i class="s5-off"></i>Descanso</span></div></div>
+          <div id="s5-ph" class="phone">
+            <div class="screen">
+              <div class="island"></div>
+              <div class="s5-hello"><span class="avatar">A</span><div><b>Hola, Ana</b><span><i class="dot-live"></i>Turno de hoy</span></div></div>
+              <div class="s5-sec">Tareas de hoy</div>
+              <div class="s5-task neu-sm" id="s5-k0" style="top:268px"><div class="s5-cb neu-in"><div class="ok" id="s5-o0"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></div></div>Abrir caja</div>
+              <div class="s5-task neu-sm" id="s5-k1" style="top:390px"><div class="s5-cb neu-in"><div class="ok" id="s5-o1"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></div></div>Registrar visitas</div>
+              <div class="s5-task neu-sm" id="s5-k2" style="top:512px"><div class="s5-cb neu-in"><div class="ok" id="s5-o2"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 12.500l4.500 4.500L19 7.500"/></svg></div></div>Recibir pedido de pan</div>
+              <div id="s5-btn" class="neu-green" data-layout-ignore><svg class="ico" viewBox="0 0 24 24" ><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v6h-3M14 19v1"/></svg>Escanear tarjeta</div>
+            </div>
+          </div>
+        </div>
+        <!-- B · proveedores y contactos a la mano -->
+        <div id="s5-B" class="fill">
+          <div id="s5-chipB" class="chip s5-chip"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12"/><circle cx="12" cy="9" r="2"/><path d="M9 13.500c.500-1.200 1.600-1.800 3-1.800s2.500.600 3 1.800"/></svg>Directorio</div>
+          <h2 id="s5-tB" class="t-display s5-title"><span class="ln"><span class="t-word s5-wb">Tus </span><span class="t-word s5-wb">contactos,</span></span><span class="ln t-green"><span class="t-word s5-wb">siempre </span><span class="t-word s5-wb">a </span><span class="t-word s5-wb">la </span><span class="t-word s5-wb">mano</span></span></h2>
+          <div class="s5-c neu" id="s5-c0" style="top:530px"><span class="avatar">P</span><div><b>Panadería La Espiga</b><span class="s5-tag">Proveedor</span></div><div class="s5-act"><div class="s5-ab neu-sm" id="s5-call"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h3l1.500 5-2 1.500a12 12 0 0 0 6 6l1.500-2 5 1.500v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></div></div></div>
+          <div class="s5-c neu" id="s5-c1" style="top:700px"><span class="avatar" style="background:#000">D</span><div><b>Don Beto · Café</b><span class="s5-tag">Proveedor</span></div><div class="s5-act"><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h3l1.500 5-2 1.500a12 12 0 0 0 6 6l1.500-2 5 1.500v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></div></div></div>
+          <div class="s5-c neu" id="s5-c2" style="top:870px"><span class="avatar">M</span><div><b>Mariana Ruiz</b><span class="s5-tag">Contadora</span></div><div class="s5-act"><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h3l1.500 5-2 1.500a12 12 0 0 0 6 6l1.500-2 5 1.500v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></div></div></div>
+          <div class="s5-c neu" id="s5-c3" style="top:1040px"><span class="avatar" style="background:#000">G</span><div><b>Gas del Valle</b><span class="s5-tag">Servicio</span></div><div class="s5-act"><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h3l1.500 5-2 1.500a12 12 0 0 0 6 6l1.500-2 5 1.500v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div class="s5-ab neu-sm"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></div></div></div>
+          <div id="s5-search" class="neu-in" data-layout-ignore><svg class="ico" viewBox="0 0 24 24" ><circle cx="11" cy="11" r="6.500"/><path d="M16 16l5 5"/></svg>Buscar contacto…</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=29.2333, DUR=5.8334, SEG={"5": {"s": 29.362, "e": 34.621, "text": "Tu equipo trabaja desde su celular, y tus proveedores y contactos siempre están a la mano.", "w": [{"t": "Tu", "s": 29.362, "e": 29.436}, {"t": "equipo", "s": 29.51, "e": 29.806}, {"t": "trabaja", "s": 29.843, "e": 30.177}, {"t": "desde", "s": 30.251, "e": 30.473}, {"t": "su", "s": 30.547, "e": 30.621}, {"t": "celular,", "s": 30.695, "e": 31.362}, {"t": "y", "s": 31.399, "e": 31.436}, {"t": "tus", "s": 31.51, "e": 31.658}, {"t": "proveedores", "s": 31.769, "e": 32.177}, {"t": "y", "s": 32.214, "e": 32.251}, {"t": "contactos", "s": 32.325, "e": 32.992}, {"t": "siempre", "s": 33.066, "e": 33.436}, {"t": "están", "s": 33.51, "e": 33.732}, {"t": "a", "s": 33.769, "e": 33.806}, {"t": "la", "s": 33.881, "e": 33.955}, {"t": "mano.", "s": 34.066, "e": 34.621}]}}, SEED=872;
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s5-rings", { rotation: 0 }, { rotation: 16, duration: DUR, ease: "none" }, 0);
+      // A · entrada desde abajo (la escena anterior salió hacia arriba)
+      rise(tl, "#s5-chipA", 0.02, { y: 120, d: 0.45 });
+      blurIn(tl, ".s5-wa", 0.06, 0.07, 0.24);
+      tl.fromTo("#s5-ph", { opacity: 0, y: 520, rotation: -6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.65, ease: "expo.out" }, 0.06);
+      [0, 1, 2].forEach((i) => tl.fromTo("#s5-m" + i, { opacity: 0, scale: 0.95, x: -320 }, { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "expo.out" }, 0.22 + i * 0.09));
+      [0, 1, 2].forEach((i) => rise(tl, "#s5-k" + i, 0.36 + i * 0.07, { y: 30, d: 0.4 }));
+      // las tareas se van palomeando mientras "trabaja desde su celular"
+      const tk = [W("5", 2), W("5", 3) + 0.1, W("5", 5)];
+      [0, 1, 2].forEach((i) => {
+        tl.fromTo("#s5-o" + i, { scale: 0 }, { scale: 1, duration: 0.34, ease: "back.out(2.6)" }, tk[i]);
+        tl.to("#s5-k" + i, { scale: 0.97, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut" }, tk[i]);
+      });
+      // B · el celular se va y el directorio se despliega
+      const tB = W("5", 6) - 0.22;
+      tl.to("#s5-tA, #s5-chipA", { opacity: 0, filter: "blur(12px)", duration: 0.18, ease: "power2.in" }, tB);
+      tl.to("#s5-ph", { x: 760, rotation: 10, opacity: 0, duration: 0.36, ease: "power3.in" }, tB);
+      tl.to("#s5-m0, #s5-m1, #s5-m2", { x: -480, opacity: 0, duration: 0.3, stagger: 0.04, ease: "power3.in" }, tB);
+      tl.fromTo("#s5-chipB", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, tB + 0.2);
+      blurIn(tl, ".s5-wb", tB + 0.22, 0.07, 0.24);
+      const tc = [W("5", 8) - 0.22, W("5", 8) - 0.1, W("5", 10) - 0.2, W("5", 10) - 0.08];
+      [0, 1, 2, 3].forEach((i) => tl.fromTo("#s5-c" + i, { opacity: 0, rotationX: -82, y: -60, transformPerspective: 1400, transformOrigin: "50% 0%" }, { opacity: 1, rotationX: 0, y: 0, duration: 0.55, ease: "back.out(1.3)" }, Math.max(tB + 0.3, tc[i])));
+      tl.fromTo("#s5-search", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, tc[3] + 0.25);
+      // "a la mano" → un toque y ya está llamando
+      const tM = W("5", 13) - 0.05;
+      tl.to("#s5-call", { scale: 0.86, duration: 0.1, ease: "power2.in" }, tM);
+      tl.to("#s5-call", { scale: 1, backgroundImage: "linear-gradient(145deg, #0C7B36, #07561F)", color: "#FFFEFA", duration: 0.3, ease: "back.out(3)" }, tM + 0.1);
+      tl.to("#s5-c0", { scale: 1.03, duration: 0.3, ease: "power2.out" }, tM + 0.1);
+      tl.fromTo("#s5-call svg", { rotation: 0 }, { rotation: 14, duration: 0.08, yoyo: true, repeat: 5, ease: "sine.inOut" }, tM + 0.35);
+      // salida: se pliega hacia el centro (da paso a "todo conectado")
+      tl.to("#s5-B", { scale: 0.6, opacity: 0, filter: "blur(16px)", duration: 0.25, ease: "power3.in", transformOrigin: "540px 800px" }, DUR - 0.27);
+      window.__timelines["s5-equipo"] = tl;
+    })();
+  </script>
+</template>

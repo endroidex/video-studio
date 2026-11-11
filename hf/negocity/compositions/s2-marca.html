@@ -1,0 +1,201 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+    #s2-spark { position: absolute; left: 500px; top: 720px; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #FFFEFA 0 30%, rgba(255,254,250,.55) 45%, transparent 70%); }
+    #s2-streak { position: absolute; left: -200px; top: 752px; width: 1480px; height: 16px; border-radius: 8px; background: linear-gradient(90deg, transparent, rgba(255,254,250,.95) 35%, #fff 50%, rgba(255,254,250,.95) 65%, transparent); filter: blur(5px); opacity: 0; }
+    #s2-logowrap { position: absolute; left: -73px; top: 302px; width: 1224px; height: 816px; mix-blend-mode: screen; }
+    #s2-logoclip { position: absolute; inset: 0; }
+    #s2-logo { position: absolute; left: 0; top: 0; width: 1224px; height: 816px; display: block; }
+    #s2-bar { position: absolute; left: 0; top: 60px; width: 150px; height: 700px; background: linear-gradient(90deg, transparent, rgba(255,254,250,.9), transparent); filter: blur(22px); opacity: 0; }
+    #s2-phone { left: 240px; top: 150px; width: 600px; height: 1180px; box-shadow: 0 0 0 2px #4a4a4a inset, 0 0 90px rgba(255,254,250,.16), 0 40px 120px rgba(9,103,44,.5); }
+    #s2-phone .screen { background: #000; }
+    #s2-app { position: absolute; inset: 0; background: linear-gradient(160deg, #FFFEFA, #F5F0E2); padding: 92px 26px 0; }
+    .s2-head { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+    .s2-head img { width: 88px; height: 88px; border-radius: 24px; display: block; box-shadow: 6px 8px 18px var(--sh-dark); }
+    .s2-head b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 38px; line-height: 1.05; }
+    .s2-head span { font-size: 28px; font-weight: 600; color: var(--ink-2); }
+    .s2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .s2-tile { height: 206px; padding: 24px 22px; display: flex; flex-direction: column; justify-content: space-between; }
+    .s2-tile .ic { width: 78px; height: 78px; border-radius: 24px; background: var(--green); color: var(--cream); font-size: 44px; display: flex; align-items: center; justify-content: center; box-shadow: 5px 7px 14px rgba(9,103,44,.35); }
+    .s2-tile b { font-weight: 800; font-size: 30px; letter-spacing: -.01em; white-space: nowrap; }
+    #s2-cream { opacity: 0; }
+    #s2-title { position: absolute; left: 70px; top: 430px; font-size: 168px; }
+    #s2-title .ln { display: block; white-space: nowrap; }
+    #s2-dock { position: absolute; left: 70px; top: 1000px; width: 940px; height: 200px; }
+    .s2-di { position: absolute; top: 34px; width: 132px; height: 132px; border-radius: 40px; font-size: 68px; display: flex; align-items: center; justify-content: center; color: var(--green); }
+    .s2-di.g { background: linear-gradient(145deg, #0C7B36, #07561F); color: var(--cream); box-shadow: 8px 10px 22px rgba(9,103,44,.4); }
+  </style>
+  <div id="root" data-composition-id="s2-marca" data-width="1080" data-height="1920">
+    <section id="s2-main" class="clip" data-start="0" data-duration="6.6" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s2-specks" class="fill" data-layout-ignore></div>
+      <div id="s2-zoom" class="fill" data-layout-allow-overflow>
+        <div id="s2-phone" class="phone">
+          <div class="screen">
+            <div id="s2-app">
+              <div class="s2-head"><img id="s2-icon" src="assets/brand/logo-icon-green.png" alt="Negocity" /><div><b>Café Lupita</b><span>Tu negocio hoy</span></div></div>
+              <div class="s2-grid">
+                <div class="s2-tile neu-sm" id="s2-tl0"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg></div><b>Lealtad</b></div>
+                <div class="s2-tile neu-sm" id="s2-tl1"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><b>Estadísticas</b></div>
+                <div class="s2-tile neu-sm" id="s2-tl2"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.500-3.600 3.100-5.500 6.500-5.500s6 1.900 6.500 5.500"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17.500 14.500c2.300.200 3.700 1.600 4 4"/></svg></div><b>Equipo</b></div>
+                <div class="s2-tile neu-sm" id="s2-tl3"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12"/><circle cx="12" cy="9" r="2"/><path d="M9 13.500c.500-1.200 1.600-1.800 3-1.800s2.500.600 3 1.800"/></svg></div><b>Directorio</b></div>
+                <div class="s2-tile neu-sm" id="s2-tl4"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><b>Administración</b></div>
+                <div class="s2-tile neu-sm" id="s2-tl5"><div class="ic"><svg class="ico" viewBox="0 0 24 24" ><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></svg></div><b>Y más</b></div>
+              </div>
+            </div>
+            <div class="island"></div>
+          </div>
+        </div>
+      </div>
+      <div id="s2-spark"></div>
+      <div id="s2-streak"></div>
+      <!-- logo oficial, tal cual (PNG con su propio fondo negro) -->
+      <div id="s2-logowrap" data-layout-allow-overflow>
+        <div id="s2-logoclip"><img id="s2-logo" src="assets/brand/logo-full-black.png" alt="Negocity" /></div>
+        <div id="s2-bar"></div>
+      </div>
+      <div id="s2-sp0" class="spark" style="left:872px;top:404px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      <div id="s2-sp1" class="spark" style="left:170px;top:860px;width:30px;height:30px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      <div id="s2-sp2" class="spark" style="left:900px;top:960px;width:34px;height:34px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+
+      <!-- el mundo claro de la app -->
+      <div id="s2-cream" class="fill">
+        <div class="g-cream"></div><div class="g-dots"></div>
+        <div class="g-rings" style="left:420px;top:1050px"></div>
+        <h2 id="s2-title" class="t-display"><span class="ln"><span class="t-word s2-w">Todo </span><span class="t-word s2-w">en</span></span><span class="ln t-green"><span class="t-word s2-w">un </span><span class="t-word s2-w">solo</span></span><span class="ln t-green"><span class="t-word s2-w">lugar</span></span></h2>
+        <div id="s2-dock">
+          <div id="s2-dockbg" class="neu fill" style="border-radius:64px"></div>
+          <div class="s2-di g" id="s2-d0" style="left:40px"><svg class="ico" viewBox="0 0 24 24" ><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg></div>
+          <div class="s2-di neu-in" id="s2-d1" style="left:222px"><svg class="ico" viewBox="0 0 24 24" ><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <div class="s2-di neu-in" id="s2-d2" style="left:404px"><svg class="ico" viewBox="0 0 24 24" ><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.500-3.600 3.100-5.500 6.500-5.500s6 1.900 6.500 5.500"/><circle cx="17.500" cy="9" r="2.500"/><path d="M17.500 14.500c2.300.200 3.700 1.600 4 4"/></svg></div>
+          <div class="s2-di neu-in" id="s2-d3" style="left:586px"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12"/><circle cx="12" cy="9" r="2"/><path d="M9 13.500c.500-1.200 1.600-1.800 3-1.800s2.500.600 3 1.800"/></svg></div>
+          <div class="s2-di neu-in" id="s2-d4" style="left:768px"><svg class="ico" viewBox="0 0 24 24" ><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+        </div>
+        <div class="sweep" id="s2-sweep"></div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=10.0333, DUR=6.6, SEG={"2a": {"s": 10.164, "e": 11.868, "text": "Conoce Negocity:", "w": [{"t": "Conoce", "s": 10.164, "e": 10.608}, {"t": "Negocity:", "s": 10.757, "e": 11.868}]}, "2b": {"s": 12.618, "e": 16.099, "text": "todas las herramientas de tu negocio, en un solo lugar.", "w": [{"t": "todas", "s": 12.618, "e": 12.84}, {"t": "las", "s": 12.914, "e": 12.988}, {"t": "herramientas", "s": 13.062, "e": 13.507}, {"t": "de", "s": 13.581, "e": 13.655}, {"t": "tu", "s": 13.692, "e": 13.729}, {"t": "negocio,", "s": 13.803, "e": 14.507}, {"t": "en", "s": 14.544, "e": 14.692}, {"t": "un", "s": 14.766, "e": 14.914}, {"t": "solo", "s": 14.988, "e": 15.211}, {"t": "lugar.", "s": 15.285, "e": 16.099}]}}, SEED=726;
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+
+      const tl = gsap.timeline({ paused: true });
+      // partículas sutiles en el negro
+      const sp = document.querySelector("#s2-specks");
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement("div"); d.className = "speck"; const s = 3 + rng() * 5;
+        d.style.cssText = `left:${rng() * 1080}px;top:${200 + rng() * 1500}px;width:${s}px;height:${s}px;background:rgba(255,254,250,${0.18 + rng() * 0.3})`;
+        sp.appendChild(d);
+        tl.fromTo(d, { y: 0 }, { y: -(60 + rng() * 120), duration: 5, ease: "none" }, 0);
+      }
+      const tN = W("2a", 1) - 0.08;          // "Negocity" → aparece la marca
+      // el punto de luz que dejó el caos se abre en un destello horizontal
+      tl.fromTo("#s2-spark", { scale: 1, opacity: 1 }, { scale: 2.6, opacity: 0, duration: 0.45, ease: "power2.out" }, 0);
+      tl.fromTo("#s2-streak", { scaleX: 0.05, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.28, ease: "power3.out" }, Math.max(0, tN - 0.3));
+      tl.to("#s2-streak", { opacity: 0, scaleY: 0.2, duration: 0.4, ease: "power2.in" }, tN + 0.05);
+      // revelación del logo: barrido de luz de izquierda a derecha, asentando desde 95 %
+      tl.fromTo("#s2-logoclip", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.inOut" }, tN);
+      tl.fromTo("#s2-logowrap", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "expo.out", transformOrigin: "613px 398px" }, tN);
+      tl.fromTo("#s2-bar", { x: 120, opacity: 0 }, { x: 1010, opacity: 1, duration: 0.6, ease: "power2.inOut" }, tN);
+      tl.to("#s2-bar", { opacity: 0, duration: 0.15 }, tN + 0.55);
+      [["#s2-sp0", 0.42], ["#s2-sp1", 0.58], ["#s2-sp2", 0.7]].forEach(([s, d]) => {
+        tl.fromTo(s, { scale: 0, rotation: -40, opacity: 1 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.5)" }, tN + d);
+        tl.to(s, { scale: 0, rotation: 40, duration: 0.3, ease: "power2.in" }, tN + d + 0.3);
+      });
+
+      // el logo se convierte en la pantalla de inicio de la app, dentro de un celular
+      const tP = LS("2b") - 0.3;
+      tl.to("#s2-logowrap", { scale: 0.4, y: -70, duration: 0.6, ease: "power3.inOut", transformOrigin: "613px 398px" }, tP);
+      tl.fromTo("#s2-phone", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.inOut" }, tP);
+      // la pantalla se enciende en crema y aparecen las herramientas
+      const tA = tP + 0.62;
+      tl.fromTo("#s2-app", { clipPath: "circle(0% at 50% 42%)" }, { clipPath: "circle(120% at 50% 42%)", duration: 0.45, ease: "power2.inOut" }, tA);
+      tl.to("#s2-logowrap", { opacity: 0, duration: 0.16, ease: "power1.in" }, tA + 0.02);
+      tl.fromTo(".s2-head", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, tA + 0.18);
+      for (let i = 0; i < 6; i++) rise(tl, "#s2-tl" + i, tA + 0.26 + i * 0.07, { y: 30, d: 0.42 });
+
+      // cada herramienta se enciende un instante mientras se nombra
+      const tZ0 = W("2b", 6) - 0.28;
+      [0, 1, 3, 2, 4, 5].forEach((i, k) => {
+        const t = tA + 0.95 + k * Math.max(0.12, (tZ0 - tA - 1.15) / 6);
+        if (t < tZ0 - 0.2) tl.to("#s2-tl" + i, { scale: 1.07, y: -8, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1 }, t);
+      });
+      // "en un solo lugar" → entramos a la pantalla: el celular se vuelve el mundo
+      const tZ = W("2b", 6) - 0.28;
+      tl.to("#s2-zoom", { scale: 3.6, duration: 0.62, ease: "power2.inOut", transformOrigin: "540px 420px" }, tZ);
+      tl.to("#s2-app .s2-grid, #s2-app .s2-head", { opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, tZ + 0.1);
+      tl.to("#s2-cream", { opacity: 1, duration: 0.24, ease: "power1.inOut" }, tZ + 0.36);
+      blurIn(tl, ".s2-w", tZ + 0.46, 0.09, 0.26);
+      rise(tl, "#s2-dockbg", tZ + 0.7, { y: 60, d: 0.5 });
+      [0, 1, 2, 3, 4].forEach((i) => tl.fromTo("#s2-d" + i, { opacity: 0, scale: 0.6, x: (i - 2) * 150, y: 120 + (i % 2) * 90, rotation: (i - 2) * 14 }, { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.3)" }, tZ + 0.78 + i * 0.06));
+      tl.fromTo("#s2-sweep", { x: -400, opacity: 0.9, rotation: 18 }, { x: 1300, opacity: 0.9, rotation: 18, duration: 0.9, ease: "power1.inOut" }, tZ + 0.9);
+      // salida: barrido hacia la izquierda
+      tl.to("#s2-title, #s2-dock", { x: -260, opacity: 0, filter: "blur(16px)", duration: 0.24, stagger: 0.03, ease: "power3.in" }, DUR - 0.27);
+      window.__timelines["s2-marca"] = tl;
+    })();
+  </script>
+</template>
