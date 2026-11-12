@@ -92,7 +92,7 @@
     #s5-search svg { width: 44px; height: 44px; color: var(--green); }
   </style>
   <div id="root" data-composition-id="s5-equipo" data-width="1080" data-height="1920">
-    <section id="s5-main" class="clip" data-start="0" data-duration="5.8334" data-track-index="1">
+    <section id="s5-main" class="clip" data-start="0" data-duration="6.2333" data-track-index="1">
       <div class="g-cream"></div><div class="g-dots"></div>
       <div class="g-rings" id="s5-rings" style="left:-520px;top:300px"></div>
       <div id="s5-all" class="fill" data-layout-allow-overflow>
@@ -130,7 +130,7 @@
   </div>
   <script>
     (function () {
-      const S0=29.2333, DUR=5.8334, SEG={"5": {"s": 29.362, "e": 34.621, "text": "Tu equipo trabaja desde su celular, y tus proveedores y contactos siempre están a la mano.", "w": [{"t": "Tu", "s": 29.362, "e": 29.436}, {"t": "equipo", "s": 29.51, "e": 29.806}, {"t": "trabaja", "s": 29.843, "e": 30.177}, {"t": "desde", "s": 30.251, "e": 30.473}, {"t": "su", "s": 30.547, "e": 30.621}, {"t": "celular,", "s": 30.695, "e": 31.362}, {"t": "y", "s": 31.399, "e": 31.436}, {"t": "tus", "s": 31.51, "e": 31.658}, {"t": "proveedores", "s": 31.769, "e": 32.177}, {"t": "y", "s": 32.214, "e": 32.251}, {"t": "contactos", "s": 32.325, "e": 32.992}, {"t": "siempre", "s": 33.066, "e": 33.436}, {"t": "están", "s": 33.51, "e": 33.732}, {"t": "a", "s": 33.769, "e": 33.806}, {"t": "la", "s": 33.881, "e": 33.955}, {"t": "mano.", "s": 34.066, "e": 34.621}]}}, SEED=872;
+      const S0=31.8667, DUR=6.2333, SEG={"5": {"s": 32.0, "e": 37.68, "text": "Tu equipo trabaja desde su celular, y tus proveedores y contactos siempre están a la mano.", "w": [{"t": "Tu", "s": 32.0, "e": 32.08}, {"t": "equipo", "s": 32.16, "e": 32.4}, {"t": "trabaja", "s": 32.48, "e": 32.88}, {"t": "desde", "s": 33.0, "e": 33.2}, {"t": "su", "s": 33.28, "e": 33.36}, {"t": "celular,", "s": 33.44, "e": 34.16}, {"t": "y", "s": 34.2, "e": 34.24}, {"t": "tus", "s": 34.28, "e": 34.48}, {"t": "proveedores", "s": 34.6, "e": 35.12}, {"t": "y", "s": 35.16, "e": 35.2}, {"t": "contactos", "s": 35.44, "e": 36.0}, {"t": "siempre", "s": 36.08, "e": 36.48}, {"t": "están", "s": 36.56, "e": 36.8}, {"t": "a", "s": 36.88, "e": 36.907}, {"t": "la", "s": 36.933, "e": 36.96}, {"t": "mano.", "s": 37.04, "e": 37.68}]}}, SEED=872;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

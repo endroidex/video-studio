@@ -86,7 +86,7 @@
     .s2-di.g { background: linear-gradient(145deg, #0C7B36, #07561F); color: var(--cream); box-shadow: 8px 10px 22px rgba(9,103,44,.4); }
   </style>
   <div id="root" data-composition-id="s2-marca" data-width="1080" data-height="1920">
-    <section id="s2-main" class="clip" data-start="0" data-duration="6.6" data-track-index="1">
+    <section id="s2-main" class="clip" data-start="0" data-duration="7.1" data-track-index="1">
       <div class="g-black"></div>
       <div id="s2-specks" class="fill" data-layout-ignore></div>
       <div id="s2-zoom" class="fill" data-layout-allow-overflow>
@@ -137,7 +137,7 @@
   </div>
   <script>
     (function () {
-      const S0=10.0333, DUR=6.6, SEG={"2a": {"s": 10.164, "e": 11.868, "text": "Conoce Negocity:", "w": [{"t": "Conoce", "s": 10.164, "e": 10.608}, {"t": "Negocity:", "s": 10.757, "e": 11.868}]}, "2b": {"s": 12.618, "e": 16.099, "text": "todas las herramientas de tu negocio, en un solo lugar.", "w": [{"t": "todas", "s": 12.618, "e": 12.84}, {"t": "las", "s": 12.914, "e": 12.988}, {"t": "herramientas", "s": 13.062, "e": 13.507}, {"t": "de", "s": 13.581, "e": 13.655}, {"t": "tu", "s": 13.692, "e": 13.729}, {"t": "negocio,", "s": 13.803, "e": 14.507}, {"t": "en", "s": 14.544, "e": 14.692}, {"t": "un", "s": 14.766, "e": 14.914}, {"t": "solo", "s": 14.988, "e": 15.211}, {"t": "lugar.", "s": 15.285, "e": 16.099}]}}, SEED=726;
+      const S0=11.1333, DUR=7.1, SEG={"2a": {"s": 11.27, "e": 13.19, "text": "Conoce Negocity:", "w": [{"t": "Conoce", "s": 11.27, "e": 11.75}, {"t": "Negocity:", "s": 11.99, "e": 13.19}]}, "2b": {"s": 13.94, "e": 17.7, "text": "todas las herramientas de tu negocio, en un solo lugar.", "w": [{"t": "todas", "s": 13.94, "e": 14.26}, {"t": "las", "s": 14.34, "e": 14.42}, {"t": "herramientas", "s": 14.473, "e": 14.98}, {"t": "de", "s": 15.06, "e": 15.14}, {"t": "tu", "s": 15.18, "e": 15.22}, {"t": "negocio,", "s": 15.3, "e": 16.06}, {"t": "en", "s": 16.1, "e": 16.26}, {"t": "un", "s": 16.34, "e": 16.42}, {"t": "solo", "s": 16.5, "e": 16.74}, {"t": "lugar.", "s": 16.82, "e": 17.7}]}}, SEED=726;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
