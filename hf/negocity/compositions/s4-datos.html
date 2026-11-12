@@ -92,7 +92,7 @@
     #s4-toast span { font-weight: 700; font-size: 28px; color: var(--ink-2); }
   </style>
   <div id="root" data-composition-id="s4-datos" data-width="1080" data-height="1920">
-    <section id="s4-main" class="clip" data-start="0" data-duration="5.7" data-track-index="1">
+    <section id="s4-main" class="clip" data-start="0" data-duration="5.5667" data-track-index="1">
       <div class="g-cream"></div><div class="g-dots"></div>
       <div class="g-rings" id="s4-rings" style="left:480px;top:1260px"></div>
       <div id="s4-all" class="fill" data-layout-allow-overflow>
@@ -136,7 +136,7 @@
   </div>
   <script>
     (function () {
-      const S0=26.1667, DUR=5.7, SEG={"4": {"s": 26.28, "e": 31.4, "text": "Mira quién vuelve, tus mejores días y cuánto vendes, en tiempo real.", "w": [{"t": "Mira", "s": 26.28, "e": 26.52}, {"t": "quién", "s": 26.6, "e": 26.76}, {"t": "vuelve,", "s": 26.8, "e": 27.48}, {"t": "tus", "s": 27.52, "e": 27.64}, {"t": "mejores", "s": 27.72, "e": 28.2}, {"t": "días", "s": 28.24, "e": 28.6}, {"t": "y", "s": 28.68, "e": 28.84}, {"t": "cuánto", "s": 28.92, "e": 29.32}, {"t": "vendes,", "s": 29.36, "e": 29.92}, {"t": "en", "s": 29.96, "e": 30.12}, {"t": "tiempo", "s": 30.2, "e": 30.52}, {"t": "real.", "s": 30.96, "e": 31.4}]}}, SEED=751;
+      const S0=23.6, DUR=5.5667, SEG={"4": {"s": 23.727, "e": 28.672, "text": "Mira quién vuelve, tus mejores días y cuánto vendes, en tiempo real.", "w": [{"t": "Mira", "s": 23.727, "e": 23.945}, {"t": "quién", "s": 24.018, "e": 24.236}, {"t": "vuelve,", "s": 24.272, "e": 24.891}, {"t": "tus", "s": 24.963, "e": 25.109}, {"t": "mejores", "s": 25.182, "e": 25.545}, {"t": "días", "s": 25.582, "e": 25.982}, {"t": "y", "s": 26.091, "e": 26.2}, {"t": "cuánto", "s": 26.272, "e": 26.563}, {"t": "vendes,", "s": 26.6, "e": 27.254}, {"t": "en", "s": 27.291, "e": 27.436}, {"t": "tiempo", "s": 27.509, "e": 27.8}, {"t": "real.", "s": 27.872, "e": 28.672}]}}, SEED=751;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

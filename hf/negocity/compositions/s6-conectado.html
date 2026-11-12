@@ -78,7 +78,7 @@
     #s6-iris { position: absolute; left: 490px; top: 800px; width: 100px; height: 100px; border-radius: 50%; background: #000; }
   </style>
   <div id="root" data-composition-id="s6-conectado" data-width="1080" data-height="1920">
-    <section id="s6-main" class="clip" data-start="0" data-duration="6.0333" data-track-index="1">
+    <section id="s6-main" class="clip" data-start="0" data-duration="5.9333" data-track-index="1">
       <div class="g-cream"></div><div class="g-dots"></div>
       <div id="s6-all" class="fill" data-layout-allow-overflow>
         <div id="s6-chip" class="chip"><svg class="ico" viewBox="0 0 24 24" ><rect x="4" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.500"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.500"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.500"/></svg>Un solo sistema</div>
@@ -112,7 +112,7 @@
   </div>
   <script>
     (function () {
-      const S0=38.1, DUR=6.0333, SEG={"6": {"s": 38.23, "e": 43.35, "text": "Clientes, administración y datos, todo conectado. Sin instalar nada.", "w": [{"t": "Clientes,", "s": 38.23, "e": 38.95}, {"t": "administración", "s": 39.19, "e": 39.83}, {"t": "y", "s": 39.91, "e": 39.99}, {"t": "datos,", "s": 40.07, "e": 40.79}, {"t": "todo", "s": 40.87, "e": 41.11}, {"t": "conectado.", "s": 41.19, "e": 42.15}, {"t": "Sin", "s": 42.23, "e": 42.31}, {"t": "instalar", "s": 42.39, "e": 42.79}, {"t": "nada.", "s": 42.87, "e": 43.35}]}}, SEED=1158;
+      const S0=34.8667, DUR=5.9333, SEG={"6": {"s": 34.986, "e": 40.004, "text": "Clientes, administración y datos, todo conectado. Sin instalar nada.", "w": [{"t": "Clientes,", "s": 34.986, "e": 35.641}, {"t": "administración", "s": 35.859, "e": 36.513}, {"t": "y", "s": 36.55, "e": 36.586}, {"t": "datos,", "s": 36.804, "e": 37.313}, {"t": "todo", "s": 37.386, "e": 37.604}, {"t": "conectado.", "s": 37.677, "e": 38.55}, {"t": "Sin", "s": 38.622, "e": 38.695}, {"t": "instalar", "s": 38.768, "e": 39.131}, {"t": "nada.", "s": 39.204, "e": 40.004}]}}, SEED=1158;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

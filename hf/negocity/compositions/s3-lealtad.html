@@ -113,7 +113,7 @@
     .s3-ray { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 7px; background: var(--gold); }
   </style>
   <div id="root" data-composition-id="s3-lealtad" data-width="1080" data-height="1920">
-    <section id="s3-main" class="clip" data-start="0" data-duration="7.9334" data-track-index="1">
+    <section id="s3-main" class="clip" data-start="0" data-duration="6.9333" data-track-index="1">
       <div class="g-cream"></div><div class="g-dots"></div>
       <div class="g-rings" id="s3-rings" style="left:-420px;top:1180px"></div>
       <div id="s3-all" class="fill" data-layout-allow-overflow>
@@ -181,7 +181,7 @@
   </div>
   <script>
     (function () {
-      const S0=18.2333, DUR=7.9334, SEG={"3": {"s": 18.35, "e": 25.23, "text": "Tus clientes juntan visitas o puntos con una tarjeta digital en su celular… y siempre regresan.", "w": [{"t": "Tus", "s": 18.35, "e": 18.51}, {"t": "clientes", "s": 18.59, "e": 18.99}, {"t": "juntan", "s": 19.03, "e": 19.31}, {"t": "visitas", "s": 19.39, "e": 19.95}, {"t": "o", "s": 20.03, "e": 20.11}, {"t": "puntos", "s": 20.15, "e": 20.67}, {"t": "con", "s": 20.75, "e": 20.83}, {"t": "una", "s": 20.95, "e": 21.07}, {"t": "tarjeta", "s": 21.15, "e": 21.47}, {"t": "digital", "s": 21.71, "e": 21.95}, {"t": "en", "s": 21.99, "e": 22.03}, {"t": "su", "s": 22.11, "e": 22.19}, {"t": "celular…", "s": 22.27, "e": 23.27}, {"t": "y", "s": 23.31, "e": 23.47}, {"t": "siempre", "s": 23.55, "e": 24.03}, {"t": "regresan.", "s": 24.11, "e": 25.23}]}}, SEED=938;
+      const S0=16.6667, DUR=6.9333, SEG={"3": {"s": 16.786, "e": 22.677, "text": "Tus clientes juntan visitas o puntos con una tarjeta digital en su celular… y siempre regresan.", "w": [{"t": "Tus", "s": 16.786, "e": 16.931}, {"t": "clientes", "s": 17.15, "e": 17.368}, {"t": "juntan", "s": 17.441, "e": 17.659}, {"t": "visitas", "s": 17.731, "e": 18.241}, {"t": "o", "s": 18.313, "e": 18.386}, {"t": "puntos", "s": 18.459, "e": 18.895}, {"t": "con", "s": 18.968, "e": 19.113}, {"t": "una", "s": 19.186, "e": 19.259}, {"t": "tarjeta", "s": 19.331, "e": 19.695}, {"t": "digital", "s": 19.913, "e": 20.131}, {"t": "en", "s": 20.168, "e": 20.204}, {"t": "su", "s": 20.241, "e": 20.277}, {"t": "celular…", "s": 20.35, "e": 21.295}, {"t": "y", "s": 21.331, "e": 21.368}, {"t": "siempre", "s": 21.513, "e": 21.95}, {"t": "regresan.", "s": 22.022, "e": 22.677}]}}, SEED=938;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

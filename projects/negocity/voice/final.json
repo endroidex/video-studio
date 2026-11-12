@@ -1,702 +1,712 @@
 {
  "0": {
   "file": "final_0.wav",
-  "src": "elevenlabs:marto",
-  "dur": 3.76,
+  "src": "elevenlabs:victor",
+  "dur": 3.345,
   "text": "¿Tu negocio vive entre libretas, chats y hojas sueltas?",
   "words": [
    {
     "text": "¿Tu",
     "accent": false,
     "start": 0.0,
-    "end": 0.16
+    "end": 0.145
    },
    {
     "text": "negocio",
     "accent": false,
-    "start": 0.28,
-    "end": 0.64
+    "start": 0.218,
+    "end": 0.509
    },
    {
     "text": "vive",
     "accent": false,
-    "start": 0.72,
-    "end": 0.88
+    "start": 0.545,
+    "end": 0.727
    },
    {
     "text": "entre",
     "accent": false,
-    "start": 1.0,
-    "end": 1.12
+    "start": 0.836,
+    "end": 0.945
    },
    {
     "text": "libretas,",
     "accent": false,
-    "start": 1.24,
-    "end": 2.08
+    "start": 1.018,
+    "end": 1.782
    },
    {
     "text": "chats",
     "accent": false,
-    "start": 2.12,
-    "end": 2.56
+    "start": 1.891,
+    "end": 2.255
    },
    {
     "text": "y",
     "accent": false,
-    "start": 2.64,
-    "end": 2.68
+    "start": 2.327,
+    "end": 2.4
    },
    {
     "text": "hojas",
     "accent": false,
-    "start": 2.72,
-    "end": 2.96
+    "start": 2.473,
+    "end": 2.691
    },
    {
     "text": "sueltas?",
     "accent": false,
-    "start": 3.04,
-    "end": 3.76
+    "start": 2.764,
+    "end": 3.345
    }
   ],
   "ok": true,
-  "rate": 2.39
+  "rate": 2.7,
+  "tempo": 1.1
  },
  "1": {
   "file": "final_1.wav",
-  "src": "elevenlabs:marto",
-  "dur": 6.16,
+  "src": "elevenlabs:victor",
+  "dur": 5.6,
   "text": "Clientes que no regresan… cuentas que no cuadran… contactos que nunca encuentras.",
   "words": [
    {
     "text": "Clientes",
     "accent": false,
     "start": 0.0,
-    "end": 0.4
+    "end": 0.364
    },
    {
     "text": "que",
     "accent": false,
-    "start": 0.48,
-    "end": 0.52
+    "start": 0.436,
+    "end": 0.509
    },
    {
     "text": "no",
     "accent": false,
-    "start": 0.56,
-    "end": 0.72
+    "start": 0.582,
+    "end": 0.655
    },
    {
     "text": "regresan…",
     "accent": false,
-    "start": 0.84,
-    "end": 1.8
+    "start": 0.727,
+    "end": 1.709
    },
    {
     "text": "cuentas",
     "accent": false,
-    "start": 1.84,
-    "end": 2.24
+    "start": 1.745,
+    "end": 2.109
    },
    {
     "text": "que",
     "accent": false,
-    "start": 2.32,
-    "end": 2.4
+    "start": 2.182,
+    "end": 2.255
    },
    {
     "text": "no",
     "accent": false,
-    "start": 2.48,
-    "end": 2.64
+    "start": 2.327,
+    "end": 2.4
    },
    {
     "text": "cuadran…",
     "accent": false,
-    "start": 2.76,
-    "end": 3.787
+    "start": 2.473,
+    "end": 3.309
    },
    {
     "text": "contactos",
     "accent": false,
-    "start": 3.973,
-    "end": 4.32
+    "start": 3.345,
+    "end": 3.927
    },
    {
     "text": "que",
     "accent": false,
-    "start": 4.44,
-    "end": 4.56
+    "start": 4.036,
+    "end": 4.145
    },
    {
     "text": "nunca",
     "accent": false,
-    "start": 4.64,
-    "end": 4.96
+    "start": 4.218,
+    "end": 4.473
    },
    {
     "text": "encuentras.",
     "accent": false,
-    "start": 5.08,
-    "end": 6.16
+    "start": 4.509,
+    "end": 5.6
    }
   ],
   "ok": true,
-  "rate": 1.92
+  "rate": 2.11,
+  "tempo": 1.1
  },
  "2a": {
   "file": "final_2a.wav",
-  "src": "elevenlabs:marto",
-  "dur": 1.92,
+  "src": "elevenlabs:victor",
+  "dur": 1.673,
   "text": "Conoce Negocity:",
   "words": [
    {
     "text": "Conoce",
     "accent": false,
     "start": 0.0,
-    "end": 0.48
+    "end": 0.364
    },
    {
     "text": "Negocity:",
     "accent": false,
-    "start": 0.72,
-    "end": 1.92
+    "start": 0.582,
+    "end": 1.673
    }
   ],
   "ok": true,
-  "rate": 1.04
+  "rate": 1.2,
+  "tempo": 1.1
  },
  "2b": {
   "file": "final_2b.wav",
-  "src": "elevenlabs:marto",
-  "dur": 3.76,
+  "src": "elevenlabs:victor",
+  "dur": 3.418,
   "text": "todas las herramientas de tu negocio, en un solo lugar.",
   "words": [
    {
     "text": "todas",
     "accent": false,
     "start": 0.0,
-    "end": 0.32
+    "end": 0.291
    },
    {
     "text": "las",
     "accent": false,
-    "start": 0.4,
-    "end": 0.48
+    "start": 0.364,
+    "end": 0.436
    },
    {
     "text": "herramientas",
     "accent": false,
-    "start": 0.533,
-    "end": 1.04
+    "start": 0.485,
+    "end": 0.945
    },
    {
     "text": "de",
     "accent": false,
-    "start": 1.12,
-    "end": 1.2
+    "start": 0.982,
+    "end": 1.018
    },
    {
     "text": "tu",
     "accent": false,
-    "start": 1.24,
-    "end": 1.28
+    "start": 1.091,
+    "end": 1.164
    },
    {
     "text": "negocio,",
     "accent": false,
-    "start": 1.36,
-    "end": 2.12
+    "start": 1.273,
+    "end": 1.927
    },
    {
     "text": "en",
     "accent": false,
-    "start": 2.16,
-    "end": 2.32
+    "start": 1.964,
+    "end": 2.109
    },
    {
     "text": "un",
     "accent": false,
-    "start": 2.4,
-    "end": 2.48
+    "start": 2.182,
+    "end": 2.327
    },
    {
     "text": "solo",
     "accent": false,
-    "start": 2.56,
-    "end": 2.8
+    "start": 2.4,
+    "end": 2.618
    },
    {
     "text": "lugar.",
     "accent": false,
-    "start": 2.88,
-    "end": 3.76
+    "start": 2.655,
+    "end": 3.418
    }
   ],
   "ok": true,
-  "rate": 2.6
+  "rate": 2.86,
+  "tempo": 1.1
  },
  "3": {
   "file": "final_3.wav",
-  "src": "elevenlabs:marto",
-  "dur": 6.88,
+  "src": "elevenlabs:victor",
+  "dur": 5.891,
   "text": "Tus clientes juntan visitas o puntos con una tarjeta digital en su celular… y siempre regresan.",
   "words": [
    {
     "text": "Tus",
     "accent": false,
     "start": 0.0,
-    "end": 0.16
+    "end": 0.145
    },
    {
     "text": "clientes",
     "accent": false,
-    "start": 0.24,
-    "end": 0.64
+    "start": 0.364,
+    "end": 0.582
    },
    {
     "text": "juntan",
     "accent": false,
-    "start": 0.68,
-    "end": 0.96
+    "start": 0.655,
+    "end": 0.873
    },
    {
     "text": "visitas",
     "accent": false,
-    "start": 1.04,
-    "end": 1.6
+    "start": 0.945,
+    "end": 1.455
    },
    {
     "text": "o",
     "accent": false,
-    "start": 1.68,
-    "end": 1.76
+    "start": 1.527,
+    "end": 1.6
    },
    {
     "text": "puntos",
     "accent": false,
-    "start": 1.8,
-    "end": 2.32
+    "start": 1.673,
+    "end": 2.109
    },
    {
     "text": "con",
     "accent": false,
-    "start": 2.4,
-    "end": 2.48
+    "start": 2.182,
+    "end": 2.327
    },
    {
     "text": "una",
     "accent": false,
-    "start": 2.6,
-    "end": 2.72
+    "start": 2.4,
+    "end": 2.473
    },
    {
     "text": "tarjeta",
     "accent": false,
-    "start": 2.8,
-    "end": 3.12
+    "start": 2.545,
+    "end": 2.909
    },
    {
     "text": "digital",
     "accent": false,
-    "start": 3.36,
-    "end": 3.6
+    "start": 3.127,
+    "end": 3.345
    },
    {
     "text": "en",
     "accent": false,
-    "start": 3.64,
-    "end": 3.68
+    "start": 3.382,
+    "end": 3.418
    },
    {
     "text": "su",
     "accent": false,
-    "start": 3.76,
-    "end": 3.84
+    "start": 3.455,
+    "end": 3.491
    },
    {
     "text": "celular…",
     "accent": false,
-    "start": 3.92,
-    "end": 4.92
+    "start": 3.564,
+    "end": 4.509
    },
    {
     "text": "y",
     "accent": false,
-    "start": 4.96,
-    "end": 5.12
+    "start": 4.545,
+    "end": 4.582
    },
    {
     "text": "siempre",
     "accent": false,
-    "start": 5.2,
-    "end": 5.68
+    "start": 4.727,
+    "end": 5.164
    },
    {
     "text": "regresan.",
     "accent": false,
-    "start": 5.76,
-    "end": 6.88
+    "start": 5.236,
+    "end": 5.891
    }
   ],
   "ok": true,
-  "rate": 2.3
+  "rate": 2.72,
+  "tempo": 1.1
  },
  "4": {
   "file": "final_4.wav",
-  "src": "elevenlabs:marto",
-  "dur": 5.12,
+  "src": "elevenlabs:victor",
+  "dur": 4.945,
   "text": "Mira quién vuelve, tus mejores días y cuánto vendes, en tiempo real.",
   "words": [
    {
     "text": "Mira",
     "accent": false,
     "start": 0.0,
-    "end": 0.24
+    "end": 0.218
    },
    {
     "text": "quién",
     "accent": false,
-    "start": 0.32,
-    "end": 0.48
+    "start": 0.291,
+    "end": 0.509
    },
    {
     "text": "vuelve,",
     "accent": false,
-    "start": 0.52,
-    "end": 1.2
+    "start": 0.545,
+    "end": 1.164
    },
    {
     "text": "tus",
     "accent": false,
-    "start": 1.24,
-    "end": 1.36
+    "start": 1.236,
+    "end": 1.382
    },
    {
     "text": "mejores",
     "accent": false,
-    "start": 1.44,
-    "end": 1.92
+    "start": 1.455,
+    "end": 1.818
    },
    {
     "text": "días",
     "accent": false,
-    "start": 1.96,
-    "end": 2.32
+    "start": 1.855,
+    "end": 2.255
    },
    {
     "text": "y",
     "accent": false,
-    "start": 2.4,
-    "end": 2.56
+    "start": 2.364,
+    "end": 2.473
    },
    {
     "text": "cuánto",
     "accent": false,
-    "start": 2.64,
-    "end": 3.04
+    "start": 2.545,
+    "end": 2.836
    },
    {
     "text": "vendes,",
     "accent": false,
-    "start": 3.08,
-    "end": 3.64
+    "start": 2.873,
+    "end": 3.527
    },
    {
     "text": "en",
     "accent": false,
-    "start": 3.68,
-    "end": 3.84
+    "start": 3.564,
+    "end": 3.709
    },
    {
     "text": "tiempo",
     "accent": false,
-    "start": 3.92,
-    "end": 4.24
+    "start": 3.782,
+    "end": 4.073
    },
    {
     "text": "real.",
     "accent": false,
-    "start": 4.68,
-    "end": 5.12
+    "start": 4.145,
+    "end": 4.945
    }
   ],
   "ok": true,
-  "rate": 2.31
+  "rate": 2.39,
+  "tempo": 1.1
  },
  "5": {
   "file": "final_5.wav",
-  "src": "elevenlabs:marto",
-  "dur": 5.68,
+  "src": "elevenlabs:victor",
+  "dur": 5.164,
   "text": "Tu equipo trabaja desde su celular, y tus proveedores y contactos siempre están a la mano.",
   "words": [
    {
     "text": "Tu",
     "accent": false,
     "start": 0.0,
-    "end": 0.08
+    "end": 0.073
    },
    {
     "text": "equipo",
     "accent": false,
-    "start": 0.16,
-    "end": 0.4
+    "start": 0.145,
+    "end": 0.364
    },
    {
     "text": "trabaja",
     "accent": false,
-    "start": 0.48,
-    "end": 0.88
+    "start": 0.436,
+    "end": 0.8
    },
    {
     "text": "desde",
     "accent": false,
-    "start": 1.0,
-    "end": 1.2
+    "start": 0.873,
+    "end": 1.091
    },
    {
     "text": "su",
     "accent": false,
-    "start": 1.28,
-    "end": 1.36
+    "start": 1.164,
+    "end": 1.236
    },
    {
     "text": "celular,",
     "accent": false,
-    "start": 1.44,
-    "end": 2.16
+    "start": 1.309,
+    "end": 1.988
    },
    {
     "text": "y",
     "accent": false,
-    "start": 2.2,
-    "end": 2.24
+    "start": 2.012,
+    "end": 2.036
    },
    {
     "text": "tus",
     "accent": false,
-    "start": 2.28,
-    "end": 2.48
+    "start": 2.109,
+    "end": 2.182
    },
    {
     "text": "proveedores",
     "accent": false,
-    "start": 2.6,
-    "end": 3.12
+    "start": 2.255,
+    "end": 2.764
    },
    {
     "text": "y",
     "accent": false,
-    "start": 3.16,
-    "end": 3.2
+    "start": 2.836,
+    "end": 2.873
    },
    {
     "text": "contactos",
     "accent": false,
-    "start": 3.44,
-    "end": 4.0
+    "start": 2.909,
+    "end": 3.564
    },
    {
     "text": "siempre",
     "accent": false,
-    "start": 4.08,
-    "end": 4.48
+    "start": 3.709,
+    "end": 4.0
    },
    {
     "text": "están",
     "accent": false,
-    "start": 4.56,
-    "end": 4.8
+    "start": 4.073,
+    "end": 4.291
    },
    {
     "text": "a",
     "accent": false,
-    "start": 4.88,
-    "end": 4.907
+    "start": 4.327,
+    "end": 4.364
    },
    {
     "text": "la",
     "accent": false,
-    "start": 4.933,
-    "end": 4.96
+    "start": 4.4,
+    "end": 4.436
    },
    {
     "text": "mano.",
     "accent": false,
-    "start": 5.04,
-    "end": 5.68
+    "start": 4.509,
+    "end": 5.164
    }
   ],
   "ok": true,
-  "rate": 2.78
+  "rate": 3.06,
+  "tempo": 1.1
  },
  "6": {
   "file": "final_6.wav",
-  "src": "elevenlabs:marto",
-  "dur": 5.12,
+  "src": "elevenlabs:victor",
+  "dur": 5.018,
   "text": "Clientes, administración y datos, todo conectado. Sin instalar nada.",
   "words": [
    {
     "text": "Clientes,",
     "accent": false,
     "start": 0.0,
-    "end": 0.72
+    "end": 0.655
    },
    {
     "text": "administración",
     "accent": false,
-    "start": 0.96,
-    "end": 1.6
+    "start": 0.873,
+    "end": 1.527
    },
    {
     "text": "y",
     "accent": false,
-    "start": 1.68,
-    "end": 1.76
+    "start": 1.564,
+    "end": 1.6
    },
    {
     "text": "datos,",
     "accent": false,
-    "start": 1.84,
-    "end": 2.56
+    "start": 1.818,
+    "end": 2.327
    },
    {
     "text": "todo",
     "accent": false,
-    "start": 2.64,
-    "end": 2.88
+    "start": 2.4,
+    "end": 2.618
    },
    {
     "text": "conectado.",
     "accent": false,
-    "start": 2.96,
-    "end": 3.92
+    "start": 2.691,
+    "end": 3.564
    },
    {
     "text": "Sin",
     "accent": false,
-    "start": 4.0,
-    "end": 4.08
+    "start": 3.636,
+    "end": 3.709
    },
    {
     "text": "instalar",
     "accent": false,
-    "start": 4.16,
-    "end": 4.56
+    "start": 3.782,
+    "end": 4.145
    },
    {
     "text": "nada.",
     "accent": false,
-    "start": 4.64,
-    "end": 5.12
+    "start": 4.218,
+    "end": 5.018
    }
   ],
   "ok": true,
-  "rate": 1.76
+  "rate": 1.79,
+  "tempo": 1.1
  },
  "7": {
   "file": "final_7.wav",
-  "src": "elevenlabs:marto",
-  "dur": 3.12,
+  "src": "elevenlabs:victor",
+  "dur": 2.982,
   "text": "Negocity. Tu negocio, más fácil.",
   "words": [
    {
     "text": "Negocity.",
     "accent": false,
     "start": 0.0,
-    "end": 1.04
+    "end": 1.018
    },
    {
     "text": "Tu",
     "accent": false,
-    "start": 1.12,
-    "end": 1.2
+    "start": 1.091,
+    "end": 1.164
    },
    {
     "text": "negocio,",
     "accent": false,
-    "start": 1.32,
-    "end": 2.0
+    "start": 1.273,
+    "end": 1.964
    },
    {
     "text": "más",
     "accent": false,
-    "start": 2.08,
-    "end": 2.32
+    "start": 2.0,
+    "end": 2.182
    },
    {
     "text": "fácil.",
     "accent": false,
-    "start": 2.36,
-    "end": 3.12
+    "start": 2.255,
+    "end": 2.982
    }
   ],
   "ok": true,
-  "rate": 1.6
+  "rate": 1.67,
+  "tempo": 1.1
  },
  "8": {
   "file": "final_8.wav",
-  "src": "elevenlabs:marto",
-  "dur": 3.84,
+  "src": "elevenlabs:victor",
+  "dur": 3.422,
   "text": "Empieza hoy en negocity punto com punto eme equis.",
   "words": [
    {
     "text": "Empieza",
     "accent": false,
     "start": 0.0,
-    "end": 0.48
+    "end": 0.436
    },
    {
     "text": "hoy",
     "accent": false,
-    "start": 0.56,
-    "end": 0.8
+    "start": 0.509,
+    "end": 0.727
    },
    {
     "text": "en",
     "accent": false,
-    "start": 0.88,
-    "end": 1.04
+    "start": 0.836,
+    "end": 0.945
    },
    {
     "text": "negocity",
     "accent": false,
-    "start": 1.08,
-    "end": 1.76
+    "start": 0.982,
+    "end": 1.527
    },
    {
     "text": "punto",
     "accent": false,
-    "start": 1.84,
-    "end": 2.08
+    "start": 1.673,
+    "end": 1.891
    },
    {
     "text": "com",
     "accent": false,
-    "start": 2.16,
-    "end": 2.48
+    "start": 1.964,
+    "end": 2.255
    },
    {
     "text": "punto",
     "accent": false,
-    "start": 2.52,
-    "end": 2.8
+    "start": 2.327,
+    "end": 2.545
    },
    {
     "text": "eme",
     "accent": false,
-    "start": 2.96,
-    "end": 3.2
+    "start": 2.764,
+    "end": 2.982
    },
    {
     "text": "equis.",
     "accent": false,
-    "start": 3.28,
-    "end": 3.84
+    "start": 3.055,
+    "end": 3.422
    }
   ],
   "ok": true,
-  "rate": 2.3
+  "rate": 2.53,
+  "tempo": 1.1
  }
 }

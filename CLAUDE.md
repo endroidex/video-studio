@@ -9,9 +9,12 @@
 - Para pruebas y borradores: voz local (`chatterbox` por defecto, `kokoro`, `piper`).
 
 ## Voz
-- Voz elegida para ElevenLabs: `marto` (masculina, cálida, de confianza; `voices.json` → `_default`).
-- Ritmo **natural**: no acelerar la voz. Si el video dura un poco más de lo pedido, no importa.
+- Voz elegida para ElevenLabs: `victor` (masculina, grave, cálida, natural y amigable; `voices.json` → `_default`).
+  Descartada: `marto` (al usuario le pareció poco grave). Alternativa más grave: Carlos Leonardo (99 Hz).
+- Ritmo: **un poco más rápido que el natural** → tempo 1.10 con rubberband (el modelo `eleven_v4` ignora `speed`).
+  El natural le pareció lento. Si el video dura más de lo pedido, no importa.
 - Pronunciación: `pronunciations.json` (p. ej. "Negocity" se dice **Négocity**, acento en "Ne"; en pantalla siempre "Negocity").
+- Para elegir voces sin gastar créditos: descargar las muestras gratuitas (`preview_url`) y medir el tono.
 
 ## Flujo
 - Estilo de referencia: `referencias/estilos/ejemplo_02_dark_premium.md`. Motores: HyperFrames (`hf/`) y Remotion (`src/`).

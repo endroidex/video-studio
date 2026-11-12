@@ -75,7 +75,7 @@
     #s7-glow { position: absolute; left: 140px; top: 1500px; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(9,103,44,.5) 0%, rgba(9,103,44,0) 68%); }
   </style>
   <div id="root" data-composition-id="s7-cierre" data-width="1080" data-height="1920">
-    <section id="s7-main" class="clip" data-start="0" data-duration="9.8334" data-track-index="1">
+    <section id="s7-main" class="clip" data-start="0" data-duration="9.2667" data-track-index="1">
       <div class="g-black"></div>
       <div id="s7-glow" data-layout-ignore></div>
       <div id="s7-specks" class="fill" data-layout-ignore></div>
@@ -97,7 +97,7 @@
   </div>
   <script>
     (function () {
-      const S0=44.1333, DUR=9.8334, SEG={"7": {"s": 44.25, "e": 47.37, "text": "Negocity. Tu negocio, más fácil.", "w": [{"t": "Negocity.", "s": 44.25, "e": 45.29}, {"t": "Tu", "s": 45.37, "e": 45.45}, {"t": "negocio,", "s": 45.57, "e": 46.25}, {"t": "más", "s": 46.33, "e": 46.57}, {"t": "fácil.", "s": 46.61, "e": 47.37}]}, "8": {"s": 47.72, "e": 51.56, "text": "Empieza hoy en negocity punto com punto eme equis.", "w": [{"t": "Empieza", "s": 47.72, "e": 48.2}, {"t": "hoy", "s": 48.28, "e": 48.52}, {"t": "en", "s": 48.6, "e": 48.76}, {"t": "negocity", "s": 48.8, "e": 49.48}, {"t": "punto", "s": 49.56, "e": 49.8}, {"t": "com", "s": 49.88, "e": 50.2}, {"t": "punto", "s": 50.24, "e": 50.52}, {"t": "eme", "s": 50.68, "e": 50.92}, {"t": "equis.", "s": 51.0, "e": 51.56}]}}, SEED=849;
+      const S0=40.8, DUR=9.2667, SEG={"7": {"s": 40.904, "e": 43.886, "text": "Negocity. Tu negocio, más fácil.", "w": [{"t": "Negocity.", "s": 40.904, "e": 41.922}, {"t": "Tu", "s": 41.995, "e": 42.068}, {"t": "negocio,", "s": 42.177, "e": 42.868}, {"t": "más", "s": 42.904, "e": 43.086}, {"t": "fácil.", "s": 43.159, "e": 43.886}]}, "8": {"s": 44.236, "e": 47.658, "text": "Empieza hoy en negocity punto com punto eme equis.", "w": [{"t": "Empieza", "s": 44.236, "e": 44.672}, {"t": "hoy", "s": 44.745, "e": 44.963}, {"t": "en", "s": 45.072, "e": 45.181}, {"t": "negocity", "s": 45.218, "e": 45.763}, {"t": "punto", "s": 45.909, "e": 46.127}, {"t": "com", "s": 46.2, "e": 46.491}, {"t": "punto", "s": 46.563, "e": 46.781}, {"t": "eme", "s": 47.0, "e": 47.218}, {"t": "equis.", "s": 47.291, "e": 47.658}]}}, SEED=849;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

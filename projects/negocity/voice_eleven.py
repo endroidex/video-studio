@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 import tts_eleven, pron, build as B
 V = Path(__file__).parent / "voice"
-voice = sys.argv[1] if len(sys.argv) > 1 else "marto"
+voice = sys.argv[1] if len(sys.argv) > 1 else tts_eleven.default_voice()
 speed = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0   # ritmo natural, sin acelerar
 SEGS = [
  ("0", "¿Tu negocio vive entre libretas, chats y hojas sueltas?"),

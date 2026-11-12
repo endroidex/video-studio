@@ -94,7 +94,7 @@
     #s1-spark { position: absolute; left: 500px; top: 720px; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #FFFEFA 0 30%, rgba(255,254,250,.55) 45%, transparent 70%); opacity: 0; }
   </style>
   <div id="root" data-composition-id="s1-caos" data-width="1080" data-height="1920">
-    <section id="s1-main" class="clip" data-start="0" data-duration="11.1333" data-track-index="1">
+    <section id="s1-main" class="clip" data-start="0" data-duration="10.1667" data-track-index="1">
       <div class="g-black"></div>
       <div id="s1-cam" class="fill">
         <!-- la pila: libretas, recibos, chats, hojas sueltas -->
@@ -156,7 +156,7 @@
   </div>
   <script>
     (function () {
-      const S0=0.0, DUR=11.1333, SEG={"0": {"s": 0.4, "e": 4.16, "text": "¿Tu negocio vive entre libretas, chats y hojas sueltas?", "w": [{"t": "¿Tu", "s": 0.4, "e": 0.56}, {"t": "negocio", "s": 0.68, "e": 1.04}, {"t": "vive", "s": 1.12, "e": 1.28}, {"t": "entre", "s": 1.4, "e": 1.52}, {"t": "libretas,", "s": 1.64, "e": 2.48}, {"t": "chats", "s": 2.52, "e": 2.96}, {"t": "y", "s": 3.04, "e": 3.08}, {"t": "hojas", "s": 3.12, "e": 3.36}, {"t": "sueltas?", "s": 3.44, "e": 4.16}]}, "1": {"s": 4.46, "e": 10.62, "text": "Clientes que no regresan… cuentas que no cuadran… contactos que nunca encuentras.", "w": [{"t": "Clientes", "s": 4.46, "e": 4.86}, {"t": "que", "s": 4.94, "e": 4.98}, {"t": "no", "s": 5.02, "e": 5.18}, {"t": "regresan…", "s": 5.3, "e": 6.26}, {"t": "cuentas", "s": 6.3, "e": 6.7}, {"t": "que", "s": 6.78, "e": 6.86}, {"t": "no", "s": 6.94, "e": 7.1}, {"t": "cuadran…", "s": 7.22, "e": 8.247}, {"t": "contactos", "s": 8.433, "e": 8.78}, {"t": "que", "s": 8.9, "e": 9.02}, {"t": "nunca", "s": 9.1, "e": 9.42}, {"t": "encuentras.", "s": 9.54, "e": 10.62}]}}, SEED=631;
+      const S0=0.0, DUR=10.1667, SEG={"0": {"s": 0.4, "e": 3.745, "text": "¿Tu negocio vive entre libretas, chats y hojas sueltas?", "w": [{"t": "¿Tu", "s": 0.4, "e": 0.545}, {"t": "negocio", "s": 0.618, "e": 0.909}, {"t": "vive", "s": 0.945, "e": 1.127}, {"t": "entre", "s": 1.236, "e": 1.345}, {"t": "libretas,", "s": 1.418, "e": 2.182}, {"t": "chats", "s": 2.291, "e": 2.655}, {"t": "y", "s": 2.727, "e": 2.8}, {"t": "hojas", "s": 2.873, "e": 3.091}, {"t": "sueltas?", "s": 3.164, "e": 3.745}]}, "1": {"s": 4.045, "e": 9.645, "text": "Clientes que no regresan… cuentas que no cuadran… contactos que nunca encuentras.", "w": [{"t": "Clientes", "s": 4.045, "e": 4.409}, {"t": "que", "s": 4.481, "e": 4.554}, {"t": "no", "s": 4.627, "e": 4.7}, {"t": "regresan…", "s": 4.772, "e": 5.754}, {"t": "cuentas", "s": 5.79, "e": 6.154}, {"t": "que", "s": 6.227, "e": 6.3}, {"t": "no", "s": 6.372, "e": 6.445}, {"t": "cuadran…", "s": 6.518, "e": 7.354}, {"t": "contactos", "s": 7.39, "e": 7.972}, {"t": "que", "s": 8.081, "e": 8.19}, {"t": "nunca", "s": 8.263, "e": 8.518}, {"t": "encuentras.", "s": 8.554, "e": 9.645}]}}, SEED=631;
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
       const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);

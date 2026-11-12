@@ -4,7 +4,8 @@
   "name": "Marto - Español & Conversational",
   "gender": "male",
   "accent": "mexican",
-  "desc": "Professional voiceover artist in Mexican Spanish, with a warm, natural, and approachable sound. Ideal for emotional narrations, social media videos, commercials"
+  "desc": "Professional voiceover artist in Mexican Spanish, with a warm, natural, and approachable sound. Ideal for emotional narrations, social media videos, commercials",
+  "tono_hz": 122
  },
  "antonio": {
   "id": "htFfPSZGJwjBv1CL0aMD",
@@ -28,7 +29,16 @@
   "desc": "Latin Spanish female with a Mexican Accent. Great for Commercials."
  },
  "_default": {
-  "alias": "marto",
-  "motivo": "masculina, cálida y de confianza; locutor profesional mexicano"
+  "alias": "victor",
+  "tempo": 1.1,
+  "motivo": "masculina, más grave que marto (109 vs 122 Hz), cálida, natural y amigable; pensada para anuncios y contenido de marca"
+ },
+ "victor": {
+  "id": "tSdO3lUIODN7SK6eWVhu",
+  "name": "Víctor - Persuasive Storyteller",
+  "gender": "male",
+  "accent": "mexican",
+  "tono_hz": 109,
+  "desc": "A warm and charismatic Mexican Spanish voice designed for marketing, storytelling, and education. Natural, conversational delivery with confident authority, expressive pacing, and dynamic intonation. "
  }
 }
