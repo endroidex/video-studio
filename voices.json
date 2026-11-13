@@ -47,5 +47,12 @@
   "gender": "male",
   "accent": "latin american",
   "desc": "A youthful, clear vocal style with casual undertones. It maintains a steady, friendly rhythm—ideal for content creators seeking a voice that sounds like a friend explaining something interesting, with"
+ },
+ "dany": {
+  "id": "TjzGVFe6ML7YmlZPwRGG",
+  "name": "Dany ",
+  "gender": "female",
+  "accent": "mexican",
+  "desc": "Works well for Narration."
  }
 }

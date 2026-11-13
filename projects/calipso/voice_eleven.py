@@ -10,15 +10,15 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 import tts_eleven, pron, build as B
 V = Path(__file__).parent / "voice"; V.mkdir(exist_ok=True)
-voice = sys.argv[1] if len(sys.argv) > 1 else "brian"
+voice = sys.argv[1] if len(sys.argv) > 1 else "dany"
 # (clave, texto en pantalla/subtítulos, texto que se le dice al motor)
 SEGS = [
  ("0", "Cada paso empieza aquí.", None),
- ("1", "Somos Zapatería Calipso, y tenemos el par perfecto para toda la familia.", None),
- ("2", "Dama, caballero, niños y deportivo:", None),
- ("3", "tacones, botas, tenis, escolar y mucho más.", None),
- ("4", "Calidad que se siente desde el primer paso, a precios pensados para ti.", None),
- ("5", "Ven a conocernos.", None),
+ ("1", "Somos Zapatería Calipso: moda en calzado para la mujer que sabe brillar.", None),
+ ("2", "Zapatos, tacones, botines, botas,", None),
+ ("3", "sandalias, huaraches, zapatillas y mucho más.", None),
+ ("4", "Diseños que te hacen lucir divina, con la calidad que mereces y a precios pensados para ti.", None),
+ ("5", "Ven y enamórate de tu próximo par.", None),
  ("6", "Zapatería Calipso. Tu estilo, a cada paso.", None),
 ]
 

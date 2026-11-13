@@ -48,6 +48,9 @@
 .ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+.spark4 { position: absolute; color: #000; }
+.spark4 svg { width: 100%; height: 100%; display: block; }
+.hl { color: #000; background: linear-gradient(180deg, transparent 58%, rgba(225,153,201,.95) 58%, rgba(225,153,201,.95) 88%, transparent 88%); padding: 0 .06em; }
 
     #s5-store { position: absolute; left: -720px; top: 0; width: 2560px; height: 1920px; background-image: url("assets/photos/tienda-pared.jpg"); }
     #s5-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.72) 100%); }
@@ -58,18 +61,18 @@
     #s5-ring { position: absolute; left: 470px; top: 800px; width: 140px; height: 50px; border-radius: 50%; border: 3px solid var(--pink); }
   </style>
   <div id="root" data-composition-id="s5-visita" data-width="1080" data-height="1920">
-    <section id="s5-main" class="clip" data-start="0" data-duration="1.4334" data-track-index="1">
+    <section id="s5-main" class="clip" data-start="0" data-duration="2.6333" data-track-index="1">
       <div class="g-black"></div>
       <div id="s5-store" class="photo"></div>
       <div id="s5-shade" data-layout-allow-occlusion></div>
       <div id="s5-ring" data-layout-ignore></div>
       <div id="s5-pin" data-layout-ignore></div>
-      <div id="s5-t" data-layout-allow-occlusion><span class="mask"><span class="ln serif"><span class="w s5-w">Ven a</span></span></span><span class="mask"><span class="ln serif"><span class="w s5-w it pk">conocernos</span></span></span></div>
+      <div id="s5-t" data-layout-allow-occlusion><span class="mask"><span class="ln serif"><span class="w s5-w">Ven y</span></span></span><span class="mask"><span class="ln serif"><span class="w s5-w it pk">enamórate</span></span></span></div>
     </section>
   </div>
   <script>
     (function () {
-      const S0=18.4333, DUR=1.4334, SEG={"5": {"s": 18.56, "e": 19.63, "text": "Ven a conocernos.", "w": [{"t": "Ven", "s": 18.61, "e": 18.69}, {"t": "a", "s": 18.73, "e": 18.77}, {"t": "conocernos.", "s": 18.85, "e": 19.57}]}}, SEED=869;
+      const S0=19.4, DUR=2.6333, SEG={"5": {"s": 19.518, "e": 21.8, "text": "Ven y enamórate de tu próximo par.", "w": [{"t": "Ven", "s": 19.563, "e": 19.782}, {"t": "y", "s": 19.927, "e": 19.963}, {"t": "enamórate", "s": 20.0, "e": 20.509}, {"t": "de", "s": 20.545, "e": 20.582}, {"t": "tu", "s": 20.654, "e": 20.727}, {"t": "próximo", "s": 20.8, "e": 21.163}, {"t": "par.", "s": 21.236, "e": 21.745}]}}, SEED=869;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);

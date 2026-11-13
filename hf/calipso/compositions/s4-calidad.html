@@ -48,9 +48,12 @@
 .ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+.spark4 { position: absolute; color: #000; }
+.spark4 svg { width: 100%; height: 100%; display: block; }
+.hl { color: #000; background: linear-gradient(180deg, transparent 58%, rgba(225,153,201,.95) 58%, rgba(225,153,201,.95) 88%, transparent 88%); padding: 0 .06em; }
 
     #s4-h { position: absolute; left: 70px; top: 210px; }
-    #s4-h .a { font-size: 170px; }
+    #s4-h .a { font-size: 160px; }
     #s4-h .b { font-size: 70px; margin-top: 6px; }
     #s4-cam { position: absolute; inset: 0; }
     #s4-boots { position: absolute; left: -30px; top: 610px; width: 1140px; height: 705px; }
@@ -69,24 +72,26 @@
     #s4-string { position: absolute; left: 655px; top: 0px; width: 2px; height: 645px; background: #000; transform-origin: 50% 0; }
   </style>
   <div id="root" data-composition-id="s4-calidad" data-width="1080" data-height="1920">
-    <section id="s4-main" class="clip" data-start="0" data-duration="4.4333" data-track-index="1">
+    <section id="s4-main" class="clip" data-start="0" data-duration="5.6667" data-track-index="1">
       <div class="g-pearl"></div><div class="grain"></div>
       <div id="s4-h">
-        <span class="mask"><span class="ln serif a"><span class="w s4-w">Calidad</span></span></span>
-        <span class="mask"><span class="ln serif b"><span class="w s4-w it" style="color:#c97bb0">que se siente</span></span></span>
+        <span class="mask" style="padding-right:.3em"><span class="ln serif a"><span class="w s4-w">Luce </span><span class="w s4-w it hl" data-layout-allow-overflow>divina</span></span></span>
       </div>
       <div id="s4-cam" data-layout-allow-overflow>
         <div id="s4-shadow"></div>
         <div id="s4-boots"><div class="bimg im" role="img" aria-label="Botas Calipso" style="background-image:url(assets/cut/botas-4.png)"></div><div class="shine" id="s4-shine"></div></div>
         <div class="s4-call" id="s4-c1" style="left:363px;top:1064px">
           <div class="hair" id="s4-l1" style="width:150px;transform:rotate(-120deg)"></div><div class="dot"></div>
-          <span class="pill k" style="left:-273px;top:-204px">Detalles que se notan</span>
+          <span class="pill k" style="left:-273px;top:-204px">Diseños que enamoran</span>
         </div>
         <div class="s4-call" id="s4-c2" style="left:874px;top:1064px">
           <div class="hair" id="s4-l2" style="width:70px;transform:rotate(150deg)"></div><div class="dot"></div>
-          <span class="pill p" style="left:-394px;top:30px">Desde el primer paso</span>
+          <span class="pill p" style="left:-394px;top:30px">La calidad que mereces</span>
         </div>
       </div>
+            <div class="spark4 s4-sp" style="left:760px;top:215px;width:60px;height:60px"><svg viewBox="0 0 24 24"><path d="M12 1c.9 6.2 4.8 10.1 11 11-6.2.9-10.1 4.8-11 11-.9-6.2-4.8-10.1-11-11 6.2-.9 10.1-4.8 11-11z" fill="currentColor"/></svg></div>
+      <div class="spark4 s4-sp" style="left:850px;top:300px;width:32px;height:32px"><svg viewBox="0 0 24 24"><path d="M12 1c.9 6.2 4.8 10.1 11 11-6.2.9-10.1 4.8-11 11-.9-6.2-4.8-10.1-11-11 6.2-.9 10.1-4.8 11-11z" fill="currentColor"/></svg></div>
+      <div class="spark4 s4-sp" style="left:700px;top:330px;width:22px;height:22px"><svg viewBox="0 0 24 24"><path d="M12 1c.9 6.2 4.8 10.1 11 11-6.2.9-10.1 4.8-11 11-.9-6.2-4.8-10.1-11-11 6.2-.9 10.1-4.8 11-11z" fill="currentColor"/></svg></div>
       <div id="s4-string" data-layout-ignore></div>
       <div id="s4-tag" data-layout-allow-overflow>
         <svg viewBox="0 0 390 250"><path d="M78 0 H372 a18 18 0 0 1 18 18 V232 a18 18 0 0 1 -18 18 H78 L0 125 Z" fill="#e199c9"/><circle cx="46" cy="125" r="13" fill="#ddd9da" stroke="#000" stroke-width="3"/><path d="M78 0 L0 125 L78 250" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="2"/></svg>
@@ -96,7 +101,7 @@
   </div>
   <script>
     (function () {
-      const S0=14.0, DUR=4.4333, SEG={"4": {"s": 14.13, "e": 18.16, "text": "Calidad que se siente desde el primer paso, a precios pensados para ti.", "w": [{"t": "Calidad", "s": 14.18, "e": 14.5}, {"t": "que", "s": 14.54, "e": 14.58}, {"t": "se", "s": 14.66, "e": 14.74}, {"t": "siente", "s": 14.82, "e": 15.14}, {"t": "desde", "s": 15.22, "e": 15.34}, {"t": "el", "s": 15.38, "e": 15.46}, {"t": "primer", "s": 15.62, "e": 15.78}, {"t": "paso,", "s": 15.86, "e": 16.34}, {"t": "a", "s": 16.38, "e": 16.42}, {"t": "precios", "s": 16.5, "e": 16.9}, {"t": "pensados", "s": 16.98, "e": 17.46}, {"t": "para", "s": 17.54, "e": 17.7}, {"t": "ti.", "s": 17.78, "e": 18.1}]}}, SEED=918;
+      const S0=13.7333, DUR=5.6667, SEG={"4": {"s": 13.854, "e": 19.118, "text": "Diseños que te hacen lucir divina, con la calidad que mereces y a precios pensados para ti.", "w": [{"t": "Diseños", "s": 13.899, "e": 14.263}, {"t": "que", "s": 14.299, "e": 14.336}, {"t": "te", "s": 14.409, "e": 14.481}, {"t": "hacen", "s": 14.518, "e": 14.699}, {"t": "lucir", "s": 14.772, "e": 15.063}, {"t": "divina,", "s": 15.136, "e": 15.863}, {"t": "con", "s": 15.936, "e": 16.009}, {"t": "la", "s": 16.045, "e": 16.081}, {"t": "calidad", "s": 16.154, "e": 16.445}, {"t": "que", "s": 16.518, "e": 16.59}, {"t": "mereces", "s": 16.663, "e": 17.099}, {"t": "y", "s": 17.172, "e": 17.245}, {"t": "a", "s": 17.281, "e": 17.318}, {"t": "precios", "s": 17.39, "e": 17.754}, {"t": "pensados", "s": 17.827, "e": 18.263}, {"t": "para", "s": 18.336, "e": 18.481}, {"t": "ti.", "s": 18.554, "e": 19.063}]}}, SEED=918;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
@@ -118,15 +123,19 @@
       const tl = gsap.timeline({ paused: true });
       const ws = document.querySelectorAll(".s4-w");
       // la cortina perla de la escena anterior ya cubre: entra el titular y las botas reales
-      tl.fromTo(ws[0], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, Math.max(0.02, W("4", 0) - 0.1));
-      tl.fromTo(ws[1], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, W("4", 1) - 0.1);
+      tl.fromTo(ws[0], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, W("4", 4) - 0.1);
+      tl.fromTo(ws[1], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, W("4", 5) - 0.1);
+      document.querySelectorAll(".s4-sp").forEach((e, i) => {
+        tl.fromTo(e, { scale: 0, rotation: -60 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.4)" }, W("4", 5) + 0.15 + i * 0.09);
+        tl.to(e, { scale: 0.7, rotation: 25, duration: 0.6, ease: "sine.inOut" }, W("4", 5) + 0.5 + i * 0.09);
+      });
       tl.fromTo("#s4-boots", { opacity: 0, y: 120, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "expo.out" }, 0.05);
       tl.fromTo("#s4-shadow", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);
       // push-in de cámara hacia las hebillas (sin deformar: solo escala y posición)
       tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.22, duration: 2.2, ease: "power2.inOut", transformOrigin: "540px 1000px" }, 0.2);
       tl.fromTo("#s4-shine", { x: 0 }, { x: 1700, duration: 1.0, ease: "power1.inOut" }, 0.55);
       // callouts con línea fina
-      const c1 = W("4", 2) - 0.05, c2 = W("4", 4) - 0.02;
+      const c1 = W("4", 0) + 0.05, c2 = W("4", 8) - 0.05;
       tl.fromTo("#s4-c1 .dot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, c1);
       tl.fromTo("#s4-l1", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, c1 + 0.05);
       tl.fromTo("#s4-c1 .pill", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, c1 + 0.2);
@@ -134,7 +143,7 @@
       tl.fromTo("#s4-l2", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, c2 + 0.05);
       tl.fromTo("#s4-c2 .pill", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, c2 + 0.2);
       // "a precios pensados para ti": la etiqueta cae colgando de su hilo y se balancea
-      const tP = W("4", 9) - 0.25;
+      const tP = W("4", 13) - 0.25;
       tl.fromTo("#s4-string", { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power3.out" }, tP);
       tl.fromTo("#s4-tag", { y: -1100, rotation: -24 }, { y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.2)" }, tP);
       tl.to("#s4-tag", { rotation: 7, duration: 0.32, ease: "sine.inOut", yoyo: true, repeat: 3 }, tP + 0.5);

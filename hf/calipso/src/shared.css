@@ -46,3 +46,6 @@
 .ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+.spark4 { position: absolute; color: #000; }
+.spark4 svg { width: 100%; height: 100%; display: block; }
+.hl { color: #000; background: linear-gradient(180deg, transparent 58%, rgba(225,153,201,.95) 58%, rgba(225,153,201,.95) 88%, transparent 88%); padding: 0 .06em; }

@@ -48,6 +48,9 @@
 .ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+.spark4 { position: absolute; color: #000; }
+.spark4 svg { width: 100%; height: 100%; display: block; }
+.hl { color: #000; background: linear-gradient(180deg, transparent 58%, rgba(225,153,201,.95) 58%, rgba(225,153,201,.95) 88%, transparent 88%); padding: 0 .06em; }
 
     /* A · categorías: tipografía cinética */
     #s3-A { position: absolute; inset: 0; }
@@ -70,33 +73,38 @@
     .s3-tag { position: absolute; }
     #s3-tg-heels { left: 100px; top: 960px; }
     #s3-tg-boots { left: 640px; top: 990px; }
-    #s3-tg-tenis { left: 120px; top: 1090px; }
-    #s3-tg-esc { left: 470px; top: 1090px; }
+    #s3-pills { position: absolute; inset: 0; }
+    .s3-big { position: absolute; left: 0; width: 1080px; text-align: center; }
+    .s3-big .pill { height: 132px; padding: 0 64px; border-radius: 66px; font-size: 66px; letter-spacing: .01em; }
+    #s3-p0 { top: 480px; } #s3-p1 { top: 660px; } #s3-p2 { top: 840px; }
     #s3-more { position: absolute; left: 0; width: 1080px; top: 1060px; text-align: center; color: var(--pearl); }
     #s3-more .serif { font-size: 120px; }
     #s3-wipe { position: absolute; inset: 0; background: var(--pearl); }
   </style>
   <div id="root" data-composition-id="s3-familia" data-width="1080" data-height="1920">
-    <section id="s3-main" class="clip" data-start="0" data-duration="6.8333" data-track-index="1">
+    <section id="s3-main" class="clip" data-start="0" data-duration="6.3666" data-track-index="1">
       <div class="g-black"></div>
       <div id="s3-trail" data-layout-ignore></div>
       <div id="s3-A" data-layout-allow-overflow>
-        <div class="label" style="position:absolute;left:70px;top:200px;font-size:28px;color:var(--pink)">Para toda la familia</div>
+        <div class="label" style="position:absolute;left:70px;top:200px;font-size:28px;color:var(--pink)">Todo para ti</div>
         <div id="s3-list">
-          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Dama</span></span></span><div class="hair" id="s3-h0"></div></div>
-          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Caballero</span></span></span><div class="hair" id="s3-h1"></div></div>
-          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Niños</span></span></span><div class="hair" id="s3-h2"></div></div>
-          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Deportivo</span></span></span><div class="hair" id="s3-h3"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Zapatos</span></span></span><div class="hair" id="s3-h0"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Tacones</span></span></span><div class="hair" id="s3-h1"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Botines</span></span></span><div class="hair" id="s3-h2"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Botas</span></span></span><div class="hair" id="s3-h3"></div></div>
         </div>
       </div>
       <div id="s3-B" data-layout-allow-overflow>
         <div id="s3-store" class="frame" data-layout-allow-occlusion><div class="photo"></div></div>
         <div id="s3-heels" class="frame" data-layout-allow-occlusion><div class="photo"></div><div class="shine" id="s3-sh1"></div></div>
         <div id="s3-boots" class="frame" data-layout-allow-occlusion><div class="photo"></div><div class="shine" id="s3-sh2"></div></div>
-        <div class="s3-tag" id="s3-tg-heels"><span class="pill p">Tacones</span></div>
+        <div class="s3-tag" id="s3-tg-heels"><span class="pill p">Zapatos de tacón</span></div>
         <div class="s3-tag" id="s3-tg-boots"><span class="pill l">Botas</span></div>
-        <div class="s3-tag" id="s3-tg-tenis"><span class="pill k" style="border:2px solid var(--pink)">Tenis</span></div>
-        <div class="s3-tag" id="s3-tg-esc"><span class="pill k" style="border:2px solid var(--pearl)">Escolar</span></div>
+        <div id="s3-pills" data-layout-allow-overflow>
+          <div class="s3-big" id="s3-p0"><span class="pill p">Sandalias</span></div>
+          <div class="s3-big" id="s3-p1"><span class="pill l">Huaraches</span></div>
+          <div class="s3-big" id="s3-p2"><span class="pill k" style="border:3px solid var(--pink)">Zapatillas</span></div>
+        </div>
         <div id="s3-more"><span class="mask"><span class="ln serif"><span class="w s3-m">y mucho </span><span class="w s3-m it pk">más</span></span></span></div>
       </div>
       <div id="s3-wipe"></div>
@@ -104,7 +112,7 @@
   </div>
   <script>
     (function () {
-      const S0=7.1667, DUR=6.8333, SEG={"2": {"s": 7.3, "e": 10.13, "text": "Dama, caballero, niños y deportivo:", "w": [{"t": "Dama,", "s": 7.35, "e": 7.83}, {"t": "caballero,", "s": 7.91, "e": 8.63}, {"t": "niños", "s": 8.71, "e": 9.11}, {"t": "y", "s": 9.19, "e": 9.23}, {"t": "deportivo:", "s": 9.27, "e": 10.07}]}, "3": {"s": 10.23, "e": 13.78, "text": "tacones, botas, tenis, escolar y mucho más.", "w": [{"t": "tacones,", "s": 10.28, "e": 11.0}, {"t": "botas,", "s": 11.12, "e": 11.64}, {"t": "tenis,", "s": 11.76, "e": 12.12}, {"t": "escolar", "s": 12.2, "e": 12.68}, {"t": "y", "s": 12.76, "e": 12.84}, {"t": "mucho", "s": 13.0, "e": 13.24}, {"t": "más.", "s": 13.32, "e": 13.72}]}}, SEED=934;
+      const S0=7.3667, DUR=6.3666, SEG={"2": {"s": 7.495, "e": 10.104, "text": "Zapatos, tacones, botines, botas,", "w": [{"t": "Zapatos,", "s": 7.54, "e": 8.195}, {"t": "tacones,", "s": 8.231, "e": 8.85}, {"t": "botines,", "s": 8.886, "e": 9.613}, {"t": "botas,", "s": 9.759, "e": 10.086}]}, "3": {"s": 10.204, "e": 13.504, "text": "sandalias, huaraches, zapatillas y mucho más.", "w": [{"t": "sandalias,", "s": 10.249, "e": 10.977}, {"t": "huaraches,", "s": 11.013, "e": 11.583}, {"t": "zapatillas", "s": 11.607, "e": 12.286}, {"t": "y", "s": 12.359, "e": 12.431}, {"t": "mucho", "s": 12.577, "e": 12.795}, {"t": "más.", "s": 12.868, "e": 13.449}]}}, SEED=934;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
@@ -126,7 +134,7 @@
       const tl = gsap.timeline({ paused: true });
       const cs = document.querySelectorAll(".s3-c");
       // A · cada categoría entra exactamente cuando se nombra
-      const tw = [W("2", 0), W("2", 1), W("2", 2), W("2", 4)];
+      const tw = [W("2", 0), W("2", 1), W("2", 2), W("2", 3)];
       tl.fromTo("#s3-A .label", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, 0.02);
       cs.forEach((c, i) => {
         tl.fromTo(c, { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, tw[i] - 0.1);
@@ -140,30 +148,21 @@
         gsap.set(d, { left: 120 + i * 110 + (left ? 0 : 18), top: 1500 - i * 40 + (left ? 0 : 36), rotation: 72, scale: 0.5 });
         tl.fromTo(d, { opacity: 0, scale: 0.2 }, { opacity: 0.85, scale: 0.5, duration: 0.18, ease: "back.out(2)" }, 0.1 + i * 0.3);
       }
-      // B · "tacones, botas, tenis, escolar y mucho más": fotos reales en collage
+      // B · "sandalias, huaraches, zapatillas" como tipografía; "y mucho más" abre las fotos reales
       const tB = LS("3") - 0.25;
       tl.to("#s3-A", { yPercent: -18, opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power3.in" }, tB);
       tl.set("#s3-B .frame, .s3-tag, #s3-more", { opacity: 0 }, 0);
-      const tT = W("3", 0) - 0.12, tBo = W("3", 1) - 0.12;
-      tl.fromTo("#s3-heels", { opacity: 0, x: -260, rotation: -9, scale: 0.95 }, { opacity: 1, x: 0, rotation: -4, scale: 1, duration: 0.55, ease: "expo.out" }, tT);
-      tl.fromTo("#s3-heels .photo", { scale: 1.15 }, { scale: 1.02, duration: 2.6, ease: "power1.out" }, tT);
-      tl.fromTo("#s3-tg-heels", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, tT + 0.15);
-      tl.fromTo("#s3-sh1", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tT + 0.3);
-      tl.fromTo("#s3-boots", { opacity: 0, x: 280, rotation: 10, scale: 0.95 }, { opacity: 1, x: 0, rotation: 5, scale: 1, duration: 0.55, ease: "expo.out" }, tBo);
-      tl.fromTo("#s3-boots .photo", { scale: 1.15 }, { scale: 1.02, duration: 2.2, ease: "power1.out" }, tBo);
-      tl.fromTo("#s3-tg-boots", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, tBo + 0.15);
-      tl.fromTo("#s3-sh2", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tBo + 0.3);
-      tl.fromTo("#s3-tg-tenis", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, W("3", 2) - 0.08);
-      tl.fromTo("#s3-tg-esc", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, W("3", 3) - 0.08);
-      // "y mucho más": las fotos se abren y aparece el muro real de la tienda detrás
-      const tM = W("3", 4) - 0.15;
-      tl.to(".s3-tag", { opacity: 0, y: -20, duration: 0.2, stagger: 0.03, ease: "power2.in" }, tM - 0.05);
-      tl.to("#s3-heels", { x: -330, rotation: -12, scale: 0.86, duration: 0.55, ease: "power3.inOut" }, tM);
-      tl.to("#s3-boots", { x: 330, rotation: 12, scale: 0.86, duration: 0.55, ease: "power3.inOut" }, tM);
-      tl.fromTo("#s3-store", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, tM + 0.05);
-      tl.fromTo("#s3-store .photo", { scale: 1.0 }, { scale: 1.12, duration: 1.4, ease: "power1.inOut" }, tM + 0.05);
+      [0, 1, 2].forEach((i) => tl.fromTo("#s3-p" + i, { opacity: 0, scale: 0.6, y: 60, rotation: [-6, 5, -4][i] }, { opacity: 1, scale: 1, y: 0, rotation: [-4, 3, -2][i], duration: 0.42, ease: "back.out(1.9)" }, W("3", i) - 0.1));
+      const tM = W("3", 3) - 0.15;
+      tl.to("#s3-pills", { y: -380, scale: 0.62, opacity: 0, duration: 0.4, ease: "power3.in", transformOrigin: "540px 600px" }, tM);
+      tl.fromTo("#s3-store", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, tM + 0.1);
+      tl.fromTo("#s3-store .photo", { scale: 1.0 }, { scale: 1.12, duration: 1.4, ease: "power1.inOut" }, tM + 0.1);
+      tl.fromTo("#s3-heels", { opacity: 0, x: -420, rotation: -20, scale: 0.8 }, { opacity: 1, x: -330, rotation: -12, scale: 0.86, duration: 0.55, ease: "expo.out" }, tM + 0.2);
+      tl.fromTo("#s3-boots", { opacity: 0, x: 420, rotation: 20, scale: 0.8 }, { opacity: 1, x: 330, rotation: 12, scale: 0.86, duration: 0.55, ease: "expo.out" }, tM + 0.28);
+      tl.fromTo("#s3-sh1", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tM + 0.5);
+      tl.fromTo("#s3-sh2", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tM + 0.6);
       tl.set("#s3-more", { opacity: 1 }, tM);
-      tl.fromTo(".s3-m", { yPercent: 110 }, { yPercent: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, W("3", 5) - 0.12);
+      tl.fromTo(".s3-m", { yPercent: 110 }, { yPercent: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, W("3", 4) - 0.12);
       // salida: cortina gris perla
       tl.fromTo("#s3-wipe", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.32, ease: "power3.in" }, DUR - 0.32);
       window.__timelines["s3-familia"] = tl;

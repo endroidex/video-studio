@@ -19,6 +19,11 @@
 - Pronunciación: `pronunciations.json` (p. ej. "Negocity" se dice **Négocity**, acento en "Ne"; en pantalla siempre "Negocity").
 - Para elegir voces sin gastar créditos: descargar las muestras gratuitas (`preview_url`) y medir el tono.
 
+## Clientes
+- **Zapatería Calipso** (`hf/calipso`): vende **solo calzado de mujer** (zapatos, tacones, botines, botas, sandalias,
+  huaraches, zapatillas). Mensajes para público femenino: moda, belleza, lucir divina, brillar. Voz: `dany` (mexicana)
+  a tempo 1.10. Paleta #e199c9 / #ddd9da / #000000. Logo: `projects/calipso/brand/logo-negro.png` (extraído sin alterar).
+
 ## Higgsfield (conector): pocos créditos
 - El usuario tiene muy pocos créditos (plan gratuito, ~9.5). Usar **solo lo necesario** para mejorar los gráficos;
   si no alcanza o no funciona, seguir sin Higgsfield.

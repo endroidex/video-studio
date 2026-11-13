@@ -149,7 +149,7 @@ def music():
     put(m, A.riser(bar * 0.95, 5), t_rev - bar * 0.95, 0.5)
     # impacto suave + brillo en la revelación de la tarjeta; brillo al aparecer el logo
     put(m, boom(), t_rev, 0.75); put(m, shimmer(), t_rev + 0.04, 0.5, 0.25)
-    put(m, shimmer(1.4, 88), W("1", 5) - 0.1, 0.25, -0.25)
+    put(m, shimmer(1.4, 88), W("1", 11), 0.3, -0.25)
     # B · optimista: Do – Sol – La m – Fa
     prog = [([60, 64, 67], 48), ([59, 62, 67], 43), ([57, 60, 64], 45), ([57, 60, 65], 41)]
     arp = [0, 2, 1, 2, 0, 1, 2, 1]
@@ -217,26 +217,27 @@ def sfx():
     # s2 · tienda real, logo, botas
     P(whoosh(), st("s2-somos") + 0.05, 0.3)
     P("pop", W("1", 1) - 0.06, 0.3)
-    tB = W("1", 5) - 0.32
+    tB = W("1", 3) - 0.3
     P(whoosh(), tB, 0.32, 0.0); P("pop_hi", tB + 0.38, 0.22, 0.4)
     P(whoosh(), tB + 0.3, 0.2, -0.3)
     P(whoosh(), st("s3-familia") - 0.2, 0.3, 0.2)
     # s3 · categorías (cada palabra con un golpe seco) y collage
-    for i, t in enumerate([W("2", 0), W("2", 1), W("2", 2), W("2", 4)]):
+    for i, t in enumerate([W("2", 0), W("2", 1), W("2", 2), W("2", 3)]):
         P(A.thud(0.25, 10 + i), t - 0.08, 0.32, [-0.3, 0.3, -0.2, 0.2][i]); P("click", t - 0.06, 0.25)
     s3 = st("s3-familia")
     for i in range(8):
         P(heel(10 + i), s3 + 0.1 + i * 0.3, 0.16, -0.5 + i * 0.13)
     P(whoosh(), LS("3") - 0.25, 0.28)
-    P(whoosh(), W("3", 0) - 0.12, 0.26, -0.4); P("pop_hi", W("3", 0) + 0.05, 0.22, -0.3)
-    P(whoosh(), W("3", 1) - 0.12, 0.26, 0.4); P("pop_hi", W("3", 1) + 0.05, 0.22, 0.3)
-    P("pop", W("3", 2) - 0.06, 0.28, -0.2); P("pop", W("3", 3) - 0.06, 0.28, 0.2)
-    P(whoosh(), W("3", 4) - 0.15, 0.32); P(shimmer(1.0, 86), W("3", 5), 0.16)
+    for i in range(3):
+        P("pop", W("3", i) - 0.06, 0.32, [-0.3, 0.3, 0.0][i])
+    P(whoosh(), W("3", 3) - 0.15, 0.32); P(whoosh(), W("3", 3) + 0.05, 0.22, -0.4); P(whoosh(), W("3", 3) + 0.13, 0.22, 0.4)
+    P(shimmer(1.0, 86), W("3", 5), 0.16)
     P(whoosh(), st("s4-calidad") - 0.3, 0.3)
     # s4 · calidad (brillo), callouts y etiqueta de precio
     P(shimmer(1.2, 91), st("s4-calidad") + 0.55, 0.18, 0.2)
-    P("tick", W("4", 2) - 0.03, 0.22, -0.2); P("tick", W("4", 4), 0.22, 0.3)
-    tP = W("4", 9) - 0.25
+    P("tick", W("4", 0) + 0.05, 0.22, -0.2); P("tick", W("4", 8) - 0.05, 0.22, 0.3)
+    P(shimmer(1.1, 93), W("4", 5) + 0.15, 0.22, 0.3)
+    tP = W("4", 13) - 0.25
     P(whoosh(), tP, 0.25, 0.3); P(A.thud(0.3, 4), tP + 0.5, 0.22, 0.3); P(bell(93, 0.8), tP + 0.55, 0.14, 0.3)
     # s5 · ven a conocernos
     P(whoosh(), st("s5-visita"), 0.3); P("pop", st("s5-visita") + 0.42, 0.35)
