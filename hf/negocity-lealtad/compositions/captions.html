@@ -1,0 +1,157 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+/* ───────── tarjeta de lealtad digital (componente compartido) ─────────
+   base 640×400; se escala con transform en un contenedor */
+.dcard { position: relative; width: 640px; height: 400px; border-radius: 42px; padding: 16px;
+  background: linear-gradient(150deg, #0E8A3D 0%, #09672C 46%, #064F21 100%);
+  box-shadow: -14px -14px 34px rgba(255,255,255,.55), 22px 28px 60px rgba(9,60,25,.45), inset 0 2px 0 rgba(255,255,255,.18); }
+.dcard .frame { position: absolute; inset: 16px; border: 4px solid #FFFEFA; border-radius: 30px; padding: 22px 26px 18px; }
+.dcard .biz { display: flex; align-items: center; gap: 14px; color: #FFFEFA; }
+.dcard .biz .bi { width: 58px; height: 58px; border-radius: 18px; background: #FFFEFA; color: #09672C; font-size: 34px; display: flex; align-items: center; justify-content: center; flex: none; }
+.dcard .biz b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 38px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.dcard .biz span { display: block; font-weight: 700; font-size: 22px; opacity: .78; margin-top: 4px; white-space: nowrap; }
+.dcard .qr { position: absolute; right: 22px; top: 20px; width: 112px; height: 112px; border-radius: 18px; background: #FFFFFF; padding: 11px; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.dcard .qr svg { display: block; width: 100%; height: 100%; }
+.dcard .stamps { position: absolute; left: 24px; right: 24px; top: 156px; display: flex; justify-content: space-between; }
+.dcard .st { position: relative; width: 56px; height: 56px; border-radius: 50%; border: 3px solid rgba(255,254,250,.75); background: rgba(0,0,0,.12); }
+.dcard .st .f { position: absolute; inset: -3px; border-radius: 50%; background: #FFFEFA; color: #09672C; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+.dcard .st .f svg { stroke-width: 3.4; }
+.dcard .st .f.gold { background: linear-gradient(145deg, #FFD54A, #F2B807); color: #000; box-shadow: 0 0 0 4px rgba(242,184,7,.35), 0 6px 16px rgba(242,184,7,.6); }
+.dcard .pts { position: absolute; left: 24px; right: 24px; top: 140px; height: 96px; display: flex; align-items: center; gap: 18px; color: #FFFEFA; opacity: 0; }
+.dcard .pts .n { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 92px; line-height: 1; letter-spacing: -.03em; }
+.dcard .pts .u { font-weight: 800; font-size: 30px; opacity: .85; }
+.dcard .who { position: absolute; left: 26px; right: 26px; bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between; color: #FFFEFA; }
+.dcard .who small { display: block; font-weight: 700; font-size: 20px; opacity: .7; letter-spacing: .06em; text-transform: uppercase; }
+.dcard .who b { display: block; font-weight: 800; font-size: 32px; white-space: nowrap; }
+.dcard .who .cnt { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 30px; white-space: nowrap; }
+.dcard .glint { position: absolute; inset: 0; border-radius: 42px; overflow: hidden; pointer-events: none; }
+.dcard .glint i { position: absolute; top: -60px; left: -160px; width: 110px; height: 560px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(18deg); }
+/* foto de fondo animable */
+.photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.shade-top { position: absolute; left: 0; right: 0; top: 0; height: 760px; background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,0) 100%); }
+.shade-bot { position: absolute; left: 0; right: 0; bottom: 0; height: 900px; background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%); }
+
+    .cg { position: absolute; left: 0; top: 1218px; width: 1080px; text-align: center; overflow: visible; }
+    .cplate { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; max-width: 940px; padding: 14px 22px; border-radius: 34px; background: #000; box-shadow: 0 14px 34px rgba(0,0,0,.28); }
+    .cw { position: relative; display: inline-block; padding: 4px 14px 6px; font-family: "Figtree", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.12; color: #FFFEFA; white-space: nowrap; }
+    .cwb { position: absolute; inset: 0; border-radius: 18px; background: #09672C; opacity: 0; }
+    .cwt { position: relative; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <section id="cap-main" class="clip" data-start="0" data-duration="26.5" data-track-index="1" data-layout-allow-caption-zone data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="cg" id="cg-0" style="opacity:0"><div class="cplate"><span class="cw" id="cw-0-0"><span class="cwb" id="cwb-0-0"></span><span class="cwt">¿Tus</span></span><span class="cw" id="cw-0-1"><span class="cwb" id="cwb-0-1"></span><span class="cwt">tarjetas</span></span><span class="cw" id="cw-0-2"><span class="cwb" id="cwb-0-2"></span><span class="cwt">de</span></span><span class="cw" id="cw-0-3"><span class="cwb" id="cwb-0-3"></span><span class="cwt">sellos</span></span></div></div>
+      <div class="cg" id="cg-1" style="opacity:0"><div class="cplate"><span class="cw" id="cw-1-0"><span class="cwb" id="cwb-1-0"></span><span class="cwt">terminan</span></span><span class="cw" id="cw-1-1"><span class="cwb" id="cwb-1-1"></span><span class="cwt">olvidadas</span></span><span class="cw" id="cw-1-2"><span class="cwb" id="cwb-1-2"></span><span class="cwt">o</span></span><span class="cw" id="cw-1-3"><span class="cwb" id="cwb-1-3"></span><span class="cwt">en</span></span></div></div>
+      <div class="cg" id="cg-2" style="opacity:0"><div class="cplate"><span class="cw" id="cw-2-0"><span class="cwb" id="cwb-2-0"></span><span class="cwt">la</span></span><span class="cw" id="cw-2-1"><span class="cwb" id="cwb-2-1"></span><span class="cwt">basura?</span></span></div></div>
+      <div class="cg" id="cg-3" style="opacity:0"><div class="cplate"><span class="cw" id="cw-3-0"><span class="cwb" id="cwb-3-0"></span><span class="cwt">Con</span></span><span class="cw" id="cw-3-1"><span class="cwb" id="cwb-3-1"></span><span class="cwt">Negocity,</span></span></div></div>
+      <div class="cg" id="cg-4" style="opacity:0"><div class="cplate"><span class="cw" id="cw-4-0"><span class="cwb" id="cwb-4-0"></span><span class="cwt">la</span></span><span class="cw" id="cw-4-1"><span class="cwb" id="cwb-4-1"></span><span class="cwt">tarjeta</span></span><span class="cw" id="cw-4-2"><span class="cwb" id="cwb-4-2"></span><span class="cwt">vive</span></span><span class="cw" id="cw-4-3"><span class="cwb" id="cwb-4-3"></span><span class="cwt">en</span></span></div></div>
+      <div class="cg" id="cg-5" style="opacity:0"><div class="cplate"><span class="cw" id="cw-5-0"><span class="cwb" id="cwb-5-0"></span><span class="cwt">el</span></span><span class="cw" id="cw-5-1"><span class="cwb" id="cwb-5-1"></span><span class="cwt">celular</span></span><span class="cw" id="cw-5-2"><span class="cwb" id="cwb-5-2"></span><span class="cwt">de</span></span><span class="cw" id="cw-5-3"><span class="cwb" id="cwb-5-3"></span><span class="cwt">tu</span></span></div></div>
+      <div class="cg" id="cg-6" style="opacity:0"><div class="cplate"><span class="cw" id="cw-6-0"><span class="cwb" id="cwb-6-0"></span><span class="cwt">cliente.</span></span></div></div>
+      <div class="cg" id="cg-7" style="opacity:0"><div class="cplate"><span class="cw" id="cw-7-0"><span class="cwb" id="cwb-7-0"></span><span class="cwt">Escanea</span></span><span class="cw" id="cw-7-1"><span class="cwb" id="cwb-7-1"></span><span class="cwt">tu</span></span><span class="cw" id="cw-7-2"><span class="cwb" id="cwb-7-2"></span><span class="cwt">cartel</span></span><span class="cw" id="cw-7-3"><span class="cwb" id="cwb-7-3"></span><span class="cwt">y</span></span></div></div>
+      <div class="cg" id="cg-8" style="opacity:0"><div class="cplate"><span class="cw" id="cw-8-0"><span class="cwb" id="cwb-8-0"></span><span class="cwt">la</span></span><span class="cw" id="cw-8-1"><span class="cwb" id="cwb-8-1"></span><span class="cwt">recibe</span></span><span class="cw" id="cw-8-2"><span class="cwb" id="cwb-8-2"></span><span class="cwt">al</span></span><span class="cw" id="cw-8-3"><span class="cwb" id="cwb-8-3"></span><span class="cwt">instante,</span></span></div></div>
+      <div class="cg" id="cg-9" style="opacity:0"><div class="cplate"><span class="cw" id="cw-9-0"><span class="cwb" id="cwb-9-0"></span><span class="cwt">sin</span></span><span class="cw" id="cw-9-1"><span class="cwb" id="cwb-9-1"></span><span class="cwt">descargar</span></span><span class="cw" id="cw-9-2"><span class="cwb" id="cwb-9-2"></span><span class="cwt">nada.</span></span></div></div>
+      <div class="cg" id="cg-10" style="opacity:0"><div class="cplate"><span class="cw" id="cw-10-0"><span class="cwb" id="cwb-10-0"></span><span class="cwt">Cada</span></span><span class="cw" id="cw-10-1"><span class="cwb" id="cwb-10-1"></span><span class="cwt">visita</span></span><span class="cw" id="cw-10-2"><span class="cwb" id="cwb-10-2"></span><span class="cwt">suma</span></span><span class="cw" id="cw-10-3"><span class="cwb" id="cwb-10-3"></span><span class="cwt">un</span></span></div></div>
+      <div class="cg" id="cg-11" style="opacity:0"><div class="cplate"><span class="cw" id="cw-11-0"><span class="cwb" id="cwb-11-0"></span><span class="cwt">sello…</span></span><span class="cw" id="cw-11-1"><span class="cwb" id="cwb-11-1"></span><span class="cwt">o</span></span><span class="cw" id="cw-11-2"><span class="cwb" id="cwb-11-2"></span><span class="cwt">puntos</span></span><span class="cw" id="cw-11-3"><span class="cwb" id="cwb-11-3"></span><span class="cwt">por</span></span></div></div>
+      <div class="cg" id="cg-12" style="opacity:0"><div class="cplate"><span class="cw" id="cw-12-0"><span class="cwb" id="cwb-12-0"></span><span class="cwt">lo</span></span><span class="cw" id="cw-12-1"><span class="cwb" id="cwb-12-1"></span><span class="cwt">que</span></span><span class="cw" id="cw-12-2"><span class="cwb" id="cwb-12-2"></span><span class="cwt">gasta.</span></span></div></div>
+      <div class="cg" id="cg-13" style="opacity:0"><div class="cplate"><span class="cw" id="cw-13-0"><span class="cwb" id="cwb-13-0"></span><span class="cwt">Y</span></span><span class="cw" id="cw-13-1"><span class="cwb" id="cwb-13-1"></span><span class="cwt">al</span></span><span class="cw" id="cw-13-2"><span class="cwb" id="cwb-13-2"></span><span class="cwt">completarla,</span></span></div></div>
+      <div class="cg" id="cg-14" style="opacity:0"><div class="cplate"><span class="cw" id="cw-14-0"><span class="cwb" id="cwb-14-0"></span><span class="cwt">gana</span></span><span class="cw" id="cw-14-1"><span class="cwb" id="cwb-14-1"></span><span class="cwt">su</span></span><span class="cw" id="cw-14-2"><span class="cwb" id="cwb-14-2"></span><span class="cwt">premio.</span></span></div></div>
+      <div class="cg" id="cg-15" style="opacity:0"><div class="cplate"><span class="cw" id="cw-15-0"><span class="cwb" id="cwb-15-0"></span><span class="cwt">Negocity.</span></span><span class="cw" id="cw-15-1"><span class="cwb" id="cwb-15-1"></span><span class="cwt">Haz</span></span><span class="cw" id="cw-15-2"><span class="cwb" id="cwb-15-2"></span><span class="cwt">que</span></span><span class="cw" id="cw-15-3"><span class="cwb" id="cwb-15-3"></span><span class="cwt">tus</span></span></div></div>
+      <div class="cg" id="cg-16" style="opacity:0"><div class="cplate"><span class="cw" id="cw-16-0"><span class="cwb" id="cwb-16-0"></span><span class="cwt">clientes</span></span><span class="cw" id="cw-16-1"><span class="cwb" id="cwb-16-1"></span><span class="cwt">vuelvan.</span></span></div></div>
+      <div class="cg" id="cg-17" style="opacity:0"><div class="cplate"><span class="cw" id="cw-17-0"><span class="cwb" id="cwb-17-0"></span><span class="cwt">Empieza</span></span><span class="cw" id="cw-17-1"><span class="cwb" id="cwb-17-1"></span><span class="cwt">hoy</span></span><span class="cw" id="cw-17-2"><span class="cwb" id="cwb-17-2"></span><span class="cwt">en</span></span><span class="cw" id="cw-17-3"><span class="cwb" id="cwb-17-3"></span><span class="cwt">negocity.com.mx</span></span></div></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function G(gi, start, end, words) {
+        const g = "#cg-" + gi;
+        tl.fromTo(g, { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+        words.forEach((w, wi) => {
+          tl.fromTo("#cwb-" + gi + "-" + wi, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.09, ease: "power2.out" }, w[0] - 0.03);
+          if (wi < words.length - 1) tl.to("#cwb-" + gi + "-" + wi, { opacity: 0, duration: 0.09 }, Math.max(w[0] + 0.08, words[wi + 1][0] - 0.05));
+        });
+        tl.to(g, { opacity: 0, duration: 0.1, ease: "power2.in" }, end - 0.1);
+        tl.set(g, { opacity: 0 }, end);
+      }
+  G(0, 0.350, 1.550, [[0.45, 0.61], [0.69, 1.01], [1.05, 1.09], [1.17, 1.49]]);
+  G(1, 1.550, 2.710, [[1.65, 1.89], [1.97, 2.53], [2.61, 2.69], [2.73, 2.77]]);
+  G(2, 2.710, 3.670, [[2.81, 2.85], [2.97, 3.45]]);
+  G(3, 3.850, 4.810, [[3.95, 4.11], [4.15, 4.83]]);
+  G(4, 4.810, 5.850, [[4.91, 4.99], [5.07, 5.47], [5.55, 5.79], [5.83, 5.87]]);
+  G(5, 5.850, 6.810, [[5.95, 5.99], [6.03, 6.43], [6.47, 6.51], [6.59, 6.67]]);
+  G(6, 6.810, 7.530, [[6.91, 7.31]]);
+  G(7, 7.670, 8.670, [[7.77, 8.05], [8.09, 8.17], [8.29, 8.65], [8.69, 8.73]]);
+  G(8, 8.670, 10.070, [[8.77, 8.81], [8.89, 9.21], [9.25, 9.29], [9.37, 10.09]]);
+  G(9, 10.070, 11.550, [[10.17, 10.25], [10.33, 10.81], [10.89, 11.33]]);
+  G(10, 11.680, 12.800, [[11.78, 11.94], [12.02, 12.42], [12.5, 12.74], [12.78, 12.82]]);
+  G(11, 12.800, 14.120, [[12.9, 13.46], [13.54, 13.62], [13.7, 14.02], [14.1, 14.18]]);
+  G(12, 14.120, 15.200, [[14.22, 14.26], [14.34, 14.42], [14.46, 14.98]]);
+  G(13, 15.250, 16.290, [[15.35, 15.39], [15.43, 15.47], [15.55, 16.35]]);
+  G(14, 16.290, 17.610, [[16.39, 16.67], [16.71, 16.75], [16.83, 17.39]]);
+  G(15, 18.030, 19.390, [[18.13, 19.01], [19.09, 19.17], [19.21, 19.25], [19.33, 19.41]]);
+  G(16, 19.390, 20.750, [[19.49, 19.89], [19.97, 20.53]]);
+  G(17, 20.880, 24.420, [[20.98, 21.34], [21.38, 21.66], [21.78, 21.9], [21.953, 24.2]]);
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

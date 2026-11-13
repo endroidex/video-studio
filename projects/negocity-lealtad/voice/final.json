@@ -1,0 +1,463 @@
+{
+ "0": {
+  "file": "final_0.wav",
+  "src": "elevenlabs:brian",
+  "dur": 3.1,
+  "text": "¿Tus tarjetas de sellos terminan olvidadas o en la basura?",
+  "words": [
+   {
+    "text": "¿Tus",
+    "accent": false,
+    "start": 0.0,
+    "end": 0.16
+   },
+   {
+    "text": "tarjetas",
+    "accent": false,
+    "start": 0.24,
+    "end": 0.56
+   },
+   {
+    "text": "de",
+    "accent": false,
+    "start": 0.6,
+    "end": 0.64
+   },
+   {
+    "text": "sellos",
+    "accent": false,
+    "start": 0.72,
+    "end": 1.04
+   },
+   {
+    "text": "terminan",
+    "accent": false,
+    "start": 1.2,
+    "end": 1.44
+   },
+   {
+    "text": "olvidadas",
+    "accent": false,
+    "start": 1.52,
+    "end": 2.08
+   },
+   {
+    "text": "o",
+    "accent": false,
+    "start": 2.16,
+    "end": 2.24
+   },
+   {
+    "text": "en",
+    "accent": false,
+    "start": 2.28,
+    "end": 2.32
+   },
+   {
+    "text": "la",
+    "accent": false,
+    "start": 2.36,
+    "end": 2.4
+   },
+   {
+    "text": "basura?",
+    "accent": false,
+    "start": 2.52,
+    "end": 3.0
+   }
+  ],
+  "ok": true,
+  "rate": 3.33,
+  "natural_gap": 0.12
+ },
+ "1": {
+  "file": "final_1.wav",
+  "src": "elevenlabs:brian",
+  "dur": 3.47,
+  "text": "Con Negocity, la tarjeta vive en el celular de tu cliente.",
+  "words": [
+   {
+    "text": "Con",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.21
+   },
+   {
+    "text": "Negocity,",
+    "accent": false,
+    "start": 0.25,
+    "end": 0.93
+   },
+   {
+    "text": "la",
+    "accent": false,
+    "start": 1.01,
+    "end": 1.09
+   },
+   {
+    "text": "tarjeta",
+    "accent": false,
+    "start": 1.17,
+    "end": 1.57
+   },
+   {
+    "text": "vive",
+    "accent": false,
+    "start": 1.65,
+    "end": 1.89
+   },
+   {
+    "text": "en",
+    "accent": false,
+    "start": 1.93,
+    "end": 1.97
+   },
+   {
+    "text": "el",
+    "accent": false,
+    "start": 2.05,
+    "end": 2.09
+   },
+   {
+    "text": "celular",
+    "accent": false,
+    "start": 2.13,
+    "end": 2.53
+   },
+   {
+    "text": "de",
+    "accent": false,
+    "start": 2.57,
+    "end": 2.61
+   },
+   {
+    "text": "tu",
+    "accent": false,
+    "start": 2.69,
+    "end": 2.77
+   },
+   {
+    "text": "cliente.",
+    "accent": false,
+    "start": 3.01,
+    "end": 3.41
+   }
+  ],
+  "ok": true,
+  "rate": 3.27,
+  "natural_gap": 0.08
+ },
+ "2": {
+  "file": "final_2.wav",
+  "src": "elevenlabs:brian",
+  "dur": 3.71,
+  "text": "Escanea tu cartel y la recibe al instante, sin descargar nada.",
+  "words": [
+   {
+    "text": "Escanea",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.33
+   },
+   {
+    "text": "tu",
+    "accent": false,
+    "start": 0.37,
+    "end": 0.45
+   },
+   {
+    "text": "cartel",
+    "accent": false,
+    "start": 0.57,
+    "end": 0.93
+   },
+   {
+    "text": "y",
+    "accent": false,
+    "start": 0.97,
+    "end": 1.01
+   },
+   {
+    "text": "la",
+    "accent": false,
+    "start": 1.05,
+    "end": 1.09
+   },
+   {
+    "text": "recibe",
+    "accent": false,
+    "start": 1.17,
+    "end": 1.49
+   },
+   {
+    "text": "al",
+    "accent": false,
+    "start": 1.53,
+    "end": 1.57
+   },
+   {
+    "text": "instante,",
+    "accent": false,
+    "start": 1.65,
+    "end": 2.37
+   },
+   {
+    "text": "sin",
+    "accent": false,
+    "start": 2.45,
+    "end": 2.53
+   },
+   {
+    "text": "descargar",
+    "accent": false,
+    "start": 2.61,
+    "end": 3.09
+   },
+   {
+    "text": "nada.",
+    "accent": false,
+    "start": 3.17,
+    "end": 3.61
+   }
+  ],
+  "ok": true,
+  "rate": 3.09,
+  "natural_gap": 0.12
+ },
+ "3": {
+  "file": "final_3.wav",
+  "src": "elevenlabs:brian",
+  "dur": 3.27,
+  "text": "Cada visita suma un sello… o puntos por lo que gasta.",
+  "words": [
+   {
+    "text": "Cada",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.21
+   },
+   {
+    "text": "visita",
+    "accent": false,
+    "start": 0.29,
+    "end": 0.69
+   },
+   {
+    "text": "suma",
+    "accent": false,
+    "start": 0.77,
+    "end": 1.01
+   },
+   {
+    "text": "un",
+    "accent": false,
+    "start": 1.05,
+    "end": 1.09
+   },
+   {
+    "text": "sello…",
+    "accent": false,
+    "start": 1.17,
+    "end": 1.73
+   },
+   {
+    "text": "o",
+    "accent": false,
+    "start": 1.81,
+    "end": 1.89
+   },
+   {
+    "text": "puntos",
+    "accent": false,
+    "start": 1.97,
+    "end": 2.29
+   },
+   {
+    "text": "por",
+    "accent": false,
+    "start": 2.37,
+    "end": 2.45
+   },
+   {
+    "text": "lo",
+    "accent": false,
+    "start": 2.49,
+    "end": 2.53
+   },
+   {
+    "text": "que",
+    "accent": false,
+    "start": 2.61,
+    "end": 2.69
+   },
+   {
+    "text": "gasta.",
+    "accent": false,
+    "start": 2.73,
+    "end": 3.25
+   }
+  ],
+  "ok": true,
+  "rate": 3.44,
+  "natural_gap": 0.04
+ },
+ "4": {
+  "file": "final_4.wav",
+  "src": "elevenlabs:brian",
+  "dur": 2.23,
+  "text": "Y al completarla, gana su premio.",
+  "words": [
+   {
+    "text": "Y",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.09
+   },
+   {
+    "text": "al",
+    "accent": false,
+    "start": 0.13,
+    "end": 0.17
+   },
+   {
+    "text": "completarla,",
+    "accent": false,
+    "start": 0.25,
+    "end": 1.05
+   },
+   {
+    "text": "gana",
+    "accent": false,
+    "start": 1.09,
+    "end": 1.37
+   },
+   {
+    "text": "su",
+    "accent": false,
+    "start": 1.41,
+    "end": 1.45
+   },
+   {
+    "text": "premio.",
+    "accent": false,
+    "start": 1.53,
+    "end": 2.09
+   }
+  ],
+  "ok": true,
+  "rate": 2.94,
+  "natural_gap": 0.16
+ },
+ "5": {
+  "file": "final_5.wav",
+  "src": "elevenlabs:brian",
+  "dur": 2.55,
+  "text": "Negocity. Haz que tus clientes vuelvan.",
+  "words": [
+   {
+    "text": "Negocity.",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.93
+   },
+   {
+    "text": "Haz",
+    "accent": false,
+    "start": 1.01,
+    "end": 1.09
+   },
+   {
+    "text": "que",
+    "accent": false,
+    "start": 1.13,
+    "end": 1.17
+   },
+   {
+    "text": "tus",
+    "accent": false,
+    "start": 1.25,
+    "end": 1.33
+   },
+   {
+    "text": "clientes",
+    "accent": false,
+    "start": 1.41,
+    "end": 1.81
+   },
+   {
+    "text": "vuelvan.",
+    "accent": false,
+    "start": 1.89,
+    "end": 2.45
+   }
+  ],
+  "ok": true,
+  "rate": 2.5,
+  "natural_gap": 0.12
+ },
+ "6": {
+  "file": "final_6.wav",
+  "src": "elevenlabs:brian",
+  "dur": 3.27,
+  "text": "Empieza hoy en negocity punto com punto mx.",
+  "words": [
+   {
+    "text": "Empieza",
+    "accent": false,
+    "start": 0.05,
+    "end": 0.41
+   },
+   {
+    "text": "hoy",
+    "accent": false,
+    "start": 0.45,
+    "end": 0.73
+   },
+   {
+    "text": "en",
+    "accent": false,
+    "start": 0.85,
+    "end": 0.97
+   },
+   {
+    "text": "negocity",
+    "accent": false,
+    "start": 1.023,
+    "end": 1.53
+   },
+   {
+    "text": "punto",
+    "accent": false,
+    "start": 1.57,
+    "end": 1.69
+   },
+   {
+    "text": "com",
+    "accent": false,
+    "start": 1.85,
+    "end": 2.09
+   },
+   {
+    "text": "punto",
+    "accent": false,
+    "start": 2.13,
+    "end": 2.33
+   },
+   {
+    "text": "mx.",
+    "accent": false,
+    "start": 2.49,
+    "end": 2.73
+   },
+   {
+    "text": "equis.",
+    "accent": false,
+    "start": 2.81,
+    "end": 3.27
+   }
+  ],
+  "ok": true,
+  "rate": 2.71,
+  "natural_gap": -0.08
+ }
+}

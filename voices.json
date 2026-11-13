@@ -40,5 +40,12 @@
   "accent": "mexican",
   "tono_hz": 109,
   "desc": "A warm and charismatic Mexican Spanish voice designed for marketing, storytelling, and education. Natural, conversational delivery with confident authority, expressive pacing, and dynamic intonation. "
+ },
+ "brian": {
+  "id": "U9TSK9KHMlMU2qkeXlQP",
+  "name": "Brian - Social Media",
+  "gender": "male",
+  "accent": "latin american",
+  "desc": "A youthful, clear vocal style with casual undertones. It maintains a steady, friendly rhythm—ideal for content creators seeking a voice that sounds like a friend explaining something interesting, with"
  }
 }

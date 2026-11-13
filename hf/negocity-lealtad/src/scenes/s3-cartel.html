@@ -1,0 +1,99 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s3-photo { background-image: url("assets/photos/cafeteria.jpg"); filter: brightness(0.95); }
+    #s3-chip { position: absolute; left: 70px; top: 190px; }
+    /* cartel con QR colocado en el portacartel vacío de la foto */
+    #s3-poster { position: absolute; left: 186px; top: 964px; width: 268px; height: 378px; background: #FFFEFA; border-radius: 6px; padding: 18px 16px; display: flex; flex-direction: column; align-items: center; transform: rotate(-0.6deg); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+    #s3-poster img { width: 58px; height: 58px; border-radius: 14px; display: block; }
+    #s3-poster b { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 25px; line-height: 1.02; text-align: center; margin: 10px 0 10px; color: #000; letter-spacing: -.01em; }
+    #s3-poster .q { width: 176px; height: 176px; background: #fff; padding: 8px; border-radius: 8px; border: 3px solid var(--green); }
+    #s3-poster .q svg { display: block; width: 100%; height: 100%; }
+    #s3-poster small { font-weight: 800; font-size: 16px; color: var(--green); margin-top: 8px; }
+    #s3-ph { left: 590px; top: 560px; width: 520px; height: 1040px; }
+    #s3-ph .screen { background: #0b0b0b; }
+    #s3-cam { position: absolute; inset: 0; background-image: url("assets/photos/cafeteria.jpg"); background-size: 1700px auto; background-position: -230px -1250px; filter: blur(3px) brightness(0.7); }
+    #s3-vf { position: absolute; left: 115px; top: 240px; width: 280px; height: 280px; }
+    .s3-br { position: absolute; width: 62px; height: 62px; border: 8px solid #FFFEFA; }
+    #s3-line { position: absolute; left: 100px; top: 250px; width: 310px; height: 6px; border-radius: 3px; background: var(--blue); box-shadow: 0 0 18px 5px rgba(71,123,238,.8); }
+    #s3-qrv { position: absolute; left: 150px; top: 275px; width: 210px; height: 210px; background: #fff; padding: 10px; border-radius: 8px; }
+    #s3-qrv svg { display: block; width: 100%; height: 100%; }
+    #s3-got { position: absolute; inset: 0; background: linear-gradient(170deg, #FFFEFA 0%, #F3EEDF 100%); }
+    #s3-cw { position: absolute; left: 24px; top: 150px; width: 640px; height: 400px; transform-origin: 0 0; }
+    #s3-toast { position: absolute; left: 24px; right: 24px; top: 468px; height: 112px; border-radius: 30px; display: flex; align-items: center; gap: 18px; padding: 0 22px; font-weight: 800; font-size: 30px; color: var(--green); }
+    #s3-toast .d { width: 66px; height: 66px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 40px; display: flex; align-items: center; justify-content: center; flex: none; }
+    #s3-noapp { position: absolute; left: 70px; top: 470px; height: 92px; padding: 0 30px 0 18px; border-radius: 46px; display: flex; align-items: center; gap: 14px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 40px; color: #000; white-space: nowrap; }
+    #s3-noapp .d { width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 38px; display: flex; align-items: center; justify-content: center; }
+    #s3-dot { position: absolute; left: 285px; top: 1090px; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 10px rgba(71,123,238,.25); }
+  </style>
+  <div id="root" data-composition-id="s3-cartel" data-width="1080" data-height="1920">
+    <section id="s3-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s3-world" class="fill" data-layout-allow-overflow>
+        <div id="s3-photo" class="photo"></div>
+        <div id="s3-poster" data-layout-ignore>
+          <img src="assets/brand/logo-icon-green.png" alt="Negocity" />
+          <b>Escanea y recibe<br>tu tarjeta</b>
+          <div class="q"><svg viewBox="-0.5 -0.5 26 26"><path d="{{qr:d}}" fill="#000"/></svg></div>
+          <small>Sin descargar nada</small>
+        </div>
+        <div id="s3-dot" data-layout-ignore></div>
+      </div>
+      <div class="shade-top" style="height:560px"></div>
+      <div id="s3-chip" class="chip">{{icon:qr}}Escanea el cartel</div>
+      <!-- celular del cliente: cámara → tarjeta recibida -->
+      <div id="s3-ph" class="phone" data-layout-allow-overflow>
+        <div class="screen">
+          <div id="s3-cam"></div>
+          <div id="s3-qrv"><svg viewBox="-0.5 -0.5 26 26"><path d="{{qr:d}}" fill="#000"/></svg></div>
+          <div class="s3-br" style="left:100px;top:225px;border-right:0;border-bottom:0;border-radius:22px 0 0 0"></div>
+          <div class="s3-br" style="left:350px;top:225px;border-left:0;border-bottom:0;border-radius:0 22px 0 0"></div>
+          <div class="s3-br" style="left:100px;top:475px;border-right:0;border-top:0;border-radius:0 0 0 22px"></div>
+          <div class="s3-br" style="left:350px;top:475px;border-left:0;border-top:0;border-radius:0 0 22px 0"></div>
+          <div id="s3-line"></div>
+          <div id="s3-got">
+            <div id="s3-cw" data-layout-allow-overflow data-layout-ignore></div>
+            <div id="s3-toast" class="neu-sm"><div class="d">{{icon:check}}</div>¡Tarjeta agregada!</div>
+          </div>
+          <div class="island"></div>
+        </div>
+      </div>
+      <div id="s3-noapp" class="neu-sm">
+        <span class="d">{{icon:check}}</span>Sin descargar nada
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      document.querySelector("#s3-cw").innerHTML = card({ biz: "Café Lupita", icon: `{{icon:cup}}`, who: "Mariana R.", filled: 0, total: 8, id: "s3c" });
+      gsap.set("#s3-cw", { scale: 462 / 640 });
+      // entrada: la cafetería real al atardecer, la cámara se acerca al cartel junto a la caja
+      tl.fromTo("#s3-world", { scale: 1.12, x: 60 }, { scale: 1.38, x: 40, y: -110, duration: 1.6, ease: "power2.inOut", transformOrigin: "320px 1150px" }, 0);
+      tl.fromTo("#s3-photo", { opacity: 0.2 }, { opacity: 1, duration: 0.25, ease: "power1.out" }, 0);
+      tl.fromTo("#s3-chip", { opacity: 0, x: -140 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 0.08);
+      tl.fromTo("#s3-dot", { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 0.5);
+      tl.to("#s3-dot", { scale: 1.6, opacity: 0, duration: 0.5, ease: "power1.out" }, 0.9);
+      // "Escanea" → entra el celular del cliente en primer plano y escanea
+      const tS = Math.max(0.3, W("2", 0) + 0.15);
+      tl.fromTo("#s3-ph", { opacity: 0, x: 420, y: 380, rotation: 14 }, { opacity: 1, x: 0, y: 0, rotation: -4, duration: 0.55, ease: "expo.out" }, tS);
+      tl.set("#s3-got", { opacity: 0 }, 0);
+      tl.fromTo("#s3-line", { y: 0 }, { y: 250, duration: 0.32, ease: "sine.inOut", yoyo: true, repeat: 1 }, tS + 0.45);
+      // "la recibe al instante" → la pantalla se vuelve la tarjeta
+      const tR = W("2", 5) - 0.12;
+      tl.to("#s3-got", { opacity: 1, duration: 0.18, ease: "power2.out" }, tR);
+      tl.fromTo("#s3-cw", { scale: 0.62, opacity: 0, y: 40 }, { scale: 462 / 640, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.4)" }, tR + 0.05);
+      tl.fromTo("#s3-toast", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "expo.out" }, tR + 0.25);
+      tl.fromTo("#s3c-gl", { x: 0 }, { x: 1000, duration: 0.6, ease: "power1.inOut" }, tR + 0.3);
+      // "sin descargar nada"
+      const tD = W("2", 8) - 0.12;
+      tl.to("#s3-chip", { opacity: 0, y: -30, duration: 0.2, ease: "power2.in" }, tD - 0.1);
+      tl.fromTo("#s3-noapp", { opacity: 0, scale: 0.95, x: -60 }, { opacity: 1, scale: 1, x: 0, duration: 0.42, ease: "back.out(1.6)" }, tD);
+      // salida rápida hacia arriba
+      tl.to("#s3-ph, #s3-noapp", { y: -300, opacity: 0, filter: "blur(16px)", duration: 0.24, stagger: 0.02, ease: "power3.in" }, DUR - 0.26);
+      tl.to("#s3-world", { opacity: 0, duration: 0.24, ease: "power2.in" }, DUR - 0.26);
+      window.__timelines["s3-cartel"] = tl;
+    })();
+  </script>
+</template>

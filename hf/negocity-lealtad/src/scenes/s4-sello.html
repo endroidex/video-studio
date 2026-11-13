@@ -1,0 +1,100 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s4-photo { background-image: url("assets/photos/taqueria.jpg"); filter: blur(5px) brightness(0.62) saturate(1.05); transform: scale(1.06); }
+    #s4-chip { position: absolute; left: 70px; top: 190px; }
+    #s4-title { position: absolute; left: 70px; top: 282px; font-size: 100px; color: var(--cream); white-space: nowrap; }
+    #s4-cw { position: absolute; left: 70px; top: 470px; width: 640px; height: 400px; transform-origin: 0 0; }
+    #s4-flip { position: absolute; inset: 0; }
+    #s4-scan { left: 640px; top: 860px; width: 360px; height: 640px; border-radius: 56px; padding: 12px; }
+    #s4-scan .screen { border-radius: 46px; background: #0b0b0b; }
+    #s4-scan .island { width: 100px; height: 28px; margin-left: -50px; top: 14px; }
+    .s4-br { position: absolute; width: 46px; height: 46px; border: 7px solid var(--cream); }
+    #s4-line { position: absolute; left: 50px; top: 120px; width: 236px; height: 6px; border-radius: 3px; background: var(--blue); box-shadow: 0 0 18px 4px rgba(71,123,238,.8); }
+    #s4-mini { position: absolute; left: 44px; top: 132px; width: 248px; height: 155px; border-radius: 18px; background: linear-gradient(150deg, #0E8A3D, #064F21); border: 3px solid rgba(255,254,250,.85); }
+    #s4-ok { position: absolute; left: 22px; right: 22px; top: 380px; height: 128px; border-radius: 30px; background: var(--green); color: var(--cream); font-weight: 800; font-size: 30px; line-height: 1.12; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    #s4-ok svg { width: 46px; height: 46px; flex: none; }
+    #s4-plus { position: absolute; left: 560px; top: 1090px; height: 92px; padding: 0 30px 0 18px; border-radius: 46px; display: flex; align-items: center; gap: 12px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 42px; color: var(--green); white-space: nowrap; }
+    #s4-plus .d { width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 36px; display: flex; align-items: center; justify-content: center; }
+    #s4-buy { position: absolute; left: 70px; top: 1090px; height: 100px; padding: 0 30px 0 18px; border-radius: 50px; display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+    #s4-buy .d { width: 66px; height: 66px; border-radius: 50%; background: #000; color: var(--cream); font-size: 36px; display: flex; align-items: center; justify-content: center; }
+    #s4-buy b { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 44px; }
+    #s4-buy span { font-weight: 700; font-size: 30px; color: var(--ink-2); }
+    .s4-ring { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid var(--cream); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s4-sello" data-width="1080" data-height="1920">
+    <section id="s4-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s4-photo" class="photo"></div>
+      <div class="shade-top" style="height:620px"></div>
+      <div id="s4-all" class="fill" data-layout-allow-overflow>
+        <div id="s4-chip" class="chip">{{icon:taco}}Taquería · Barbería · Café</div>
+        <h2 id="s4-title" class="t-display"><span class="t-word s4-w">Cada </span><span class="t-word s4-w">visita </span><span class="t-word s4-w t-green" style="color:#5BD38A">suma</span></h2>
+        <div id="s4-cw" data-layout-allow-overflow><div id="s4-flip"></div></div>
+        <div id="s4-rings" class="fill" data-layout-ignore></div>
+        <div id="s4-plus" class="neu-sm"><span class="d">{{icon:check}}</span>+1 sello</div>
+        <!-- celular del empleado -->
+        <div id="s4-scan" class="phone" data-layout-allow-occlusion>
+          <div class="screen">
+            <div class="island"></div>
+            <div id="s4-mini"></div>
+            <div class="s4-br" style="left:26px;top:100px;border-right:0;border-bottom:0;border-radius:18px 0 0 0"></div>
+            <div class="s4-br" style="right:26px;top:100px;border-left:0;border-bottom:0;border-radius:0 18px 0 0"></div>
+            <div class="s4-br" style="left:26px;top:276px;border-right:0;border-top:0;border-radius:0 0 0 18px"></div>
+            <div class="s4-br" style="right:26px;top:276px;border-left:0;border-top:0;border-radius:0 0 18px 0"></div>
+            <div id="s4-line"></div>
+            <div id="s4-ok">{{icon:check}}<span>Sello<br>agregado</span></div>
+          </div>
+        </div>
+        <div id="s4-buy" class="neu-sm"><span class="d">{{icon:receipt}}</span><b>$185</b><span>de compra</span></div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      document.querySelector("#s4-flip").innerHTML = card({ biz: "Tacos El Güero", icon: `{{icon:taco}}`, who: "Luis M.", filled: 5, total: 8, points: 120, id: "s4c" });
+      gsap.set("#s4-cw", { scale: 940 / 640 });
+      const $ = (s) => document.querySelector(s);
+      tl.fromTo("#s4-photo", { scale: 1.12 }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+      // entrada desde abajo (la escena anterior salió hacia arriba)
+      tl.fromTo("#s4-chip", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.42, ease: "expo.out" }, 0.02);
+      blurIn(tl, ".s4-w", 0.05, 0.08, 0.22);
+      tl.fromTo("#s4-cw", { opacity: 0, y: 260, rotation: 4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, 0.04);
+      tl.fromTo("#s4-scan", { opacity: 0, x: 380, y: 260, rotation: 18 }, { opacity: 1, x: 0, y: 0, rotation: -10, duration: 0.5, ease: "expo.out" }, 0.22);
+      tl.set("#s4-ok", { opacity: 0, scale: 0.8 }, 0);
+      tl.fromTo("#s4-line", { y: 0 }, { y: 160, duration: 0.26, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.62);
+      // "un sello" → se llena el sello 6 con palomita (pop satisfactorio)
+      const tSt = W("3", 3) - 0.04;
+      tl.to("#s4-line", { opacity: 0, duration: 0.08 }, tSt - 0.05);
+      tl.to("#s4-ok", { opacity: 1, scale: 1, duration: 0.28, ease: "back.out(2)" }, tSt);
+      tl.to("#s4c-f6", { scale: 1, duration: 0.42, ease: "back.out(3)" }, tSt + 0.04);
+      tl.set("#s4c-cnt", { textContent: "6 de 8" }, tSt + 0.08);
+      tl.to("#s4-cw", { scale: 940 / 640 * 1.03, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, tSt + 0.04);
+      // anillo que sale del sello (posición del sello 6 en pantalla)
+      const ring = document.createElement("div"); ring.className = "s4-ring"; $("#s4-rings").appendChild(ring);
+      const sx = 70 + (52 + 5 * 76.57) * (940 / 640), sy = 470 + (156 + 28) * (940 / 640);
+      gsap.set(ring, { left: sx, top: sy });
+      tl.fromTo(ring, { scale: 0.5, opacity: 0.9 }, { scale: 2.2, opacity: 0, duration: 0.5, ease: "power2.out" }, tSt + 0.06);
+      tl.fromTo("#s4-plus", { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.34, ease: "back.out(2.2)" }, tSt + 0.1);
+      // "o puntos por lo que gasta" → la tarjeta gira a modo puntos y el contador sube
+      const tP = W("3", 5) - 0.1;
+      tl.to("#s4-plus", { opacity: 0, y: -40, duration: 0.18, ease: "power2.in" }, tP - 0.05);
+      tl.to("#s4-scan", { x: 420, y: 200, rotation: 20, opacity: 0, duration: 0.3, ease: "power3.in" }, tP - 0.05);
+      tl.to("#s4-flip", { rotationY: 90, duration: 0.16, ease: "power2.in", transformPerspective: 1600 }, tP);
+      tl.set("#s4c-stamps", { opacity: 0 }, tP + 0.16);
+      tl.set("#s4c-pts", { opacity: 1 }, tP + 0.16);
+      tl.set("#s4c-cnt", { textContent: "Nivel oro" }, tP + 0.16);
+      tl.to("#s4-flip", { rotationY: 0, duration: 0.3, ease: "back.out(1.6)", transformPerspective: 1600 }, tP + 0.16);
+      tl.fromTo("#s4-buy", { opacity: 0, x: -80, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.4, ease: "expo.out" }, tP + 0.2);
+      const pv = { v: 120 }, ptn = $("#s4c-ptn");
+      tl.to(pv, { v: 305, duration: 0.8, ease: "power2.out", onUpdate: () => (ptn.textContent = Math.round(pv.v)) }, W("3", 6));
+      tl.fromTo("#s4c-gl", { x: 0 }, { x: 1000, duration: 0.55, ease: "power1.inOut" }, W("3", 7));
+      // salida: la tarjeta se encoge hacia el centro (el premio viene después)
+      tl.to("#s4-all", { scale: 0.85, opacity: 0, filter: "blur(14px)", duration: 0.24, ease: "power3.in", transformOrigin: "540px 800px" }, DUR - 0.26);
+      tl.to("#s4-photo", { opacity: 0, duration: 0.24 }, DUR - 0.26);
+      window.__timelines["s4-sello"] = tl;
+    })();
+  </script>
+</template>

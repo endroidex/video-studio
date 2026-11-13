@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Negocity · Haz que tus clientes vuelvan</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      #root-ground { position: absolute; inset: 0; background: #000; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26.5" data-width="1080" data-height="1920">
+      <div id="root-ground"></div>
+      <div id="s1-carton" data-composition-id="s1-carton" data-composition-src="compositions/s1-carton.html" data-start="0.0" data-duration="3.7667" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="s2-revela" data-composition-id="s2-revela" data-composition-src="compositions/s2-revela.html" data-start="3.7667" data-duration="3.8333" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s3-cartel" data-composition-id="s3-cartel" data-composition-src="compositions/s3-cartel.html" data-start="7.6" data-duration="4.0" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
+      <div id="s4-sello" data-composition-id="s4-sello" data-composition-src="compositions/s4-sello.html" data-start="11.6" data-duration="3.5667" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>
+      <div id="s5-premio" data-composition-id="s5-premio" data-composition-src="compositions/s5-premio.html" data-start="15.1667" data-duration="2.8" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="s6-cierre" data-composition-id="s6-cierre" data-composition-src="compositions/s6-cierre.html" data-start="17.9667" data-duration="8.5333" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:6"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="26.5" data-track-index="20" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:20"></div>
+      <audio id="mix" class="clip" src="assets/audio/mix.wav" data-start="0" data-duration="26.5" data-track-index="30" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

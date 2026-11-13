@@ -1,0 +1,202 @@
+<template>
+  <style>
+    /* ───────── Negocity · sistema de diseño compartido (se inyecta en cada escena) ───────── */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 600; src: url("assets/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; src: url("assets/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; src: url("assets/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 500; src: url("assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 600; src: url("assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url("assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 800; src: url("assets/fonts/figtree-latin-800-normal.woff2") format("woff2"); }
+
+#root {
+  position: absolute; inset: 0; overflow: hidden;
+  --green: #09672C; --cream: #FFFEFA; --black: #000000; --gold: #F2B807; --blue: #477BEE;
+  --cream-2: #F5F1E4; --cream-3: #E9E3D0; --ink-2: rgba(0,0,0,.62); --ink-3: rgba(0,0,0,.38);
+  --sh-dark: rgba(104, 88, 50, .30); --sh-light: rgba(255,255,255,.98);
+  font-family: "Figtree", sans-serif; font-weight: 600; color: #000;
+}
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+
+/* fondos */
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-cream { position: absolute; inset: 0; background: radial-gradient(130% 95% at 18% 8%, #FFFEFA 0%, #FCF9EF 46%, #F1EBD9 100%); }
+.g-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(9,103,44,.10) 2.2px, transparent 2.6px); background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); mask-image: radial-gradient(75% 55% at 78% 30%, #000 0%, transparent 100%); }
+.g-rings { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; border: 2px solid rgba(9,103,44,.07);
+  box-shadow: 0 0 0 110px rgba(9,103,44,.022), 0 0 0 112px rgba(9,103,44,.06), 0 0 0 240px rgba(9,103,44,.016), 0 0 0 242px rgba(9,103,44,.05); }
+.sweep { position: absolute; top: -300px; left: 0; width: 360px; height: 2600px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); filter: blur(30px); opacity: 0; }
+
+/* tipografía */
+.t-display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -0.025em; line-height: .98; }
+.t-word { display: inline-block; white-space: pre; }
+.t-green { color: var(--green); }
+.t-cream { color: var(--cream); }
+.t-body { font-family: "Figtree", sans-serif; }
+.hl-green { display: inline-block; background: var(--green); color: var(--cream); border-radius: 22px; padding: 0 .16em .04em; }
+
+/* etiqueta de sección */
+.chip { display: inline-flex; align-items: center; gap: 14px; height: 68px; padding: 0 28px 0 20px; border-radius: 34px; font-weight: 700; font-size: 32px; color: var(--green);
+  background: linear-gradient(145deg, #FFFFFF, #F4F0E3); box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.chip svg { width: 36px; height: 36px; }
+
+/* neumorfismo */
+.neu { background: linear-gradient(145deg, #FFFFFF 0%, #F6F2E6 100%); border-radius: 40px; box-shadow: -14px -14px 32px var(--sh-light), 16px 18px 40px var(--sh-dark); }
+.neu-sm { background: linear-gradient(145deg, #FFFFFF 0%, #F5F1E4 100%); border-radius: 26px; box-shadow: -8px -8px 18px var(--sh-light), 9px 10px 22px var(--sh-dark); }
+.neu-in { background: #F2EDDF; border-radius: 26px; box-shadow: inset 7px 7px 16px rgba(104,88,50,.28), inset -7px -7px 16px rgba(255,255,255,.95); }
+.neu-green { background: linear-gradient(145deg, #0C7B36 0%, #07561F 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(9,103,44,.42); }
+.neu-black { background: linear-gradient(145deg, #1c1c1c 0%, #000 100%); color: var(--cream); border-radius: 40px; box-shadow: -12px -12px 28px var(--sh-light), 14px 18px 38px rgba(0,0,0,.35); }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* celular */
+.phone { position: absolute; border-radius: 78px; background: linear-gradient(150deg, #2b2b2b, #050505 40%); padding: 15px; box-shadow: 34px 44px 90px rgba(70,58,28,.38), -6px -6px 18px rgba(255,255,255,.7), inset 0 0 0 2px #3a3a3a; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 64px; overflow: hidden; background: linear-gradient(160deg, #FFFEFA, #F6F2E5); }
+.phone .island { position: absolute; top: 20px; left: 50%; width: 150px; height: 40px; margin-left: -75px; border-radius: 22px; background: #000; z-index: 5; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--cream); background: var(--green); flex: none; }
+.dot-live { width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(71,123,238,.22); flex: none; }
+.spark { position: absolute; width: 44px; height: 44px; color: var(--blue); }
+.spark svg { width: 100%; height: 100%; fill: currentColor; }
+.speck { position: absolute; border-radius: 50%; }
+
+/* ───────── tarjeta de lealtad digital (componente compartido) ─────────
+   base 640×400; se escala con transform en un contenedor */
+.dcard { position: relative; width: 640px; height: 400px; border-radius: 42px; padding: 16px;
+  background: linear-gradient(150deg, #0E8A3D 0%, #09672C 46%, #064F21 100%);
+  box-shadow: -14px -14px 34px rgba(255,255,255,.55), 22px 28px 60px rgba(9,60,25,.45), inset 0 2px 0 rgba(255,255,255,.18); }
+.dcard .frame { position: absolute; inset: 16px; border: 4px solid #FFFEFA; border-radius: 30px; padding: 22px 26px 18px; }
+.dcard .biz { display: flex; align-items: center; gap: 14px; color: #FFFEFA; }
+.dcard .biz .bi { width: 58px; height: 58px; border-radius: 18px; background: #FFFEFA; color: #09672C; font-size: 34px; display: flex; align-items: center; justify-content: center; flex: none; }
+.dcard .biz b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 38px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.dcard .biz span { display: block; font-weight: 700; font-size: 22px; opacity: .78; margin-top: 4px; white-space: nowrap; }
+.dcard .qr { position: absolute; right: 22px; top: 20px; width: 112px; height: 112px; border-radius: 18px; background: #FFFFFF; padding: 11px; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.dcard .qr svg { display: block; width: 100%; height: 100%; }
+.dcard .stamps { position: absolute; left: 24px; right: 24px; top: 156px; display: flex; justify-content: space-between; }
+.dcard .st { position: relative; width: 56px; height: 56px; border-radius: 50%; border: 3px solid rgba(255,254,250,.75); background: rgba(0,0,0,.12); }
+.dcard .st .f { position: absolute; inset: -3px; border-radius: 50%; background: #FFFEFA; color: #09672C; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+.dcard .st .f svg { stroke-width: 3.4; }
+.dcard .st .f.gold { background: linear-gradient(145deg, #FFD54A, #F2B807); color: #000; box-shadow: 0 0 0 4px rgba(242,184,7,.35), 0 6px 16px rgba(242,184,7,.6); }
+.dcard .pts { position: absolute; left: 24px; right: 24px; top: 140px; height: 96px; display: flex; align-items: center; gap: 18px; color: #FFFEFA; opacity: 0; }
+.dcard .pts .n { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 92px; line-height: 1; letter-spacing: -.03em; }
+.dcard .pts .u { font-weight: 800; font-size: 30px; opacity: .85; }
+.dcard .who { position: absolute; left: 26px; right: 26px; bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between; color: #FFFEFA; }
+.dcard .who small { display: block; font-weight: 700; font-size: 20px; opacity: .7; letter-spacing: .06em; text-transform: uppercase; }
+.dcard .who b { display: block; font-weight: 800; font-size: 32px; white-space: nowrap; }
+.dcard .who .cnt { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 30px; white-space: nowrap; }
+.dcard .glint { position: absolute; inset: 0; border-radius: 42px; overflow: hidden; pointer-events: none; }
+.dcard .glint i { position: absolute; top: -60px; left: -160px; width: 110px; height: 560px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(18deg); }
+/* foto de fondo animable */
+.photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.shade-top { position: absolute; left: 0; right: 0; top: 0; height: 760px; background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,0) 100%); }
+.shade-bot { position: absolute; left: 0; right: 0; bottom: 0; height: 900px; background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%); }
+
+    #s2-glow { position: absolute; left: 40px; top: 760px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(9,103,44,.55) 0%, rgba(9,103,44,0) 66%); }
+    #s2-flash { position: absolute; inset: 0; background: #FFFEFA; }
+    #s2-logowrap { position: absolute; left: -73px; top: 452px; width: 1224px; height: 816px; mix-blend-mode: screen; }
+    #s2-logoclip { position: absolute; inset: 0; }
+    #s2-logo { position: absolute; left: 0; top: 0; width: 1224px; height: 816px; display: block; }
+    #s2-bar { position: absolute; left: 0; top: 60px; width: 150px; height: 700px; background: linear-gradient(90deg, transparent, rgba(255,254,250,.9), transparent); filter: blur(22px); opacity: 0; }
+    #s2-ph { left: 250px; top: 560px; width: 580px; height: 1140px; }
+    #s2-ph .screen { background: linear-gradient(170deg, #FFFEFA 0%, #F3EEDF 100%); }
+    .s2-top { position: absolute; left: 34px; right: 34px; top: 88px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 30px; }
+    .s2-top span { font-family: "Bricolage Grotesque"; font-size: 38px; }
+    #s2-cardwrap { position: absolute; left: 24px; top: 170px; width: 640px; height: 400px; transform-origin: 0 0; }
+    .s2-row { position: absolute; left: 24px; right: 24px; height: 100px; display: flex; align-items: center; gap: 16px; padding: 0 22px; font-weight: 700; font-size: 27px; }
+    .s2-row .d { width: 58px; height: 58px; border-radius: 18px; background: var(--green); color: var(--cream); font-size: 34px; display: flex; align-items: center; justify-content: center; flex: none; }
+    .s2-row i { margin-left: auto; font-style: normal; color: var(--ink-3); }
+    #s2-float { position: absolute; left: 220px; top: 690px; width: 640px; height: 400px; transform-origin: 50% 50%; }
+  </style>
+  <div id="root" data-composition-id="s2-revela" data-width="1080" data-height="1920">
+    <section id="s2-main" class="clip" data-start="0" data-duration="3.8333" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s2-glow" data-layout-ignore></div>
+      <div id="s2-specks" class="fill" data-layout-ignore></div>
+      <!-- celular del cliente con su tarjeta digital -->
+      <div id="s2-ph" class="phone" data-layout-allow-overflow data-layout-allow-overlap data-layout-allow-occlusion>
+        <div class="screen">
+          <div class="island"></div>
+          <div class="s2-top"><span>Mis tarjetas</span><svg class="ico" viewBox="0 0 24 24" ><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
+          <div id="s2-cardwrap" data-layout-allow-overflow data-layout-ignore></div>
+          <div class="s2-row neu-sm" id="s2-r0" style="top:610px"><div class="d"><svg class="ico" viewBox="0 0 24 24" ><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.500a2.500 2.500 0 0 1 0 5H17M8 3v2.500M12 3v2.500"/></svg></div>Visita registrada<i>hoy</i></div>
+          <div class="s2-row neu-sm" id="s2-r1" style="top:732px"><div class="d"><svg class="ico" viewBox="0 0 24 24" ><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M3 7h18v3H3zM12 7v13"/><path d="M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0"/></svg></div>Premio: café gratis<i>8 sellos</i></div>
+        </div>
+      </div>
+      <!-- la tarjeta sale del celular y flota -->
+      <div id="s2-float" data-layout-allow-overflow></div>
+      <!-- logo oficial, tal cual -->
+      <div id="s2-logowrap" data-layout-allow-overflow>
+        <div id="s2-logoclip"><img id="s2-logo" src="assets/brand/logo-full-black.png" alt="Negocity" /></div>
+        <div id="s2-bar"></div>
+      </div>
+      <div id="s2-sp0" class="spark" style="left:874px;top:556px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      <div id="s2-sp1" class="spark" style="left:168px;top:1010px;width:30px;height:30px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      <div id="s2-sp2" class="spark" style="left:900px;top:1120px;width:36px;height:36px"><svg class="ico" viewBox="0 0 24 24" ><path stroke="none" fill="currentColor" d="M12 1c.900 6.200 4.800 10.100 11 11-6.200.900-10.100 4.800-11 11-.900-6.200-4.800-10.100-11-11 6.200-.900 10.100-4.800 11-11z"/></svg></div>
+      <div id="s2-flash"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=3.7667, DUR=3.8333, SEG={"1": {"s": 3.9, "e": 7.37, "text": "Con Negocity, la tarjeta vive en el celular de tu cliente.", "w": [{"t": "Con", "s": 3.95, "e": 4.11}, {"t": "Negocity,", "s": 4.15, "e": 4.83}, {"t": "la", "s": 4.91, "e": 4.99}, {"t": "tarjeta", "s": 5.07, "e": 5.47}, {"t": "vive", "s": 5.55, "e": 5.79}, {"t": "en", "s": 5.83, "e": 5.87}, {"t": "el", "s": 5.95, "e": 5.99}, {"t": "celular", "s": 6.03, "e": 6.43}, {"t": "de", "s": 6.47, "e": 6.51}, {"t": "tu", "s": 6.59, "e": 6.67}, {"t": "cliente.", "s": 6.91, "e": 7.31}]}}, SEED=849;
+      window.__QR_D = "M0,0h1v1h-1zM1,0h1v1h-1zM2,0h1v1h-1zM3,0h1v1h-1zM4,0h1v1h-1zM5,0h1v1h-1zM6,0h1v1h-1zM10,0h1v1h-1zM16,0h1v1h-1zM18,0h1v1h-1zM19,0h1v1h-1zM20,0h1v1h-1zM21,0h1v1h-1zM22,0h1v1h-1zM23,0h1v1h-1zM24,0h1v1h-1zM0,1h1v1h-1zM6,1h1v1h-1zM9,1h1v1h-1zM11,1h1v1h-1zM12,1h1v1h-1zM13,1h1v1h-1zM15,1h1v1h-1zM18,1h1v1h-1zM24,1h1v1h-1zM0,2h1v1h-1zM2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM6,2h1v1h-1zM8,2h1v1h-1zM9,2h1v1h-1zM11,2h1v1h-1zM14,2h1v1h-1zM16,2h1v1h-1zM18,2h1v1h-1zM20,2h1v1h-1zM21,2h1v1h-1zM22,2h1v1h-1zM24,2h1v1h-1zM0,3h1v1h-1zM2,3h1v1h-1zM3,3h1v1h-1zM4,3h1v1h-1zM6,3h1v1h-1zM8,3h1v1h-1zM9,3h1v1h-1zM11,3h1v1h-1zM12,3h1v1h-1zM13,3h1v1h-1zM14,3h1v1h-1zM18,3h1v1h-1zM20,3h1v1h-1zM21,3h1v1h-1zM22,3h1v1h-1zM24,3h1v1h-1zM0,4h1v1h-1zM2,4h1v1h-1zM3,4h1v1h-1zM4,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM9,4h1v1h-1zM11,4h1v1h-1zM13,4h1v1h-1zM18,4h1v1h-1zM20,4h1v1h-1zM21,4h1v1h-1zM22,4h1v1h-1zM24,4h1v1h-1zM0,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM9,5h1v1h-1zM11,5h1v1h-1zM13,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM18,5h1v1h-1zM24,5h1v1h-1zM0,6h1v1h-1zM1,6h1v1h-1zM2,6h1v1h-1zM3,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM18,6h1v1h-1zM19,6h1v1h-1zM20,6h1v1h-1zM21,6h1v1h-1zM22,6h1v1h-1zM23,6h1v1h-1zM24,6h1v1h-1zM8,7h1v1h-1zM9,7h1v1h-1zM10,7h1v1h-1zM12,7h1v1h-1zM14,7h1v1h-1zM15,7h1v1h-1zM0,8h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM11,8h1v1h-1zM12,8h1v1h-1zM13,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM19,8h1v1h-1zM20,8h1v1h-1zM21,8h1v1h-1zM22,8h1v1h-1zM2,9h1v1h-1zM3,9h1v1h-1zM8,9h1v1h-1zM9,9h1v1h-1zM11,9h1v1h-1zM12,9h1v1h-1zM13,9h1v1h-1zM16,9h1v1h-1zM19,9h1v1h-1zM23,9h1v1h-1zM2,10h1v1h-1zM3,10h1v1h-1zM4,10h1v1h-1zM6,10h1v1h-1zM10,10h1v1h-1zM11,10h1v1h-1zM14,10h1v1h-1zM15,10h1v1h-1zM17,10h1v1h-1zM18,10h1v1h-1zM20,10h1v1h-1zM21,10h1v1h-1zM23,10h1v1h-1zM24,10h1v1h-1zM2,11h1v1h-1zM5,11h1v1h-1zM7,11h1v1h-1zM9,11h1v1h-1zM10,11h1v1h-1zM11,11h1v1h-1zM12,11h1v1h-1zM14,11h1v1h-1zM15,11h1v1h-1zM16,11h1v1h-1zM17,11h1v1h-1zM18,11h1v1h-1zM19,11h1v1h-1zM20,11h1v1h-1zM24,11h1v1h-1zM0,12h1v1h-1zM4,12h1v1h-1zM6,12h1v1h-1zM7,12h1v1h-1zM8,12h1v1h-1zM9,12h1v1h-1zM11,12h1v1h-1zM12,12h1v1h-1zM13,12h1v1h-1zM15,12h1v1h-1zM16,12h1v1h-1zM17,12h1v1h-1zM18,12h1v1h-1zM20,12h1v1h-1zM22,12h1v1h-1zM23,12h1v1h-1zM24,12h1v1h-1zM0,13h1v1h-1zM1,13h1v1h-1zM2,13h1v1h-1zM5,13h1v1h-1zM9,13h1v1h-1zM13,13h1v1h-1zM16,13h1v1h-1zM19,13h1v1h-1zM21,13h1v1h-1zM23,13h1v1h-1zM0,14h1v1h-1zM6,14h1v1h-1zM8,14h1v1h-1zM11,14h1v1h-1zM12,14h1v1h-1zM13,14h1v1h-1zM14,14h1v1h-1zM15,14h1v1h-1zM16,14h1v1h-1zM17,14h1v1h-1zM18,14h1v1h-1zM19,14h1v1h-1zM20,14h1v1h-1zM21,14h1v1h-1zM23,14h1v1h-1zM24,14h1v1h-1zM0,15h1v1h-1zM3,15h1v1h-1zM4,15h1v1h-1zM7,15h1v1h-1zM9,15h1v1h-1zM11,15h1v1h-1zM15,15h1v1h-1zM17,15h1v1h-1zM19,15h1v1h-1zM20,15h1v1h-1zM24,15h1v1h-1zM0,16h1v1h-1zM2,16h1v1h-1zM3,16h1v1h-1zM6,16h1v1h-1zM7,16h1v1h-1zM11,16h1v1h-1zM13,16h1v1h-1zM14,16h1v1h-1zM16,16h1v1h-1zM17,16h1v1h-1zM18,16h1v1h-1zM19,16h1v1h-1zM20,16h1v1h-1zM22,16h1v1h-1zM8,17h1v1h-1zM12,17h1v1h-1zM13,17h1v1h-1zM15,17h1v1h-1zM16,17h1v1h-1zM20,17h1v1h-1zM21,17h1v1h-1zM0,18h1v1h-1zM1,18h1v1h-1zM2,18h1v1h-1zM3,18h1v1h-1zM4,18h1v1h-1zM5,18h1v1h-1zM6,18h1v1h-1zM14,18h1v1h-1zM16,18h1v1h-1zM18,18h1v1h-1zM20,18h1v1h-1zM22,18h1v1h-1zM23,18h1v1h-1zM24,18h1v1h-1zM0,19h1v1h-1zM6,19h1v1h-1zM8,19h1v1h-1zM10,19h1v1h-1zM12,19h1v1h-1zM14,19h1v1h-1zM16,19h1v1h-1zM20,19h1v1h-1zM21,19h1v1h-1zM23,19h1v1h-1zM0,20h1v1h-1zM2,20h1v1h-1zM3,20h1v1h-1zM4,20h1v1h-1zM6,20h1v1h-1zM8,20h1v1h-1zM9,20h1v1h-1zM10,20h1v1h-1zM12,20h1v1h-1zM13,20h1v1h-1zM14,20h1v1h-1zM15,20h1v1h-1zM16,20h1v1h-1zM17,20h1v1h-1zM18,20h1v1h-1zM19,20h1v1h-1zM20,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM0,21h1v1h-1zM2,21h1v1h-1zM3,21h1v1h-1zM4,21h1v1h-1zM6,21h1v1h-1zM8,21h1v1h-1zM10,21h1v1h-1zM13,21h1v1h-1zM14,21h1v1h-1zM16,21h1v1h-1zM17,21h1v1h-1zM18,21h1v1h-1zM20,21h1v1h-1zM21,21h1v1h-1zM22,21h1v1h-1zM23,21h1v1h-1zM24,21h1v1h-1zM0,22h1v1h-1zM2,22h1v1h-1zM3,22h1v1h-1zM4,22h1v1h-1zM6,22h1v1h-1zM8,22h1v1h-1zM10,22h1v1h-1zM11,22h1v1h-1zM12,22h1v1h-1zM15,22h1v1h-1zM21,22h1v1h-1zM22,22h1v1h-1zM24,22h1v1h-1zM0,23h1v1h-1zM6,23h1v1h-1zM10,23h1v1h-1zM11,23h1v1h-1zM15,23h1v1h-1zM16,23h1v1h-1zM17,23h1v1h-1zM19,23h1v1h-1zM20,23h1v1h-1zM21,23h1v1h-1zM24,23h1v1h-1zM0,24h1v1h-1zM1,24h1v1h-1zM2,24h1v1h-1zM3,24h1v1h-1zM4,24h1v1h-1zM5,24h1v1h-1zM6,24h1v1h-1zM8,24h1v1h-1zM9,24h1v1h-1zM10,24h1v1h-1zM11,24h1v1h-1zM12,24h1v1h-1zM17,24h1v1h-1zM19,24h1v1h-1zM20,24h1v1h-1zM21,24h1v1h-1zM22,24h1v1h-1zM23,24h1v1h-1zM24,24h1v1h-1z"; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+      // tarjeta digital: card({biz, sub, icon, who, filled, total, id})
+      const QR_SVG = '<svg viewBox="-0.5 -0.5 26 26"><path d="' + (window.__QR_D || "") + '" fill="#000"/></svg>';
+      const card = (o) => {
+        const n = o.total || 8, f = o.filled || 0, id = o.id || "c";
+        let st = "";
+        for (let i = 1; i <= n; i++) st += `<div class="st"><div class="f${i === n && o.goldLast ? " gold" : ""}" id="${id}-f${i}" style="transform:scale(${i <= f ? 1 : 0})">${i === n && o.goldLast ? ICON_GIFT : ICON_CHECK}</div></div>`;
+        return `<div class="dcard" id="${id}"><div class="frame"><div class="biz"><div class="bi">${o.icon || ""}</div><div><b>${o.biz}</b><span>${o.sub || "Tarjeta de lealtad"}</span></div></div></div>
+          <div class="qr">${QR_SVG}</div><div class="stamps" id="${id}-stamps">${st}</div>
+          <div class="pts" id="${id}-pts"><span class="n" id="${id}-ptn">${o.points || 0}</span><span class="u">puntos</span></div>
+          <div class="who"><div><small>Cliente</small><b>${o.who}</b></div><div class="cnt" id="${id}-cnt">${f} de ${n}</div></div>
+          <div class="glint"><i id="${id}-gl"></i></div></div>`;
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const opts = { biz: "Café Lupita", icon: `<svg class="ico" viewBox="0 0 24 24" ><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.500a2.500 2.500 0 0 1 0 5H17M8 3v2.500M12 3v2.500"/></svg>`, who: "Mariana R.", filled: 5, total: 8 };
+      document.querySelector("#s2-cardwrap").innerHTML = card({ ...opts, id: "s2c" });
+      document.querySelector("#s2-float").innerHTML = card({ ...opts, id: "s2f" });
+      gsap.set("#s2-cardwrap", { scale: 532 / 640 });
+      const sp = document.querySelector("#s2-specks");
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement("div"); d.className = "speck"; const s = 3 + rng() * 5;
+        d.style.cssText = `left:${rng() * 1080}px;top:${200 + rng() * 1500}px;width:${s}px;height:${s}px;background:rgba(255,254,250,${0.16 + rng() * 0.3})`;
+        sp.appendChild(d);
+        tl.fromTo(d, { y: 0 }, { y: -(50 + rng() * 110), duration: DUR, ease: "none" }, 0);
+      }
+      // el destello de la escena anterior se abre al negro
+      tl.fromTo("#s2-flash", { opacity: 1 }, { opacity: 0, duration: 0.22, ease: "power2.out" }, 0);
+      tl.set("#s2-ph, #s2-float", { opacity: 0 }, 0);
+      // "Negocity" → revelación de la marca con barrido de luz
+      const tN = Math.max(0.08, W("1", 1) - 0.08);
+      tl.fromTo("#s2-logoclip", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.inOut" }, tN);
+      tl.fromTo("#s2-logowrap", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out", transformOrigin: "613px 398px" }, tN);
+      tl.fromTo("#s2-bar", { x: 120, opacity: 0 }, { x: 1010, opacity: 1, duration: 0.5, ease: "power2.inOut" }, tN);
+      tl.to("#s2-bar", { opacity: 0, duration: 0.12 }, tN + 0.46);
+      [["#s2-sp0", 0.36], ["#s2-sp1", 0.5]].forEach(([s, d]) => {
+        tl.fromTo(s, { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)" }, tN + d);
+        tl.to(s, { scale: 0, rotation: 40, duration: 0.26, ease: "power2.in" }, tN + d + 0.28);
+      });
+      // "la tarjeta" → el logo sube y el celular entra con la tarjeta digital (impacto)
+      const tC = W("1", 3) - 0.22;
+      tl.to("#s2-logowrap", { scale: 0.36, y: -560, duration: 0.5, ease: "power3.inOut", transformOrigin: "613px 398px" }, tC);
+      tl.fromTo("#s2-ph", { opacity: 0, y: 700, rotation: -8, scale: 0.95 }, { opacity: 1, y: 0, rotation: 0, scale: 1, duration: 0.6, ease: "expo.out" }, tC + 0.05);
+      tl.fromTo("#s2-r0, #s2-r1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.07, ease: "expo.out" }, tC + 0.4);
+      // "vive en el celular" → la tarjeta se desprende y flota frente al celular, con brillo
+      const tF = W("1", 4) - 0.1;
+      tl.fromTo("#s2-float", { opacity: 0, scale: 0.83, x: 15, y: 21 }, { opacity: 1, scale: 1.18, x: 0, y: -40, rotation: -4, duration: 0.55, ease: "expo.out" }, tF);
+      tl.to("#s2-cardwrap", { opacity: 0.25, duration: 0.2 }, tF);
+      tl.fromTo("#s2f-gl", { x: 0 }, { x: 1000, duration: 0.6, ease: "power1.inOut" }, tF + 0.25);
+      tl.fromTo("#s2-sp2", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)" }, tF + 0.45);
+      tl.to("#s2-sp2", { scale: 0, rotation: 40, duration: 0.26, ease: "power2.in" }, tF + 0.8);
+      // salida: barrido a la izquierda hacia la cafetería
+      tl.to("#s2-ph, #s2-float, #s2-logowrap", { x: "-=320", opacity: 0, filter: "blur(16px)", duration: 0.24, stagger: 0.02, ease: "power3.in" }, DUR - 0.26);
+      window.__timelines["s2-revela"] = tl;
+    })();
+  </script>
+</template>

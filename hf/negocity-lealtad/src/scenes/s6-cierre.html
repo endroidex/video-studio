@@ -1,0 +1,75 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s6-logowrap { position: absolute; left: -73px; top: 132px; width: 1224px; height: 816px; mix-blend-mode: screen; }
+    #s6-logoclip { position: absolute; inset: 0; }
+    #s6-logo { position: absolute; left: 0; top: 0; width: 1224px; height: 816px; display: block; }
+    #s6-bar { position: absolute; left: 0; top: 60px; width: 150px; height: 700px; background: linear-gradient(90deg, transparent, rgba(255,254,250,.9), transparent); filter: blur(22px); opacity: 0; }
+    #s6-slogan { position: absolute; left: 0; top: 810px; width: 1080px; text-align: center; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 82px; line-height: 1.08; letter-spacing: -.02em; color: var(--cream); }
+    #s6-slogan .ln { display: block; white-space: nowrap; }
+    #s6-under { display: none; }
+    #s6-cta { position: absolute; left: 140px; top: 1086px; width: 800px; height: 150px; }
+    #s6-lbl { position: absolute; left: 0; top: 1046px; width: 1080px; text-align: center; font-weight: 700; font-size: 38px; color: rgba(255,254,250,.78); letter-spacing: .01em; }
+    #s6-pill { position: absolute; left: 0; top: 22px; width: 800px; height: 128px; border-radius: 64px; background: var(--cream); color: #000; display: flex; align-items: center; padding: 0 16px 0 52px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 62px; letter-spacing: -.02em; overflow: hidden; box-shadow: 0 0 0 6px rgba(9,103,44,.9), 0 24px 70px rgba(9,103,44,.55); white-space: nowrap; }
+    #s6-go { margin-left: auto; width: 96px; height: 96px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 54px; display: flex; align-items: center; justify-content: center; flex: none; }
+    #s6-sheen { position: absolute; left: -160px; top: -40px; width: 110px; height: 220px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent); filter: blur(10px); opacity: 0; }
+    #s6-glow { position: absolute; left: 140px; top: 1500px; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(9,103,44,.5) 0%, rgba(9,103,44,0) 68%); }
+  </style>
+  <div id="root" data-composition-id="s6-cierre" data-width="1080" data-height="1920">
+    <section id="s6-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s6-glow" data-layout-ignore></div>
+      <div id="s6-specks" class="fill" data-layout-ignore></div>
+      <!-- logo oficial, tal cual -->
+      <div id="s6-logowrap" data-layout-allow-overflow>
+        <div id="s6-logoclip"><img id="s6-logo" src="assets/brand/logo-full-black.png" alt="Negocity" /></div>
+        <div id="s6-bar"></div>
+      </div>
+      <div id="s6-sp0" class="spark" style="left:880px;top:236px">{{icon:spark}}</div>
+      <div id="s6-sp1" class="spark" style="left:170px;top:700px;width:30px;height:30px">{{icon:spark}}</div>
+      <div id="s6-slogan"><span class="ln"><span class="t-word s6-w">Haz </span><span class="t-word s6-w">que </span><span class="t-word s6-w">tus </span><span class="t-word s6-w">clientes</span></span><span class="ln"><span class="t-word s6-w hl-green">vuelvan.</span></span></div>
+      <div id="s6-under"></div>
+      <div id="s6-lbl">Empieza hoy</div>
+      <div id="s6-cta">
+        <div id="s6-pill">negocity.com.mx<span id="s6-go">{{icon:arrow}}</span><div id="s6-sheen"></div></div>
+      </div>
+      <div id="s6-sp2" class="spark" style="left:918px;top:1010px;width:40px;height:40px">{{icon:spark}}</div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const sp = document.querySelector("#s6-specks");
+      for (let i = 0; i < 20; i++) {
+        const d = document.createElement("div"); d.className = "speck"; const s = 3 + rng() * 5;
+        d.style.cssText = `left:${rng() * 1080}px;top:${200 + rng() * 1600}px;width:${s}px;height:${s}px;background:rgba(255,254,250,${0.16 + rng() * 0.3})`;
+        sp.appendChild(d);
+        tl.fromTo(d, { y: 0 }, { y: -(50 + rng() * 110), duration: DUR, ease: "none" }, 0);
+      }
+      tl.fromTo("#s6-glow", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1.15, duration: DUR, ease: "sine.out" }, 0);
+      // "Negocity." → el logo se revela con un barrido de luz y se asienta
+      const tN = Math.max(0.04, W("5", 0) - 0.06);
+      tl.fromTo("#s6-logoclip", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.inOut" }, tN);
+      tl.fromTo("#s6-logowrap", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out", transformOrigin: "613px 398px" }, tN);
+      tl.fromTo("#s6-bar", { x: 120, opacity: 0 }, { x: 1010, opacity: 1, duration: 0.6, ease: "power2.inOut" }, tN);
+      tl.to("#s6-bar", { opacity: 0, duration: 0.15 }, tN + 0.55);
+      [["#s6-sp0", 0.45], ["#s6-sp1", 0.62]].forEach(([s, d]) => {
+        tl.fromTo(s, { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.5)" }, tN + d);
+        tl.to(s, { scale: 0, rotation: 40, duration: 0.3, ease: "power2.in" }, tN + d + 0.32);
+      });
+      // "Haz que tus clientes vuelvan." palabra por palabra con la voz
+      [1, 2, 3, 4, 5].forEach((wi, i) => tl.fromTo(document.querySelectorAll(".s6-w")[i], { opacity: 0, filter: "blur(12px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.24, ease: "power2.out" }, W("5", wi) - 0.06));
+      // "Empieza hoy en negocity.com.mx"
+      const tC = W("6", 0) - 0.1;
+      tl.fromTo("#s6-lbl", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, tC);
+      tl.fromTo("#s6-cta", { opacity: 0, scale: 0.95, y: 50 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "expo.out" }, W("6", 3) - 0.3);
+      tl.fromTo("#s6-go", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, W("6", 3) + 0.05);
+      tl.fromTo("#s6-sheen", { x: 0, opacity: 1, rotation: 16 }, { x: 1050, opacity: 1, rotation: 16, duration: 0.7, ease: "power1.inOut" }, W("6", 4));
+      tl.fromTo("#s6-sp2", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.22, ease: "back.out(2.5)" }, W("6", 6));
+      tl.to("#s6-sp2", { scale: 0, rotation: 40, duration: 0.3, ease: "power2.in" }, W("6", 6) + 0.4);
+      tl.fromTo("#s6-go svg", { x: 0 }, { x: 8, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 5 }, LE("6") + 0.1);
+      window.__timelines["s6-cierre"] = tl;
+    })();
+  </script>
+</template>

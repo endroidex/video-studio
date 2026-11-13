@@ -1,0 +1,77 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s5-photo { background-image: url("assets/photos/barberia.jpg"); filter: blur(5px) brightness(0.6); }
+    #s5-cw { position: absolute; left: 70px; top: 420px; width: 640px; height: 400px; transform-origin: 0 0; }
+    #s5-rays { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    .s5-ray { position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; border-radius: 8px; background: var(--gold); }
+    #s5-burst { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(242,184,7,.55) 0%, rgba(242,184,7,0) 62%); opacity: 0; }
+    #s5-reward { position: absolute; left: 70px; top: 1010px; width: 940px; height: 196px; border-radius: 44px; background: linear-gradient(145deg, #FFD54A 0%, #F2B807 100%); box-shadow: -10px -10px 24px rgba(255,255,255,.35), 16px 22px 44px rgba(242,184,7,.45); display: flex; align-items: center; gap: 26px; padding: 0 34px; color: #000; }
+    #s5-reward .gi { width: 120px; height: 120px; border-radius: 34px; background: #000; color: var(--gold); font-size: 70px; display: flex; align-items: center; justify-content: center; flex: none; }
+    #s5-reward span { display: block; font-weight: 800; font-size: 34px; white-space: nowrap; margin-bottom: 6px; }
+    #s5-reward b { display: block; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 78px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+    #s5-sweep { position: absolute; top: -40px; left: -200px; width: 120px; height: 300px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent); filter: blur(10px); transform: rotate(16deg); }
+    #s5-title { position: absolute; left: 70px; top: 230px; font-size: 100px; color: var(--cream); white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="s5-premio" data-width="1080" data-height="1920">
+    <section id="s5-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s5-photo" class="photo"></div>
+      <div class="shade-top" style="height:600px"></div>
+      <div id="s5-all" class="fill" data-layout-allow-overflow>
+        <h2 id="s5-title" class="t-display"><span class="t-word s5-w">¡Gana </span><span class="t-word s5-w" style="color:#F2B807">su premio!</span></h2>
+        <div id="s5-burst" data-layout-ignore></div>
+        <div id="s5-rays" data-layout-ignore></div>
+        <div id="s5-cw" data-layout-allow-overflow></div>
+        <div id="s5-reward" data-layout-allow-overflow>
+          <div class="gi">{{icon:gift}}</div>
+          <div><span>¡Premio desbloqueado!</span><b>Corte gratis</b></div>
+          <div id="s5-sweep"></div>
+        </div>
+        <div id="s5-sp0" class="spark" style="left:960px;top:980px;color:var(--gold)">{{icon:spark}}</div>
+        <div id="s5-sp1" class="spark" style="left:60px;top:880px;width:34px;height:34px;color:var(--gold)">{{icon:spark}}</div>
+        <div id="s5-sp2" class="spark" style="left:930px;top:420px;width:30px;height:30px;color:var(--blue)">{{icon:spark}}</div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      $("#s5-cw").innerHTML = card({ biz: "Barbería Don Chuy", icon: `{{icon:scissors}}`, who: "Mariana R.", filled: 7, total: 8, goldLast: true, id: "s5c" });
+      gsap.set("#s5-cw", { scale: 940 / 640 });
+      const K = 940 / 640, gx = 70 + (52 + 7 * 76.57) * K, gy = 420 + 184 * K;   // posición del último sello
+      gsap.set("#s5-burst", { left: gx - 450, top: gy - 450 });
+      gsap.set("#s5-rays", { left: gx, top: gy });
+      tl.fromTo("#s5-photo", { scale: 1.1 }, { scale: 1.03, duration: DUR - 0.3, ease: "none" }, 0);
+      tl.fromTo("#s5-cw", { opacity: 0, scale: K * 0.95 }, { opacity: 1, scale: K, duration: 0.4, ease: "expo.out" }, 0);
+      // "al completarla" → el último sello se llena en dorado
+      const tC = W("4", 2) - 0.02;
+      tl.to("#s5c-f8", { scale: 1, duration: 0.45, ease: "back.out(3)" }, tC);
+      tl.set("#s5c-cnt", { textContent: "8 de 8" }, tC + 0.05);
+      tl.to("#s5c", { boxShadow: "0 0 0 8px rgba(242,184,7,.9), 0 0 90px 20px rgba(242,184,7,.45), 22px 28px 60px rgba(9,60,25,.45)", duration: 0.3, ease: "power2.out" }, tC + 0.05);
+      // "gana su premio" → destello dorado, partículas y la tarjeta de premio
+      const tG = W("4", 3) - 0.1;
+      tl.fromTo("#s5-burst", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1.1, duration: 0.35, ease: "power2.out" }, tC + 0.05);
+      tl.to("#s5-burst", { opacity: 0, duration: 0.6, ease: "power1.in" }, tC + 0.45);
+      const rays = $("#s5-rays");
+      for (let i = 0; i < 18; i++) {
+        const r = document.createElement("div"); r.className = "s5-ray"; rays.appendChild(r);
+        const a = (i / 18) * Math.PI * 2 + rng() * 0.3, d = 260 + rng() * 200;
+        tl.fromTo(r, { x: Math.cos(a) * 40, y: Math.sin(a) * 40, scale: 0, opacity: 1 }, { x: Math.cos(a) * d, y: Math.sin(a) * d, scale: 1 + rng(), opacity: 0, duration: 0.75 + rng() * 0.3, ease: "power2.out" }, tC + 0.08);
+      }
+      blurIn(tl, ".s5-w", tG, 0.1, 0.24);
+      tl.fromTo("#s5-reward", { opacity: 0, scale: 0.6, y: 80, rotation: -5 }, { opacity: 1, scale: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.7)" }, tG + 0.05);
+      tl.fromTo("#s5-sweep", { x: 0 }, { x: 1250, duration: 0.6, ease: "power1.inOut" }, tG + 0.4);
+      tl.fromTo("#s5-reward .gi", { rotation: 0 }, { rotation: -10, duration: 0.08, yoyo: true, repeat: 5, ease: "sine.inOut" }, tG + 0.45);
+      [["#s5-sp0", 0.15], ["#s5-sp1", 0.3], ["#s5-sp2", 0.45]].forEach(([s, d]) => {
+        tl.fromTo(s, { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)" }, tG + d);
+        tl.to(s, { scale: 0, rotation: 40, duration: 0.28, ease: "power2.in" }, tG + d + 0.35);
+      });
+      // salida: zoom a través de la luz dorada hacia el cierre en negro
+      tl.to("#s5-all, #s5-photo", { opacity: 0, scale: 1.15, filter: "blur(16px)", duration: 0.26, ease: "power3.in", transformOrigin: "540px 760px" }, DUR - 0.28);
+      window.__timelines["s5-premio"] = tl;
+    })();
+  </script>
+</template>

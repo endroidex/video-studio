@@ -1,0 +1,93 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s2-glow { position: absolute; left: 40px; top: 760px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(9,103,44,.55) 0%, rgba(9,103,44,0) 66%); }
+    #s2-flash { position: absolute; inset: 0; background: #FFFEFA; }
+    #s2-logowrap { position: absolute; left: -73px; top: 452px; width: 1224px; height: 816px; mix-blend-mode: screen; }
+    #s2-logoclip { position: absolute; inset: 0; }
+    #s2-logo { position: absolute; left: 0; top: 0; width: 1224px; height: 816px; display: block; }
+    #s2-bar { position: absolute; left: 0; top: 60px; width: 150px; height: 700px; background: linear-gradient(90deg, transparent, rgba(255,254,250,.9), transparent); filter: blur(22px); opacity: 0; }
+    #s2-ph { left: 250px; top: 560px; width: 580px; height: 1140px; }
+    #s2-ph .screen { background: linear-gradient(170deg, #FFFEFA 0%, #F3EEDF 100%); }
+    .s2-top { position: absolute; left: 34px; right: 34px; top: 88px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 30px; }
+    .s2-top span { font-family: "Bricolage Grotesque"; font-size: 38px; }
+    #s2-cardwrap { position: absolute; left: 24px; top: 170px; width: 640px; height: 400px; transform-origin: 0 0; }
+    .s2-row { position: absolute; left: 24px; right: 24px; height: 100px; display: flex; align-items: center; gap: 16px; padding: 0 22px; font-weight: 700; font-size: 27px; }
+    .s2-row .d { width: 58px; height: 58px; border-radius: 18px; background: var(--green); color: var(--cream); font-size: 34px; display: flex; align-items: center; justify-content: center; flex: none; }
+    .s2-row i { margin-left: auto; font-style: normal; color: var(--ink-3); }
+    #s2-float { position: absolute; left: 220px; top: 690px; width: 640px; height: 400px; transform-origin: 50% 50%; }
+  </style>
+  <div id="root" data-composition-id="s2-revela" data-width="1080" data-height="1920">
+    <section id="s2-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s2-glow" data-layout-ignore></div>
+      <div id="s2-specks" class="fill" data-layout-ignore></div>
+      <!-- celular del cliente con su tarjeta digital -->
+      <div id="s2-ph" class="phone" data-layout-allow-overflow data-layout-allow-overlap data-layout-allow-occlusion>
+        <div class="screen">
+          <div class="island"></div>
+          <div class="s2-top"><span>Mis tarjetas</span>{{icon:bell}}</div>
+          <div id="s2-cardwrap" data-layout-allow-overflow data-layout-ignore></div>
+          <div class="s2-row neu-sm" id="s2-r0" style="top:610px"><div class="d">{{icon:cup}}</div>Visita registrada<i>hoy</i></div>
+          <div class="s2-row neu-sm" id="s2-r1" style="top:732px"><div class="d">{{icon:gift}}</div>Premio: café gratis<i>8 sellos</i></div>
+        </div>
+      </div>
+      <!-- la tarjeta sale del celular y flota -->
+      <div id="s2-float" data-layout-allow-overflow></div>
+      <!-- logo oficial, tal cual -->
+      <div id="s2-logowrap" data-layout-allow-overflow>
+        <div id="s2-logoclip"><img id="s2-logo" src="assets/brand/logo-full-black.png" alt="Negocity" /></div>
+        <div id="s2-bar"></div>
+      </div>
+      <div id="s2-sp0" class="spark" style="left:874px;top:556px">{{icon:spark}}</div>
+      <div id="s2-sp1" class="spark" style="left:168px;top:1010px;width:30px;height:30px">{{icon:spark}}</div>
+      <div id="s2-sp2" class="spark" style="left:900px;top:1120px;width:36px;height:36px">{{icon:spark}}</div>
+      <div id="s2-flash"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const opts = { biz: "Café Lupita", icon: `{{icon:cup}}`, who: "Mariana R.", filled: 5, total: 8 };
+      document.querySelector("#s2-cardwrap").innerHTML = card({ ...opts, id: "s2c" });
+      document.querySelector("#s2-float").innerHTML = card({ ...opts, id: "s2f" });
+      gsap.set("#s2-cardwrap", { scale: 532 / 640 });
+      const sp = document.querySelector("#s2-specks");
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement("div"); d.className = "speck"; const s = 3 + rng() * 5;
+        d.style.cssText = `left:${rng() * 1080}px;top:${200 + rng() * 1500}px;width:${s}px;height:${s}px;background:rgba(255,254,250,${0.16 + rng() * 0.3})`;
+        sp.appendChild(d);
+        tl.fromTo(d, { y: 0 }, { y: -(50 + rng() * 110), duration: DUR, ease: "none" }, 0);
+      }
+      // el destello de la escena anterior se abre al negro
+      tl.fromTo("#s2-flash", { opacity: 1 }, { opacity: 0, duration: 0.22, ease: "power2.out" }, 0);
+      tl.set("#s2-ph, #s2-float", { opacity: 0 }, 0);
+      // "Negocity" → revelación de la marca con barrido de luz
+      const tN = Math.max(0.08, W("1", 1) - 0.08);
+      tl.fromTo("#s2-logoclip", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.inOut" }, tN);
+      tl.fromTo("#s2-logowrap", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out", transformOrigin: "613px 398px" }, tN);
+      tl.fromTo("#s2-bar", { x: 120, opacity: 0 }, { x: 1010, opacity: 1, duration: 0.5, ease: "power2.inOut" }, tN);
+      tl.to("#s2-bar", { opacity: 0, duration: 0.12 }, tN + 0.46);
+      [["#s2-sp0", 0.36], ["#s2-sp1", 0.5]].forEach(([s, d]) => {
+        tl.fromTo(s, { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)" }, tN + d);
+        tl.to(s, { scale: 0, rotation: 40, duration: 0.26, ease: "power2.in" }, tN + d + 0.28);
+      });
+      // "la tarjeta" → el logo sube y el celular entra con la tarjeta digital (impacto)
+      const tC = W("1", 3) - 0.22;
+      tl.to("#s2-logowrap", { scale: 0.36, y: -560, duration: 0.5, ease: "power3.inOut", transformOrigin: "613px 398px" }, tC);
+      tl.fromTo("#s2-ph", { opacity: 0, y: 700, rotation: -8, scale: 0.95 }, { opacity: 1, y: 0, rotation: 0, scale: 1, duration: 0.6, ease: "expo.out" }, tC + 0.05);
+      tl.fromTo("#s2-r0, #s2-r1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.07, ease: "expo.out" }, tC + 0.4);
+      // "vive en el celular" → la tarjeta se desprende y flota frente al celular, con brillo
+      const tF = W("1", 4) - 0.1;
+      tl.fromTo("#s2-float", { opacity: 0, scale: 0.83, x: 15, y: 21 }, { opacity: 1, scale: 1.18, x: 0, y: -40, rotation: -4, duration: 0.55, ease: "expo.out" }, tF);
+      tl.to("#s2-cardwrap", { opacity: 0.25, duration: 0.2 }, tF);
+      tl.fromTo("#s2f-gl", { x: 0 }, { x: 1000, duration: 0.6, ease: "power1.inOut" }, tF + 0.25);
+      tl.fromTo("#s2-sp2", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)" }, tF + 0.45);
+      tl.to("#s2-sp2", { scale: 0, rotation: 40, duration: 0.26, ease: "power2.in" }, tF + 0.8);
+      // salida: barrido a la izquierda hacia la cafetería
+      tl.to("#s2-ph, #s2-float, #s2-logowrap", { x: "-=320", opacity: 0, filter: "blur(16px)", duration: 0.24, stagger: 0.02, ease: "power3.in" }, DUR - 0.26);
+      window.__timelines["s2-revela"] = tl;
+    })();
+  </script>
+</template>

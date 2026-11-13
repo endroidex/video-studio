@@ -1,0 +1,32 @@
+<template>
+  <style>
+    /*@CSS@*/
+    .cg { position: absolute; left: 0; top: 1218px; width: 1080px; text-align: center; overflow: visible; }
+    .cplate { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; max-width: 940px; padding: 14px 22px; border-radius: 34px; background: #000; box-shadow: 0 14px 34px rgba(0,0,0,.28); }
+    .cw { position: relative; display: inline-block; padding: 4px 14px 6px; font-family: "Figtree", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.12; color: #FFFEFA; white-space: nowrap; }
+    .cwb { position: absolute; inset: 0; border-radius: 18px; background: #09672C; opacity: 0; }
+    .cwt { position: relative; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <section id="cap-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1" data-layout-allow-caption-zone data-layout-allow-overlap data-layout-allow-occlusion>
+<!--@GROUPS@-->
+    </section>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function G(gi, start, end, words) {
+        const g = "#cg-" + gi;
+        tl.fromTo(g, { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+        words.forEach((w, wi) => {
+          tl.fromTo("#cwb-" + gi + "-" + wi, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.09, ease: "power2.out" }, w[0] - 0.03);
+          if (wi < words.length - 1) tl.to("#cwb-" + gi + "-" + wi, { opacity: 0, duration: 0.09 }, Math.max(w[0] + 0.08, words[wi + 1][0] - 0.05));
+        });
+        tl.to(g, { opacity: 0, duration: 0.1, ease: "power2.in" }, end - 0.1);
+        tl.set(g, { opacity: 0 }, end);
+      }
+/*@GROUPS@*/
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>
