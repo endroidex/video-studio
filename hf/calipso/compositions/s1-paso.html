@@ -1,0 +1,117 @@
+<template>
+  <style>
+    /* ───────── Zapatería Calipso · sistema de diseño ───────── */
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal; src: url("assets/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic; src: url("assets/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+
+#root { position: absolute; inset: 0; overflow: hidden;
+  --pink: #e199c9; --pearl: #ddd9da; --black: #000000; --pink-d: #c97bb0; --pink-l: #efc2df; --pearl-l: #ece9ea; --pearl-d: #c6c1c3;
+  font-family: "Manrope", sans-serif; color: #000; }
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.fill { position: absolute; inset: 0; }
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-pink { position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 20%, #e8acd3 0%, #e199c9 50%, #d58cbd 100%); }
+.g-pearl { position: absolute; inset: 0; background: radial-gradient(120% 90% at 30% 15%, #eceaea 0%, #ddd9da 55%, #cfcacc 100%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(0,0,0,.9) .6px, transparent .8px); background-size: 3px 3px; }
+
+/* tipografía */
+.serif { font-family: "DM Serif Display", serif; font-weight: 400; letter-spacing: -0.015em; line-height: .95; }
+.serif i, .it { font-style: italic; }
+.label { font-family: "Manrope"; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+.w { display: inline-block; white-space: pre; }
+.ln { display: block; white-space: nowrap; }
+.mask { display: block; overflow: hidden; padding: 0 .08em .2em; margin: 0 -.08em -.2em; }
+.pk { color: var(--pink); }
+.pe { color: var(--pearl); }
+
+/* círculo rosa (como el letrero real de la tienda) */
+.disc { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebb3d7 0%, #e199c9 55%, #d48abb 100%); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+/* huellas: pasos alternados */
+.step { position: absolute; width: 34px; height: 58px; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: var(--pink); }
+.step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -26px; height: 20px; border-radius: 50%; background: inherit; }
+/* fotos */
+.photo { position: absolute; background-size: cover; background-position: center; }
+.frame { position: absolute; overflow: hidden; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.35); background: #000; }
+.frame img, .frame .photo { display: block; }
+.shine { position: absolute; top: -20%; left: -40%; width: 26%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(16deg); mix-blend-mode: soft-light; pointer-events: none; }
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 76px; padding: 0 34px; border-radius: 38px; font-family: "Manrope"; font-weight: 800; font-size: 34px; letter-spacing: .02em; white-space: nowrap; }
+.pill.k { background: #000; color: var(--pearl); }
+.pill.p { background: var(--pink); color: #000; }
+.pill.l { background: var(--pearl); color: #000; }
+.hair { position: absolute; height: 2px; background: currentColor; transform-origin: 0 50%; }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+
+    #s1-t { position: absolute; left: 0; width: 1080px; top: 520px; text-align: center; color: var(--pearl); }
+    #s1-t .a { font-size: 210px; }
+    #s1-t .b { font-size: 280px; margin-top: -24px; }
+    #s1-t .c { font-size: 34px; margin-top: 40px; color: var(--pearl); }
+    #s1-t .d { font-size: 190px; margin-top: 10px; }
+    #s1-trail { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s1-disc { position: absolute; left: 490px; top: 1650px; width: 100px; height: 100px; }
+  </style>
+  <div id="root" data-composition-id="s1-paso" data-width="1080" data-height="1920">
+    <section id="s1-main" class="clip" data-start="0" data-duration="2.5333" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s1-trail" data-layout-ignore></div>
+      <div id="s1-t">
+        <span class="mask"><span class="ln serif a"><span class="w s1-w">Cada</span></span></span>
+        <span class="mask"><span class="ln serif b pk it"><span class="w s1-w">paso</span></span></span>
+        <span class="ln label c"><span class="w s1-w">empieza</span></span>
+        <span class="mask"><span class="ln serif d"><span class="w s1-w pk it">aquí.</span></span></span>
+      </div>
+      <div id="s1-disc" class="disc" data-layout-ignore></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=0.0, DUR=2.5333, SEG={"0": {"s": 0.4, "e": 2.3, "text": "Cada paso empieza aquí.", "w": [{"t": "Cada", "s": 0.4, "e": 0.587}, {"t": "paso", "s": 0.64, "e": 0.987}, {"t": "empieza", "s": 1.04, "e": 1.6}, {"t": "aquí.", "s": 1.68, "e": 2.16}]}}, SEED=644;
+      window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+      // tarjeta digital: card({biz, sub, icon, who, filled, total, id})
+      const QR_SVG = '<svg viewBox="-0.5 -0.5 26 26"><path d="' + (window.__QR_D || "") + '" fill="#000"/></svg>';
+      const card = (o) => {
+        const n = o.total || 8, f = o.filled || 0, id = o.id || "c";
+        let st = "";
+        for (let i = 1; i <= n; i++) st += `<div class="st"><div class="f${i === n && o.goldLast ? " gold" : ""}" id="${id}-f${i}" style="transform:scale(${i <= f ? 1 : 0})">${i === n && o.goldLast ? ICON_GIFT : ICON_CHECK}</div></div>`;
+        return `<div class="dcard" id="${id}"><div class="frame"><div class="biz"><div class="bi">${o.icon || ""}</div><div><b>${o.biz}</b><span>${o.sub || "Tarjeta de lealtad"}</span></div></div></div>
+          <div class="qr">${QR_SVG}</div><div class="stamps" id="${id}-stamps">${st}</div>
+          <div class="pts" id="${id}-pts"><span class="n" id="${id}-ptn">${o.points || 0}</span><span class="u">puntos</span></div>
+          <div class="who"><div><small>Cliente</small><b>${o.who}</b></div><div class="cnt" id="${id}-cnt">${f} de ${n}</div></div>
+          <div class="glint"><i id="${id}-gl"></i></div></div>`;
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const ws = document.querySelectorAll(".s1-w");
+      // frame 0 (miniatura): "Cada paso" ya en pantalla
+      tl.fromTo("#s1-t .a, #s1-t .b", { scale: 1.04 }, { scale: 1, duration: 1.2, ease: "power3.out" }, 0);
+      tl.fromTo(ws[2], { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, W("0", 2) - 0.08);
+      tl.fromTo(ws[3], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, W("0", 3) - 0.1);
+      // huellas que suben, un paso a la vez
+      const trail = document.querySelector("#s1-trail");
+      const N = 7, x0 = 540, y0 = 1880, dy = 92;
+      for (let i = 0; i < N; i++) {
+        const d = document.createElement("div"); d.className = "step"; trail.appendChild(d);
+        const left = i % 2 === 0;
+        gsap.set(d, { left: x0 + (left ? -46 : 12), top: y0 - i * dy - 60, rotation: left ? -8 : 8, scale: 0.62 });
+        tl.fromTo(d, { opacity: 0, scale: 0.3 }, { opacity: 0.9 - i * 0.04, scale: 0.62, duration: 0.18, ease: "back.out(2)" }, 0.05 + i * 0.22);
+        tl.to(d, { opacity: 0, duration: 0.3 }, DUR - 0.5);
+      }
+      // "aquí" → el círculo rosa (como el letrero de la tienda) crece y abre la siguiente escena
+      const tA = Math.max(W("0", 3) + 0.45, DUR - 0.6);
+      tl.to("#s1-t", { scale: 0.92, opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, tA + 0.12);
+      tl.fromTo("#s1-disc", { scale: 0 }, { scale: 42, duration: 0.6, ease: "power3.in" }, tA);
+      window.__timelines["s1-paso"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,87 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s2-bg { background-image: url("assets/photos/tienda-pared-blur.jpg"); inset: 0; filter: brightness(.55); }
+    #s2-win { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #s2-store { position: absolute; left: -720px; top: 0px; width: 2560px; height: 1920px; background-image: url("assets/photos/tienda-pared.jpg"); }
+    #s2-pinkin { position: absolute; inset: 0; background: var(--pink); }
+    #s2-disc { left: 110px; top: 400px; width: 860px; height: 860px; }
+    #s2-logo { position: absolute; left: 150px; top: 657px; width: 780px; height: 346px; }
+    #s2-lbl { position: absolute; left: 0; width: 1080px; top: 300px; text-align: center; font-size: 34px; color: var(--pearl); }
+    /* parte B: el par perfecto */
+    #s2-B { position: absolute; inset: 0; }
+    #s2-floor { position: absolute; left: 0; right: 0; top: 1060px; bottom: 0; background: linear-gradient(180deg, #cfcacc 0%, #ddd9da 30%, #e7e4e5 100%); }
+    #s2-h { position: absolute; left: 70px; top: 180px; color: #000; }
+    #s2-h .a { font-size: 136px; }
+    #s2-h .b { font-size: 70px; margin-top: 8px; }
+    #s2-boots { position: absolute; left: 75px; top: 590px; width: 930px; height: 575px; }
+    #s2-boots .im { position: absolute; left: 0; top: 0; width: 930px; height: 575px; }
+    #s2-refl { position: absolute; left: 75px; top: 1165px; width: 930px; height: 575px; transform: scaleY(-1); opacity: .16;
+      -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 40%); mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 40%); }
+    #s2-refl .im { width: 930px; height: 575px; }
+    #s2-shadow { position: absolute; left: 90px; top: 1135px; width: 900px; height: 60px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.35), rgba(0,0,0,0)); }
+    #s2-badge { left: 830px; top: 150px; width: 190px; height: 190px; }
+    #s2-blogo { position: absolute; left: 847px; top: 210px; width: 156px; height: 69px; }
+    #s2-sh { left: 0; }
+  </style>
+  <div id="root" data-composition-id="s2-somos" data-width="1080" data-height="1920">
+    <section id="s2-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s2-bg" class="photo"></div>
+      <div id="s2-win" data-layout-allow-overflow><div id="s2-store" class="photo"></div></div>
+      <div id="s2-lbl" class="label"><span class="w">Somos</span></div>
+      <div id="s2-disc" class="disc" data-layout-ignore></div>
+      <div id="s2-logo" class="bimg" role="img" aria-label="Zapatería Calipso" style="background-image:url(assets/brand/logo-negro.png)"></div>
+      <div id="s2-B" data-layout-allow-overflow>
+        <div class="g-pearl"></div><div class="grain"></div>
+        <div id="s2-floor"></div>
+        <div id="s2-h">
+          <span class="mask"><span class="ln serif a"><span class="w s2-w">El par</span></span></span>
+          <span class="mask"><span class="ln serif a"><span class="w s2-w it">perfecto</span></span></span>
+          <span class="mask"><span class="ln serif b"><span class="w s2-w">para toda la </span><span class="w s2-w it" style="color:#c97bb0">familia</span></span></span>
+        </div>
+        <div id="s2-shadow"></div>
+        <div id="s2-refl" data-layout-ignore><div class="bimg im" style="background-image:url(assets/cut/botas-4.png)"></div></div>
+        <div id="s2-boots"><div class="bimg im" role="img" aria-label="Botas Calipso" style="background-image:url(assets/cut/botas-4.png)"></div><div class="shine" id="s2-shine"></div></div>
+        <div id="s2-badge" class="disc" data-layout-ignore></div>
+        <div id="s2-blogo" class="bimg" style="background-image:url(assets/brand/logo-negro.png)"></div>
+      </div>
+      <div id="s2-pinkin"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      // el rosa de la escena anterior se abre en círculo sobre la tienda real
+      tl.fromTo("#s2-pinkin", { clipPath: "circle(150% at 50% 88%)" }, { clipPath: "circle(0% at 50% 50%)", duration: 0.55, ease: "power3.inOut" }, 0);
+      tl.fromTo("#s2-win", { clipPath: "circle(30% at 50% 45%)" }, { clipPath: "circle(120% at 50% 45%)", duration: 0.9, ease: "power3.inOut" }, 0.1);
+      // dolly lento hacia el letrero real de la tienda
+      tl.fromTo("#s2-store", { scale: 1.0, x: 0, y: 0 }, { scale: 1.18, x: -20, y: 40, duration: 2.0, ease: "power1.inOut", transformOrigin: "1256px 630px" }, 0);
+      tl.fromTo("#s2-lbl", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, Math.max(0.15, W("1", 0) - 0.05));
+      // "Zapatería Calipso" → el círculo rosa con el logo oficial, idéntico al original (revelado con máscara)
+      const tL = W("1", 1) - 0.08;
+      tl.fromTo("#s2-disc", { scale: 0 }, { scale: 1, duration: 0.55, ease: "expo.out" }, tL);
+      tl.to("#s2-store", { filter: "blur(6px) brightness(.7)", duration: 0.4 }, tL);
+      tl.fromTo("#s2-logo", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.inOut" }, tL + 0.18);
+      tl.fromTo("#s2-logo", { scale: 0.97 }, { scale: 1, duration: 0.8, ease: "expo.out", transformOrigin: "50% 50%" }, tL + 0.18);
+      // "el par perfecto para toda la familia" → panel gris perla sube; las botas reales se revelan una a una (máscara, sin deformarlas)
+      const tB = W("1", 5) - 0.32;
+      tl.to("#s2-lbl", { opacity: 0, duration: 0.2 }, tB);
+      tl.fromTo("#s2-B", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.inOut" }, tB);
+      tl.fromTo("#s2-badge", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.8)" }, tB + 0.35);
+      tl.fromTo("#s2-blogo", { opacity: 0 }, { opacity: 1, duration: 0.3 }, tB + 0.5);
+      const ws = document.querySelectorAll(".s2-w");
+      tl.fromTo(ws[0], { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, W("1", 6) - 0.12);
+      tl.fromTo(ws[1], { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, W("1", 7) - 0.12);
+      tl.fromTo([ws[2], ws[3]], { yPercent: 110 }, { yPercent: 0, duration: 0.45, stagger: 0.12, ease: "expo.out" }, W("1", 8) - 0.1);
+      tl.fromTo("#s2-boots", { y: 160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, tB + 0.25);
+      tl.fromTo("#s2-boots .im, #s2-refl .im", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power2.inOut" }, tB + 0.3);
+      tl.fromTo("#s2-refl, #s2-shadow", { opacity: 0 }, { opacity: (i) => (i === 0 ? 0.16 : 1), duration: 0.5 }, tB + 0.6);
+      tl.fromTo("#s2-shine", { x: 0 }, { x: 1500, duration: 0.9, ease: "power1.inOut" }, tB + 1.1);
+      // salida: barrido hacia arriba
+      tl.to("#s2-h, #s2-boots, #s2-refl, #s2-shadow", { y: -180, opacity: 0, filter: "blur(12px)", duration: 0.26, stagger: 0.02, ease: "power3.in" }, DUR - 0.28);
+      window.__timelines["s2-somos"] = tl;
+    })();
+  </script>
+</template>

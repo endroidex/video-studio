@@ -1,0 +1,51 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s1-t { position: absolute; left: 0; width: 1080px; top: 520px; text-align: center; color: var(--pearl); }
+    #s1-t .a { font-size: 210px; }
+    #s1-t .b { font-size: 280px; margin-top: -24px; }
+    #s1-t .c { font-size: 34px; margin-top: 40px; color: var(--pearl); }
+    #s1-t .d { font-size: 190px; margin-top: 10px; }
+    #s1-trail { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s1-disc { position: absolute; left: 490px; top: 1650px; width: 100px; height: 100px; }
+  </style>
+  <div id="root" data-composition-id="s1-paso" data-width="1080" data-height="1920">
+    <section id="s1-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s1-trail" data-layout-ignore></div>
+      <div id="s1-t">
+        <span class="mask"><span class="ln serif a"><span class="w s1-w">Cada</span></span></span>
+        <span class="mask"><span class="ln serif b pk it"><span class="w s1-w">paso</span></span></span>
+        <span class="ln label c"><span class="w s1-w">empieza</span></span>
+        <span class="mask"><span class="ln serif d"><span class="w s1-w pk it">aquí.</span></span></span>
+      </div>
+      <div id="s1-disc" class="disc" data-layout-ignore></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      const ws = document.querySelectorAll(".s1-w");
+      // frame 0 (miniatura): "Cada paso" ya en pantalla
+      tl.fromTo("#s1-t .a, #s1-t .b", { scale: 1.04 }, { scale: 1, duration: 1.2, ease: "power3.out" }, 0);
+      tl.fromTo(ws[2], { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, W("0", 2) - 0.08);
+      tl.fromTo(ws[3], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, W("0", 3) - 0.1);
+      // huellas que suben, un paso a la vez
+      const trail = document.querySelector("#s1-trail");
+      const N = 7, x0 = 540, y0 = 1880, dy = 92;
+      for (let i = 0; i < N; i++) {
+        const d = document.createElement("div"); d.className = "step"; trail.appendChild(d);
+        const left = i % 2 === 0;
+        gsap.set(d, { left: x0 + (left ? -46 : 12), top: y0 - i * dy - 60, rotation: left ? -8 : 8, scale: 0.62 });
+        tl.fromTo(d, { opacity: 0, scale: 0.3 }, { opacity: 0.9 - i * 0.04, scale: 0.62, duration: 0.18, ease: "back.out(2)" }, 0.05 + i * 0.22);
+        tl.to(d, { opacity: 0, duration: 0.3 }, DUR - 0.5);
+      }
+      // "aquí" → el círculo rosa (como el letrero de la tienda) crece y abre la siguiente escena
+      const tA = Math.max(W("0", 3) + 0.45, DUR - 0.6);
+      tl.to("#s1-t", { scale: 0.92, opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, tA + 0.12);
+      tl.fromTo("#s1-disc", { scale: 0 }, { scale: 42, duration: 0.6, ease: "power3.in" }, tA);
+      window.__timelines["s1-paso"] = tl;
+    })();
+  </script>
+</template>

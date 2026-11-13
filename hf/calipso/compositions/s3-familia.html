@@ -1,0 +1,172 @@
+<template>
+  <style>
+    /* ───────── Zapatería Calipso · sistema de diseño ───────── */
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal; src: url("assets/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic; src: url("assets/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+
+#root { position: absolute; inset: 0; overflow: hidden;
+  --pink: #e199c9; --pearl: #ddd9da; --black: #000000; --pink-d: #c97bb0; --pink-l: #efc2df; --pearl-l: #ece9ea; --pearl-d: #c6c1c3;
+  font-family: "Manrope", sans-serif; color: #000; }
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.fill { position: absolute; inset: 0; }
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-pink { position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 20%, #e8acd3 0%, #e199c9 50%, #d58cbd 100%); }
+.g-pearl { position: absolute; inset: 0; background: radial-gradient(120% 90% at 30% 15%, #eceaea 0%, #ddd9da 55%, #cfcacc 100%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(0,0,0,.9) .6px, transparent .8px); background-size: 3px 3px; }
+
+/* tipografía */
+.serif { font-family: "DM Serif Display", serif; font-weight: 400; letter-spacing: -0.015em; line-height: .95; }
+.serif i, .it { font-style: italic; }
+.label { font-family: "Manrope"; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+.w { display: inline-block; white-space: pre; }
+.ln { display: block; white-space: nowrap; }
+.mask { display: block; overflow: hidden; padding: 0 .08em .2em; margin: 0 -.08em -.2em; }
+.pk { color: var(--pink); }
+.pe { color: var(--pearl); }
+
+/* círculo rosa (como el letrero real de la tienda) */
+.disc { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebb3d7 0%, #e199c9 55%, #d48abb 100%); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+/* huellas: pasos alternados */
+.step { position: absolute; width: 34px; height: 58px; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: var(--pink); }
+.step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -26px; height: 20px; border-radius: 50%; background: inherit; }
+/* fotos */
+.photo { position: absolute; background-size: cover; background-position: center; }
+.frame { position: absolute; overflow: hidden; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.35); background: #000; }
+.frame img, .frame .photo { display: block; }
+.shine { position: absolute; top: -20%; left: -40%; width: 26%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(16deg); mix-blend-mode: soft-light; pointer-events: none; }
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 76px; padding: 0 34px; border-radius: 38px; font-family: "Manrope"; font-weight: 800; font-size: 34px; letter-spacing: .02em; white-space: nowrap; }
+.pill.k { background: #000; color: var(--pearl); }
+.pill.p { background: var(--pink); color: #000; }
+.pill.l { background: var(--pearl); color: #000; }
+.hair { position: absolute; height: 2px; background: currentColor; transform-origin: 0 50%; }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+
+    /* A · categorías: tipografía cinética */
+    #s3-A { position: absolute; inset: 0; }
+    #s3-list { position: absolute; left: 70px; top: 300px; width: 940px; }
+    .s3-row { position: relative; height: 196px; }
+    .s3-row .mask { position: absolute; left: 0; top: 0; }
+    .s3-row .serif { font-size: 176px; line-height: 1; }
+    .s3-row .hair { left: 0; top: 182px; width: 940px; color: rgba(221,217,218,.35); }
+    .s3-row .num { position: absolute; right: 0; top: 30px; font-size: 26px; color: var(--pink); }
+    .s3-row .ic { position: absolute; right: 0; top: 70px; width: 86px; height: 86px; border-radius: 50%; border: 2px solid rgba(221,217,218,.4); color: var(--pearl); font-size: 44px; display: flex; align-items: center; justify-content: center; }
+    #s3-trail { position: absolute; inset: 0; }
+    /* B · tipos de calzado: collage con fotos reales */
+    #s3-B { position: absolute; inset: 0; }
+    #s3-store { left: 70px; top: 330px; width: 940px; height: 705px; }
+    #s3-store .photo { inset: 0; background-image: url("assets/photos/tienda-pared.jpg"); }
+    #s3-heels { left: 70px; top: 250px; width: 520px; height: 780px; transform-origin: 50% 100%; }
+    #s3-heels .photo { inset: 0; background-image: url("assets/photos/tacones-mono.jpg"); background-position: 50% 70%; }
+    #s3-boots { left: 500px; top: 360px; width: 510px; height: 680px; transform-origin: 50% 100%; }
+    #s3-boots .photo { inset: 0; background-image: url("assets/photos/botas-vaqueras.jpg"); background-position: 30% 70%; }
+    .s3-tag { position: absolute; }
+    #s3-tg-heels { left: 100px; top: 960px; }
+    #s3-tg-boots { left: 640px; top: 990px; }
+    #s3-tg-tenis { left: 120px; top: 1090px; }
+    #s3-tg-esc { left: 470px; top: 1090px; }
+    #s3-more { position: absolute; left: 0; width: 1080px; top: 1060px; text-align: center; color: var(--pearl); }
+    #s3-more .serif { font-size: 120px; }
+    #s3-wipe { position: absolute; inset: 0; background: var(--pearl); }
+  </style>
+  <div id="root" data-composition-id="s3-familia" data-width="1080" data-height="1920">
+    <section id="s3-main" class="clip" data-start="0" data-duration="6.8333" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s3-trail" data-layout-ignore></div>
+      <div id="s3-A" data-layout-allow-overflow>
+        <div class="label" style="position:absolute;left:70px;top:200px;font-size:28px;color:var(--pink)">Para toda la familia</div>
+        <div id="s3-list">
+          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Dama</span></span></span><div class="hair" id="s3-h0"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Caballero</span></span></span><div class="hair" id="s3-h1"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif" style="color:var(--pearl)"><span class="w s3-c">Niños</span></span></span><div class="hair" id="s3-h2"></div></div>
+          <div class="s3-row"><span class="mask"><span class="ln serif it pk"><span class="w s3-c">Deportivo</span></span></span><div class="hair" id="s3-h3"></div></div>
+        </div>
+      </div>
+      <div id="s3-B" data-layout-allow-overflow>
+        <div id="s3-store" class="frame" data-layout-allow-occlusion><div class="photo"></div></div>
+        <div id="s3-heels" class="frame" data-layout-allow-occlusion><div class="photo"></div><div class="shine" id="s3-sh1"></div></div>
+        <div id="s3-boots" class="frame" data-layout-allow-occlusion><div class="photo"></div><div class="shine" id="s3-sh2"></div></div>
+        <div class="s3-tag" id="s3-tg-heels"><span class="pill p">Tacones</span></div>
+        <div class="s3-tag" id="s3-tg-boots"><span class="pill l">Botas</span></div>
+        <div class="s3-tag" id="s3-tg-tenis"><span class="pill k" style="border:2px solid var(--pink)">Tenis</span></div>
+        <div class="s3-tag" id="s3-tg-esc"><span class="pill k" style="border:2px solid var(--pearl)">Escolar</span></div>
+        <div id="s3-more"><span class="mask"><span class="ln serif"><span class="w s3-m">y mucho </span><span class="w s3-m it pk">más</span></span></span></div>
+      </div>
+      <div id="s3-wipe"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=7.1667, DUR=6.8333, SEG={"2": {"s": 7.3, "e": 10.13, "text": "Dama, caballero, niños y deportivo:", "w": [{"t": "Dama,", "s": 7.35, "e": 7.83}, {"t": "caballero,", "s": 7.91, "e": 8.63}, {"t": "niños", "s": 8.71, "e": 9.11}, {"t": "y", "s": 9.19, "e": 9.23}, {"t": "deportivo:", "s": 9.27, "e": 10.07}]}, "3": {"s": 10.23, "e": 13.78, "text": "tacones, botas, tenis, escolar y mucho más.", "w": [{"t": "tacones,", "s": 10.28, "e": 11.0}, {"t": "botas,", "s": 11.12, "e": 11.64}, {"t": "tenis,", "s": 11.76, "e": 12.12}, {"t": "escolar", "s": 12.2, "e": 12.68}, {"t": "y", "s": 12.76, "e": 12.84}, {"t": "mucho", "s": 13.0, "e": 13.24}, {"t": "más.", "s": 13.32, "e": 13.72}]}}, SEED=934;
+      window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+      // tarjeta digital: card({biz, sub, icon, who, filled, total, id})
+      const QR_SVG = '<svg viewBox="-0.5 -0.5 26 26"><path d="' + (window.__QR_D || "") + '" fill="#000"/></svg>';
+      const card = (o) => {
+        const n = o.total || 8, f = o.filled || 0, id = o.id || "c";
+        let st = "";
+        for (let i = 1; i <= n; i++) st += `<div class="st"><div class="f${i === n && o.goldLast ? " gold" : ""}" id="${id}-f${i}" style="transform:scale(${i <= f ? 1 : 0})">${i === n && o.goldLast ? ICON_GIFT : ICON_CHECK}</div></div>`;
+        return `<div class="dcard" id="${id}"><div class="frame"><div class="biz"><div class="bi">${o.icon || ""}</div><div><b>${o.biz}</b><span>${o.sub || "Tarjeta de lealtad"}</span></div></div></div>
+          <div class="qr">${QR_SVG}</div><div class="stamps" id="${id}-stamps">${st}</div>
+          <div class="pts" id="${id}-pts"><span class="n" id="${id}-ptn">${o.points || 0}</span><span class="u">puntos</span></div>
+          <div class="who"><div><small>Cliente</small><b>${o.who}</b></div><div class="cnt" id="${id}-cnt">${f} de ${n}</div></div>
+          <div class="glint"><i id="${id}-gl"></i></div></div>`;
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const cs = document.querySelectorAll(".s3-c");
+      // A · cada categoría entra exactamente cuando se nombra
+      const tw = [W("2", 0), W("2", 1), W("2", 2), W("2", 4)];
+      tl.fromTo("#s3-A .label", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, 0.02);
+      cs.forEach((c, i) => {
+        tl.fromTo(c, { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, tw[i] - 0.1);
+        tl.fromTo("#s3-h" + i, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, tw[i] - 0.02);
+      });
+      // huellas que cruzan en diagonal mientras se nombran
+      const trail = document.querySelector("#s3-trail");
+      for (let i = 0; i < 8; i++) {
+        const d = document.createElement("div"); d.className = "step"; trail.appendChild(d);
+        const left = i % 2 === 0;
+        gsap.set(d, { left: 120 + i * 110 + (left ? 0 : 18), top: 1500 - i * 40 + (left ? 0 : 36), rotation: 72, scale: 0.5 });
+        tl.fromTo(d, { opacity: 0, scale: 0.2 }, { opacity: 0.85, scale: 0.5, duration: 0.18, ease: "back.out(2)" }, 0.1 + i * 0.3);
+      }
+      // B · "tacones, botas, tenis, escolar y mucho más": fotos reales en collage
+      const tB = LS("3") - 0.25;
+      tl.to("#s3-A", { yPercent: -18, opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power3.in" }, tB);
+      tl.set("#s3-B .frame, .s3-tag, #s3-more", { opacity: 0 }, 0);
+      const tT = W("3", 0) - 0.12, tBo = W("3", 1) - 0.12;
+      tl.fromTo("#s3-heels", { opacity: 0, x: -260, rotation: -9, scale: 0.95 }, { opacity: 1, x: 0, rotation: -4, scale: 1, duration: 0.55, ease: "expo.out" }, tT);
+      tl.fromTo("#s3-heels .photo", { scale: 1.15 }, { scale: 1.02, duration: 2.6, ease: "power1.out" }, tT);
+      tl.fromTo("#s3-tg-heels", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, tT + 0.15);
+      tl.fromTo("#s3-sh1", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tT + 0.3);
+      tl.fromTo("#s3-boots", { opacity: 0, x: 280, rotation: 10, scale: 0.95 }, { opacity: 1, x: 0, rotation: 5, scale: 1, duration: 0.55, ease: "expo.out" }, tBo);
+      tl.fromTo("#s3-boots .photo", { scale: 1.15 }, { scale: 1.02, duration: 2.2, ease: "power1.out" }, tBo);
+      tl.fromTo("#s3-tg-boots", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, tBo + 0.15);
+      tl.fromTo("#s3-sh2", { x: 0 }, { x: 900, duration: 0.8, ease: "power1.inOut" }, tBo + 0.3);
+      tl.fromTo("#s3-tg-tenis", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, W("3", 2) - 0.08);
+      tl.fromTo("#s3-tg-esc", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, W("3", 3) - 0.08);
+      // "y mucho más": las fotos se abren y aparece el muro real de la tienda detrás
+      const tM = W("3", 4) - 0.15;
+      tl.to(".s3-tag", { opacity: 0, y: -20, duration: 0.2, stagger: 0.03, ease: "power2.in" }, tM - 0.05);
+      tl.to("#s3-heels", { x: -330, rotation: -12, scale: 0.86, duration: 0.55, ease: "power3.inOut" }, tM);
+      tl.to("#s3-boots", { x: 330, rotation: 12, scale: 0.86, duration: 0.55, ease: "power3.inOut" }, tM);
+      tl.fromTo("#s3-store", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, tM + 0.05);
+      tl.fromTo("#s3-store .photo", { scale: 1.0 }, { scale: 1.12, duration: 1.4, ease: "power1.inOut" }, tM + 0.05);
+      tl.set("#s3-more", { opacity: 1 }, tM);
+      tl.fromTo(".s3-m", { yPercent: 110 }, { yPercent: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, W("3", 5) - 0.12);
+      // salida: cortina gris perla
+      tl.fromTo("#s3-wipe", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.32, ease: "power3.in" }, DUR - 0.32);
+      window.__timelines["s3-familia"] = tl;
+    })();
+  </script>
+</template>

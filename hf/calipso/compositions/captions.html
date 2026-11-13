@@ -1,0 +1,120 @@
+<template>
+  <style>
+    /* ───────── Zapatería Calipso · sistema de diseño ───────── */
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal; src: url("assets/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic; src: url("assets/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+
+#root { position: absolute; inset: 0; overflow: hidden;
+  --pink: #e199c9; --pearl: #ddd9da; --black: #000000; --pink-d: #c97bb0; --pink-l: #efc2df; --pearl-l: #ece9ea; --pearl-d: #c6c1c3;
+  font-family: "Manrope", sans-serif; color: #000; }
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.fill { position: absolute; inset: 0; }
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-pink { position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 20%, #e8acd3 0%, #e199c9 50%, #d58cbd 100%); }
+.g-pearl { position: absolute; inset: 0; background: radial-gradient(120% 90% at 30% 15%, #eceaea 0%, #ddd9da 55%, #cfcacc 100%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(0,0,0,.9) .6px, transparent .8px); background-size: 3px 3px; }
+
+/* tipografía */
+.serif { font-family: "DM Serif Display", serif; font-weight: 400; letter-spacing: -0.015em; line-height: .95; }
+.serif i, .it { font-style: italic; }
+.label { font-family: "Manrope"; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+.w { display: inline-block; white-space: pre; }
+.ln { display: block; white-space: nowrap; }
+.mask { display: block; overflow: hidden; padding: 0 .08em .2em; margin: 0 -.08em -.2em; }
+.pk { color: var(--pink); }
+.pe { color: var(--pearl); }
+
+/* círculo rosa (como el letrero real de la tienda) */
+.disc { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebb3d7 0%, #e199c9 55%, #d48abb 100%); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+/* huellas: pasos alternados */
+.step { position: absolute; width: 34px; height: 58px; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: var(--pink); }
+.step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -26px; height: 20px; border-radius: 50%; background: inherit; }
+/* fotos */
+.photo { position: absolute; background-size: cover; background-position: center; }
+.frame { position: absolute; overflow: hidden; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.35); background: #000; }
+.frame img, .frame .photo { display: block; }
+.shine { position: absolute; top: -20%; left: -40%; width: 26%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(16deg); mix-blend-mode: soft-light; pointer-events: none; }
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 76px; padding: 0 34px; border-radius: 38px; font-family: "Manrope"; font-weight: 800; font-size: 34px; letter-spacing: .02em; white-space: nowrap; }
+.pill.k { background: #000; color: var(--pearl); }
+.pill.p { background: var(--pink); color: #000; }
+.pill.l { background: var(--pearl); color: #000; }
+.hair { position: absolute; height: 2px; background: currentColor; transform-origin: 0 50%; }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+
+    .cg { position: absolute; left: 0; top: 1236px; width: 1080px; text-align: center; overflow: visible; }
+    .cplate { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; max-width: 940px; padding: 12px 18px; border-radius: 30px; background: rgba(0,0,0,.86); box-shadow: 0 14px 34px rgba(0,0,0,.28); }
+    .cw { position: relative; display: inline-block; padding: 4px 14px 6px; font-family: "Manrope", sans-serif; font-weight: 800; font-size: 46px; line-height: 1.12; color: #ddd9da; white-space: nowrap; }
+    .cwb { position: absolute; inset: 0; border-radius: 16px; background: #e199c9; opacity: 0; }
+    .cwt { position: relative; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <section id="cap-main" class="clip" data-start="0" data-duration="25.6" data-track-index="1" data-layout-allow-caption-zone data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="cg" id="cg-0" style="opacity:0"><div class="cplate"><span class="cw" id="cw-0-0"><span class="cwb" id="cwb-0-0"></span><span class="cwt">Cada</span></span><span class="cw" id="cw-0-1"><span class="cwb" id="cwb-0-1"></span><span class="cwt">paso</span></span><span class="cw" id="cw-0-2"><span class="cwb" id="cwb-0-2"></span><span class="cwt">empieza</span></span><span class="cw" id="cw-0-3"><span class="cwb" id="cwb-0-3"></span><span class="cwt">aquí.</span></span></div></div>
+      <div class="cg" id="cg-1" style="opacity:0"><div class="cplate"><span class="cw" id="cw-1-0"><span class="cwb" id="cwb-1-0"></span><span class="cwt">Somos</span></span><span class="cw" id="cw-1-1"><span class="cwb" id="cwb-1-1"></span><span class="cwt">Zapatería</span></span><span class="cw" id="cw-1-2"><span class="cwb" id="cwb-1-2"></span><span class="cwt">Calipso,</span></span></div></div>
+      <div class="cg" id="cg-2" style="opacity:0"><div class="cplate"><span class="cw" id="cw-2-0"><span class="cwb" id="cwb-2-0"></span><span class="cwt">y</span></span><span class="cw" id="cw-2-1"><span class="cwb" id="cwb-2-1"></span><span class="cwt">tenemos</span></span><span class="cw" id="cw-2-2"><span class="cwb" id="cwb-2-2"></span><span class="cwt">el</span></span><span class="cw" id="cw-2-3"><span class="cwb" id="cwb-2-3"></span><span class="cwt">par</span></span></div></div>
+      <div class="cg" id="cg-3" style="opacity:0"><div class="cplate"><span class="cw" id="cw-3-0"><span class="cwb" id="cwb-3-0"></span><span class="cwt">perfecto</span></span><span class="cw" id="cw-3-1"><span class="cwb" id="cwb-3-1"></span><span class="cwt">para</span></span><span class="cw" id="cw-3-2"><span class="cwb" id="cwb-3-2"></span><span class="cwt">toda</span></span><span class="cw" id="cw-3-3"><span class="cwb" id="cwb-3-3"></span><span class="cwt">la</span></span></div></div>
+      <div class="cg" id="cg-4" style="opacity:0"><div class="cplate"><span class="cw" id="cw-4-0"><span class="cwb" id="cwb-4-0"></span><span class="cwt">familia.</span></span></div></div>
+      <div class="cg" id="cg-5" style="opacity:0"><div class="cplate"><span class="cw" id="cw-5-0"><span class="cwb" id="cwb-5-0"></span><span class="cwt">Dama,</span></span><span class="cw" id="cw-5-1"><span class="cwb" id="cwb-5-1"></span><span class="cwt">caballero,</span></span></div></div>
+      <div class="cg" id="cg-6" style="opacity:0"><div class="cplate"><span class="cw" id="cw-6-0"><span class="cwb" id="cwb-6-0"></span><span class="cwt">niños</span></span><span class="cw" id="cw-6-1"><span class="cwb" id="cwb-6-1"></span><span class="cwt">y</span></span><span class="cw" id="cw-6-2"><span class="cwb" id="cwb-6-2"></span><span class="cwt">deportivo:</span></span></div></div>
+      <div class="cg" id="cg-7" style="opacity:0"><div class="cplate"><span class="cw" id="cw-7-0"><span class="cwb" id="cwb-7-0"></span><span class="cwt">tacones,</span></span><span class="cw" id="cw-7-1"><span class="cwb" id="cwb-7-1"></span><span class="cwt">botas,</span></span></div></div>
+      <div class="cg" id="cg-8" style="opacity:0"><div class="cplate"><span class="cw" id="cw-8-0"><span class="cwb" id="cwb-8-0"></span><span class="cwt">tenis,</span></span><span class="cw" id="cw-8-1"><span class="cwb" id="cwb-8-1"></span><span class="cwt">escolar</span></span><span class="cw" id="cw-8-2"><span class="cwb" id="cwb-8-2"></span><span class="cwt">y</span></span><span class="cw" id="cw-8-3"><span class="cwb" id="cwb-8-3"></span><span class="cwt">mucho</span></span></div></div>
+      <div class="cg" id="cg-9" style="opacity:0"><div class="cplate"><span class="cw" id="cw-9-0"><span class="cwb" id="cwb-9-0"></span><span class="cwt">más.</span></span></div></div>
+      <div class="cg" id="cg-10" style="opacity:0"><div class="cplate"><span class="cw" id="cw-10-0"><span class="cwb" id="cwb-10-0"></span><span class="cwt">Calidad</span></span><span class="cw" id="cw-10-1"><span class="cwb" id="cwb-10-1"></span><span class="cwt">que</span></span><span class="cw" id="cw-10-2"><span class="cwb" id="cwb-10-2"></span><span class="cwt">se</span></span><span class="cw" id="cw-10-3"><span class="cwb" id="cwb-10-3"></span><span class="cwt">siente</span></span></div></div>
+      <div class="cg" id="cg-11" style="opacity:0"><div class="cplate"><span class="cw" id="cw-11-0"><span class="cwb" id="cwb-11-0"></span><span class="cwt">desde</span></span><span class="cw" id="cw-11-1"><span class="cwb" id="cwb-11-1"></span><span class="cwt">el</span></span><span class="cw" id="cw-11-2"><span class="cwb" id="cwb-11-2"></span><span class="cwt">primer</span></span><span class="cw" id="cw-11-3"><span class="cwb" id="cwb-11-3"></span><span class="cwt">paso,</span></span></div></div>
+      <div class="cg" id="cg-12" style="opacity:0"><div class="cplate"><span class="cw" id="cw-12-0"><span class="cwb" id="cwb-12-0"></span><span class="cwt">a</span></span><span class="cw" id="cw-12-1"><span class="cwb" id="cwb-12-1"></span><span class="cwt">precios</span></span><span class="cw" id="cw-12-2"><span class="cwb" id="cwb-12-2"></span><span class="cwt">pensados</span></span><span class="cw" id="cw-12-3"><span class="cwb" id="cwb-12-3"></span><span class="cwt">para</span></span></div></div>
+      <div class="cg" id="cg-13" style="opacity:0"><div class="cplate"><span class="cw" id="cw-13-0"><span class="cwb" id="cwb-13-0"></span><span class="cwt">ti.</span></span></div></div>
+      <div class="cg" id="cg-14" style="opacity:0"><div class="cplate"><span class="cw" id="cw-14-0"><span class="cwb" id="cwb-14-0"></span><span class="cwt">Ven</span></span><span class="cw" id="cw-14-1"><span class="cwb" id="cwb-14-1"></span><span class="cwt">a</span></span><span class="cw" id="cw-14-2"><span class="cwb" id="cwb-14-2"></span><span class="cwt">conocernos.</span></span></div></div>
+      <div class="cg" id="cg-15" style="opacity:0"><div class="cplate"><span class="cw" id="cw-15-0"><span class="cwb" id="cwb-15-0"></span><span class="cwt">Zapatería</span></span><span class="cw" id="cw-15-1"><span class="cwb" id="cwb-15-1"></span><span class="cwt">Calipso.</span></span></div></div>
+      <div class="cg" id="cg-16" style="opacity:0"><div class="cplate"><span class="cw" id="cw-16-0"><span class="cwb" id="cwb-16-0"></span><span class="cwt">Tu</span></span><span class="cw" id="cw-16-1"><span class="cwb" id="cwb-16-1"></span><span class="cwt">estilo,</span></span></div></div>
+      <div class="cg" id="cg-17" style="opacity:0"><div class="cplate"><span class="cw" id="cw-17-0"><span class="cwb" id="cwb-17-0"></span><span class="cwt">a</span></span><span class="cw" id="cw-17-1"><span class="cwb" id="cwb-17-1"></span><span class="cwt">cada</span></span><span class="cw" id="cw-17-2"><span class="cwb" id="cwb-17-2"></span><span class="cwt">paso.</span></span></div></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function G(gi, start, end, words) {
+        const g = "#cg-" + gi;
+        tl.fromTo(g, { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+        words.forEach((w, wi) => {
+          const t = "#cw-" + gi + "-" + wi + " .cwt";
+          tl.fromTo("#cwb-" + gi + "-" + wi, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.09, ease: "power2.out" }, w[0] - 0.03);
+          tl.fromTo(t, { color: "#ddd9da" }, { color: "#000000", duration: 0.06 }, w[0] - 0.03);
+          if (wi < words.length - 1) {
+            const off = Math.max(w[0] + 0.08, words[wi + 1][0] - 0.05);
+            tl.to("#cwb-" + gi + "-" + wi, { opacity: 0, duration: 0.09 }, off);
+            tl.to(t, { color: "#ddd9da", duration: 0.06 }, off);
+          }
+        });
+        tl.to(g, { opacity: 0, duration: 0.1, ease: "power2.in" }, end - 0.1);
+        tl.set(g, { opacity: 0 }, end);
+      }
+  G(0, 0.300, 2.380, [[0.4, 0.587], [0.64, 0.987], [1.04, 1.6], [1.68, 2.16]]);
+  G(1, 2.600, 4.080, [[2.7, 2.94], [2.98, 3.42], [3.5, 4.14]]);
+  G(2, 4.080, 4.920, [[4.18, 4.22], [4.3, 4.54], [4.62, 4.78], [4.86, 4.94]]);
+  G(3, 4.920, 6.200, [[5.02, 5.58], [5.66, 5.82], [5.98, 6.14], [6.22, 6.26]]);
+  G(4, 6.200, 7.120, [[6.3, 6.9]]);
+  G(5, 7.250, 8.610, [[7.35, 7.83], [7.91, 8.63]]);
+  G(6, 8.610, 10.180, [[8.71, 9.11], [9.19, 9.23], [9.27, 10.07]]);
+  G(7, 10.180, 11.660, [[10.28, 11.0], [11.12, 11.64]]);
+  G(8, 11.660, 13.220, [[11.76, 12.12], [12.2, 12.68], [12.76, 12.84], [13.0, 13.24]]);
+  G(9, 13.220, 13.940, [[13.32, 13.72]]);
+  G(10, 14.080, 15.120, [[14.18, 14.5], [14.54, 14.58], [14.66, 14.74], [14.82, 15.14]]);
+  G(11, 15.120, 16.280, [[15.22, 15.34], [15.38, 15.46], [15.62, 15.78], [15.86, 16.34]]);
+  G(12, 16.280, 17.680, [[16.38, 16.42], [16.5, 16.9], [16.98, 17.46], [17.54, 17.7]]);
+  G(13, 17.680, 18.320, [[17.78, 18.1]]);
+  G(14, 18.510, 19.790, [[18.61, 18.69], [18.73, 18.77], [18.85, 19.57]]);
+  G(15, 19.930, 21.370, [[20.03, 20.67], [20.75, 21.35]]);
+  G(16, 21.370, 22.170, [[21.47, 21.55], [21.67, 22.15]]);
+  G(17, 22.170, 23.430, [[22.27, 22.35], [22.43, 22.67], [22.75, 23.21]]);
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

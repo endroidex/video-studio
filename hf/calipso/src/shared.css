@@ -1,0 +1,48 @@
+/* ───────── Zapatería Calipso · sistema de diseño ───────── */
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal; src: url("assets/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic; src: url("assets/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+
+#root { position: absolute; inset: 0; overflow: hidden;
+  --pink: #e199c9; --pearl: #ddd9da; --black: #000000; --pink-d: #c97bb0; --pink-l: #efc2df; --pearl-l: #ece9ea; --pearl-d: #c6c1c3;
+  font-family: "Manrope", sans-serif; color: #000; }
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.fill { position: absolute; inset: 0; }
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-pink { position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 20%, #e8acd3 0%, #e199c9 50%, #d58cbd 100%); }
+.g-pearl { position: absolute; inset: 0; background: radial-gradient(120% 90% at 30% 15%, #eceaea 0%, #ddd9da 55%, #cfcacc 100%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(0,0,0,.9) .6px, transparent .8px); background-size: 3px 3px; }
+
+/* tipografía */
+.serif { font-family: "DM Serif Display", serif; font-weight: 400; letter-spacing: -0.015em; line-height: .95; }
+.serif i, .it { font-style: italic; }
+.label { font-family: "Manrope"; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+.w { display: inline-block; white-space: pre; }
+.ln { display: block; white-space: nowrap; }
+.mask { display: block; overflow: hidden; padding: 0 .08em .2em; margin: 0 -.08em -.2em; }
+.pk { color: var(--pink); }
+.pe { color: var(--pearl); }
+
+/* círculo rosa (como el letrero real de la tienda) */
+.disc { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebb3d7 0%, #e199c9 55%, #d48abb 100%); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+/* huellas: pasos alternados */
+.step { position: absolute; width: 34px; height: 58px; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: var(--pink); }
+.step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -26px; height: 20px; border-radius: 50%; background: inherit; }
+/* fotos */
+.photo { position: absolute; background-size: cover; background-position: center; }
+.frame { position: absolute; overflow: hidden; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.35); background: #000; }
+.frame img, .frame .photo { display: block; }
+.shine { position: absolute; top: -20%; left: -40%; width: 26%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(16deg); mix-blend-mode: soft-light; pointer-events: none; }
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 76px; padding: 0 34px; border-radius: 38px; font-family: "Manrope"; font-weight: 800; font-size: 34px; letter-spacing: .02em; white-space: nowrap; }
+.pill.k { background: #000; color: var(--pearl); }
+.pill.p { background: var(--pink); color: #000; }
+.pill.l { background: var(--pearl); color: #000; }
+.hair { position: absolute; height: 2px; background: currentColor; transform-origin: 0 50%; }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.bimg { background-size: 100% 100%; background-repeat: no-repeat; }

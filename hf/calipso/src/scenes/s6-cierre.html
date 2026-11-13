@@ -1,0 +1,53 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s6-logo { position: absolute; left: 110px; top: 600px; width: 860px; height: 382px; }
+    #s6-sweep { position: absolute; left: 110px; top: 600px; width: 860px; height: 382px; overflow: hidden; mix-blend-mode: soft-light; }
+    #s6-sweep i { position: absolute; top: -40px; left: -200px; width: 160px; height: 470px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent); transform: rotate(16deg); }
+    #s6-tag { position: absolute; left: 0; width: 1080px; top: 1060px; text-align: center; color: #000; }
+    #s6-tag .serif { font-size: 96px; }
+    #s6-rule { position: absolute; left: 390px; top: 1010px; width: 300px; height: 2px; background: #000; transform-origin: 50% 50%; }
+    #s6-trail { position: absolute; inset: 0; }
+    #s6-trail .step { background: #000; }
+    #s6-ring { position: absolute; left: 90px; top: 260px; width: 900px; height: 900px; border-radius: 50%; border: 2px solid rgba(0,0,0,.18); }
+    #s6-ring2 { position: absolute; left: 30px; top: 200px; width: 1020px; height: 1020px; border-radius: 50%; border: 1px solid rgba(0,0,0,.1); }
+  </style>
+  <div id="root" data-composition-id="s6-cierre" data-width="1080" data-height="1920">
+    <section id="s6-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-pink"></div><div class="grain"></div>
+      <div id="s6-ring2" data-layout-ignore></div>
+      <div id="s6-ring" data-layout-ignore></div>
+      <div id="s6-trail" data-layout-ignore></div>
+      <!-- logo oficial: revelado con máscara; el resultado final es idéntico al original -->
+      <div id="s6-logo" class="bimg" role="img" aria-label="Zapatería Calipso" style="background-image:url(assets/brand/logo-negro.png)"></div>
+      <div id="s6-sweep" data-layout-ignore><i id="s6-sw"></i></div>
+      <div id="s6-rule"></div>
+      <div id="s6-tag"><span class="mask"><span class="ln serif"><span class="w s6-w">Tu estilo, </span><span class="w s6-w it">a cada paso.</span></span></span></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      // "Zapatería Calipso" → el logo se escribe de izquierda a derecha (máscara) y se asienta desde 97 %
+      const tL = Math.max(0.05, W("6", 0) - 0.08);
+      tl.fromTo("#s6-logo", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power2.inOut" }, tL);
+      tl.fromTo("#s6-logo", { scale: 0.97 }, { scale: 1, duration: 1.4, ease: "expo.out", transformOrigin: "50% 50%" }, tL);
+      tl.fromTo("#s6-ring", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.0, ease: "expo.out" }, tL);
+      tl.fromTo("#s6-ring2", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "expo.out" }, tL + 0.1);
+      tl.fromTo("#s6-sw", { x: 0 }, { x: 1250, duration: 0.8, ease: "power1.inOut" }, tL + 1.0);
+      // "Tu estilo, a cada paso."
+      tl.fromTo("#s6-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, W("6", 2) - 0.2);
+      tl.fromTo(".s6-w", { yPercent: 110 }, { yPercent: 0, duration: 0.55, stagger: 0.5, ease: "expo.out" }, W("6", 2) - 0.1);
+      // huellas negras que cruzan la parte baja, un paso por tiempo
+      const trail = document.querySelector("#s6-trail");
+      for (let i = 0; i < 9; i++) {
+        const d = document.createElement("div"); d.className = "step"; trail.appendChild(d);
+        const up = i % 2 === 0;
+        gsap.set(d, { left: 80 + i * 110, top: 1560 + (up ? 0 : 40), rotation: 90, scale: 0.46 });
+        tl.fromTo(d, { opacity: 0, scale: 0.2 }, { opacity: 0.85, scale: 0.46, duration: 0.18, ease: "back.out(2)" }, W("6", 4) + i * 0.17);
+      }
+      window.__timelines["s6-cierre"] = tl;
+    })();
+  </script>
+</template>

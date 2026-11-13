@@ -1,0 +1,153 @@
+<template>
+  <style>
+    /* ───────── Zapatería Calipso · sistema de diseño ───────── */
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal; src: url("assets/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic; src: url("assets/fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+
+#root { position: absolute; inset: 0; overflow: hidden;
+  --pink: #e199c9; --pearl: #ddd9da; --black: #000000; --pink-d: #c97bb0; --pink-l: #efc2df; --pearl-l: #ece9ea; --pearl-d: #c6c1c3;
+  font-family: "Manrope", sans-serif; color: #000; }
+#root * { box-sizing: border-box; margin: 0; padding: 0; }
+.clip { position: absolute; inset: 0; }
+.fill { position: absolute; inset: 0; }
+.g-black { position: absolute; inset: 0; background: #000; }
+.g-pink { position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 20%, #e8acd3 0%, #e199c9 50%, #d58cbd 100%); }
+.g-pearl { position: absolute; inset: 0; background: radial-gradient(120% 90% at 30% 15%, #eceaea 0%, #ddd9da 55%, #cfcacc 100%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(0,0,0,.9) .6px, transparent .8px); background-size: 3px 3px; }
+
+/* tipografía */
+.serif { font-family: "DM Serif Display", serif; font-weight: 400; letter-spacing: -0.015em; line-height: .95; }
+.serif i, .it { font-style: italic; }
+.label { font-family: "Manrope"; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+.w { display: inline-block; white-space: pre; }
+.ln { display: block; white-space: nowrap; }
+.mask { display: block; overflow: hidden; padding: 0 .08em .2em; margin: 0 -.08em -.2em; }
+.pk { color: var(--pink); }
+.pe { color: var(--pearl); }
+
+/* círculo rosa (como el letrero real de la tienda) */
+.disc { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebb3d7 0%, #e199c9 55%, #d48abb 100%); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+/* huellas: pasos alternados */
+.step { position: absolute; width: 34px; height: 58px; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: var(--pink); }
+.step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -26px; height: 20px; border-radius: 50%; background: inherit; }
+/* fotos */
+.photo { position: absolute; background-size: cover; background-position: center; }
+.frame { position: absolute; overflow: hidden; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.35); background: #000; }
+.frame img, .frame .photo { display: block; }
+.shine { position: absolute; top: -20%; left: -40%; width: 26%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: rotate(16deg); mix-blend-mode: soft-light; pointer-events: none; }
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 76px; padding: 0 34px; border-radius: 38px; font-family: "Manrope"; font-weight: 800; font-size: 34px; letter-spacing: .02em; white-space: nowrap; }
+.pill.k { background: #000; color: var(--pearl); }
+.pill.p { background: var(--pink); color: #000; }
+.pill.l { background: var(--pearl); color: #000; }
+.hair { position: absolute; height: 2px; background: currentColor; transform-origin: 0 50%; }
+.ico { width: 1em; height: 1em; display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.bimg { background-size: 100% 100%; background-repeat: no-repeat; }
+
+    #s2-bg { background-image: url("assets/photos/tienda-pared-blur.jpg"); inset: 0; filter: brightness(.55); }
+    #s2-win { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #s2-store { position: absolute; left: -720px; top: 0px; width: 2560px; height: 1920px; background-image: url("assets/photos/tienda-pared.jpg"); }
+    #s2-pinkin { position: absolute; inset: 0; background: var(--pink); }
+    #s2-disc { left: 110px; top: 400px; width: 860px; height: 860px; }
+    #s2-logo { position: absolute; left: 150px; top: 657px; width: 780px; height: 346px; }
+    #s2-lbl { position: absolute; left: 0; width: 1080px; top: 300px; text-align: center; font-size: 34px; color: var(--pearl); }
+    /* parte B: el par perfecto */
+    #s2-B { position: absolute; inset: 0; }
+    #s2-floor { position: absolute; left: 0; right: 0; top: 1060px; bottom: 0; background: linear-gradient(180deg, #cfcacc 0%, #ddd9da 30%, #e7e4e5 100%); }
+    #s2-h { position: absolute; left: 70px; top: 180px; color: #000; }
+    #s2-h .a { font-size: 136px; }
+    #s2-h .b { font-size: 70px; margin-top: 8px; }
+    #s2-boots { position: absolute; left: 75px; top: 590px; width: 930px; height: 575px; }
+    #s2-boots .im { position: absolute; left: 0; top: 0; width: 930px; height: 575px; }
+    #s2-refl { position: absolute; left: 75px; top: 1165px; width: 930px; height: 575px; transform: scaleY(-1); opacity: .16;
+      -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 40%); mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 40%); }
+    #s2-refl .im { width: 930px; height: 575px; }
+    #s2-shadow { position: absolute; left: 90px; top: 1135px; width: 900px; height: 60px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.35), rgba(0,0,0,0)); }
+    #s2-badge { left: 830px; top: 150px; width: 190px; height: 190px; }
+    #s2-blogo { position: absolute; left: 847px; top: 210px; width: 156px; height: 69px; }
+    #s2-sh { left: 0; }
+  </style>
+  <div id="root" data-composition-id="s2-somos" data-width="1080" data-height="1920">
+    <section id="s2-main" class="clip" data-start="0" data-duration="4.6334" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s2-bg" class="photo"></div>
+      <div id="s2-win" data-layout-allow-overflow><div id="s2-store" class="photo"></div></div>
+      <div id="s2-lbl" class="label"><span class="w">Somos</span></div>
+      <div id="s2-disc" class="disc" data-layout-ignore></div>
+      <div id="s2-logo" class="bimg" role="img" aria-label="Zapatería Calipso" style="background-image:url(assets/brand/logo-negro.png)"></div>
+      <div id="s2-B" data-layout-allow-overflow>
+        <div class="g-pearl"></div><div class="grain"></div>
+        <div id="s2-floor"></div>
+        <div id="s2-h">
+          <span class="mask"><span class="ln serif a"><span class="w s2-w">El par</span></span></span>
+          <span class="mask"><span class="ln serif a"><span class="w s2-w it">perfecto</span></span></span>
+          <span class="mask"><span class="ln serif b"><span class="w s2-w">para toda la </span><span class="w s2-w it" style="color:#c97bb0">familia</span></span></span>
+        </div>
+        <div id="s2-shadow"></div>
+        <div id="s2-refl" data-layout-ignore><div class="bimg im" style="background-image:url(assets/cut/botas-4.png)"></div></div>
+        <div id="s2-boots"><div class="bimg im" role="img" aria-label="Botas Calipso" style="background-image:url(assets/cut/botas-4.png)"></div><div class="shine" id="s2-shine"></div></div>
+        <div id="s2-badge" class="disc" data-layout-ignore></div>
+        <div id="s2-blogo" class="bimg" style="background-image:url(assets/brand/logo-negro.png)"></div>
+      </div>
+      <div id="s2-pinkin"></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      const S0=2.5333, DUR=4.6334, SEG={"1": {"s": 2.65, "e": 7.0, "text": "Somos Zapatería Calipso, y tenemos el par perfecto para toda la familia.", "w": [{"t": "Somos", "s": 2.7, "e": 2.94}, {"t": "Zapatería", "s": 2.98, "e": 3.42}, {"t": "Calipso,", "s": 3.5, "e": 4.14}, {"t": "y", "s": 4.18, "e": 4.22}, {"t": "tenemos", "s": 4.3, "e": 4.54}, {"t": "el", "s": 4.62, "e": 4.78}, {"t": "par", "s": 4.86, "e": 4.94}, {"t": "perfecto", "s": 5.02, "e": 5.58}, {"t": "para", "s": 5.66, "e": 5.82}, {"t": "toda", "s": 5.98, "e": 6.14}, {"t": "la", "s": 6.22, "e": 6.26}, {"t": "familia.", "s": 6.3, "e": 6.9}]}}, SEED=771;
+      window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
+      const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
+      const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);
+      const rise=(tl,sel,t,o={})=>tl.fromTo(sel,{opacity:0,scale:0.95,x:o.x||0,y:o.y===undefined?46:o.y,rotation:o.r||0},{opacity:1,scale:1,x:0,y:0,rotation:o.r1||0,duration:o.d||0.5,stagger:o.st||0,ease:o.ease||"expo.out"},t);
+      const rng=(a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296})(SEED);
+      // tarjeta digital: card({biz, sub, icon, who, filled, total, id})
+      const QR_SVG = '<svg viewBox="-0.5 -0.5 26 26"><path d="' + (window.__QR_D || "") + '" fill="#000"/></svg>';
+      const card = (o) => {
+        const n = o.total || 8, f = o.filled || 0, id = o.id || "c";
+        let st = "";
+        for (let i = 1; i <= n; i++) st += `<div class="st"><div class="f${i === n && o.goldLast ? " gold" : ""}" id="${id}-f${i}" style="transform:scale(${i <= f ? 1 : 0})">${i === n && o.goldLast ? ICON_GIFT : ICON_CHECK}</div></div>`;
+        return `<div class="dcard" id="${id}"><div class="frame"><div class="biz"><div class="bi">${o.icon || ""}</div><div><b>${o.biz}</b><span>${o.sub || "Tarjeta de lealtad"}</span></div></div></div>
+          <div class="qr">${QR_SVG}</div><div class="stamps" id="${id}-stamps">${st}</div>
+          <div class="pts" id="${id}-pts"><span class="n" id="${id}-ptn">${o.points || 0}</span><span class="u">puntos</span></div>
+          <div class="who"><div><small>Cliente</small><b>${o.who}</b></div><div class="cnt" id="${id}-cnt">${f} de ${n}</div></div>
+          <div class="glint"><i id="${id}-gl"></i></div></div>`;
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      // el rosa de la escena anterior se abre en círculo sobre la tienda real
+      tl.fromTo("#s2-pinkin", { clipPath: "circle(150% at 50% 88%)" }, { clipPath: "circle(0% at 50% 50%)", duration: 0.55, ease: "power3.inOut" }, 0);
+      tl.fromTo("#s2-win", { clipPath: "circle(30% at 50% 45%)" }, { clipPath: "circle(120% at 50% 45%)", duration: 0.9, ease: "power3.inOut" }, 0.1);
+      // dolly lento hacia el letrero real de la tienda
+      tl.fromTo("#s2-store", { scale: 1.0, x: 0, y: 0 }, { scale: 1.18, x: -20, y: 40, duration: 2.0, ease: "power1.inOut", transformOrigin: "1256px 630px" }, 0);
+      tl.fromTo("#s2-lbl", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, Math.max(0.15, W("1", 0) - 0.05));
+      // "Zapatería Calipso" → el círculo rosa con el logo oficial, idéntico al original (revelado con máscara)
+      const tL = W("1", 1) - 0.08;
+      tl.fromTo("#s2-disc", { scale: 0 }, { scale: 1, duration: 0.55, ease: "expo.out" }, tL);
+      tl.to("#s2-store", { filter: "blur(6px) brightness(.7)", duration: 0.4 }, tL);
+      tl.fromTo("#s2-logo", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.inOut" }, tL + 0.18);
+      tl.fromTo("#s2-logo", { scale: 0.97 }, { scale: 1, duration: 0.8, ease: "expo.out", transformOrigin: "50% 50%" }, tL + 0.18);
+      // "el par perfecto para toda la familia" → panel gris perla sube; las botas reales se revelan una a una (máscara, sin deformarlas)
+      const tB = W("1", 5) - 0.32;
+      tl.to("#s2-lbl", { opacity: 0, duration: 0.2 }, tB);
+      tl.fromTo("#s2-B", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.inOut" }, tB);
+      tl.fromTo("#s2-badge", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.8)" }, tB + 0.35);
+      tl.fromTo("#s2-blogo", { opacity: 0 }, { opacity: 1, duration: 0.3 }, tB + 0.5);
+      const ws = document.querySelectorAll(".s2-w");
+      tl.fromTo(ws[0], { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, W("1", 6) - 0.12);
+      tl.fromTo(ws[1], { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, W("1", 7) - 0.12);
+      tl.fromTo([ws[2], ws[3]], { yPercent: 110 }, { yPercent: 0, duration: 0.45, stagger: 0.12, ease: "expo.out" }, W("1", 8) - 0.1);
+      tl.fromTo("#s2-boots", { y: 160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, tB + 0.25);
+      tl.fromTo("#s2-boots .im, #s2-refl .im", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power2.inOut" }, tB + 0.3);
+      tl.fromTo("#s2-refl, #s2-shadow", { opacity: 0 }, { opacity: (i) => (i === 0 ? 0.16 : 1), duration: 0.5 }, tB + 0.6);
+      tl.fromTo("#s2-shine", { x: 0 }, { x: 1500, duration: 0.9, ease: "power1.inOut" }, tB + 1.1);
+      // salida: barrido hacia arriba
+      tl.to("#s2-h, #s2-boots, #s2-refl, #s2-shadow", { y: -180, opacity: 0, filter: "blur(12px)", duration: 0.26, stagger: 0.02, ease: "power3.in" }, DUR - 0.28);
+      window.__timelines["s2-somos"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,37 @@
+<template>
+  <style>
+    /*@CSS@*/
+    #s5-store { position: absolute; left: -720px; top: 0; width: 2560px; height: 1920px; background-image: url("assets/photos/tienda-pared.jpg"); }
+    #s5-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.72) 100%); }
+    #s5-t { position: absolute; left: 0; width: 1080px; top: 880px; text-align: center; color: var(--pearl); }
+    #s5-t .serif { font-size: 150px; }
+    #s5-pin { position: absolute; left: 490px; top: 700px; width: 100px; height: 100px; border-radius: 50% 50% 50% 0; background: var(--pink); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+    #s5-pin::after { content: ""; position: absolute; left: 32px; top: 32px; width: 36px; height: 36px; border-radius: 50%; background: #000; }
+    #s5-ring { position: absolute; left: 470px; top: 800px; width: 140px; height: 50px; border-radius: 50%; border: 3px solid var(--pink); }
+  </style>
+  <div id="root" data-composition-id="s5-visita" data-width="1080" data-height="1920">
+    <section id="s5-main" class="clip" data-start="0" data-duration="@DUR@" data-track-index="1">
+      <div class="g-black"></div>
+      <div id="s5-store" class="photo"></div>
+      <div id="s5-shade" data-layout-allow-occlusion></div>
+      <div id="s5-ring" data-layout-ignore></div>
+      <div id="s5-pin" data-layout-ignore></div>
+      <div id="s5-t" data-layout-allow-occlusion><span class="mask"><span class="ln serif"><span class="w s5-w">Ven a</span></span></span><span class="mask"><span class="ln serif"><span class="w s5-w it pk">conocernos</span></span></span></div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      /*@T@*/
+      const tl = gsap.timeline({ paused: true });
+      // dolly hacia el espejo del centro de la tienda real (como si entraras)
+      tl.fromTo("#s5-store", { scale: 1.0, filter: "blur(8px)" }, { scale: 1.32, filter: "blur(0px)", duration: DUR, ease: "power2.out", transformOrigin: "1270px 1260px" }, 0);
+      tl.fromTo("#s5-store", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
+      tl.fromTo("#s5-pin", { y: -260, opacity: 0, rotation: -45 }, { y: 0, opacity: 1, rotation: -45, duration: 0.45, ease: "bounce.out" }, 0.05);
+      tl.fromTo("#s5-ring", { scale: 0.3, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.6, ease: "power2.out" }, 0.45);
+      tl.fromTo(".s5-w", { yPercent: 110 }, { yPercent: 0, duration: 0.45, stagger: 0.1, ease: "expo.out" }, Math.max(0.05, W("5", 0) - 0.12));
+      // salida: el círculo rosa vuelve y cubre todo (abre el cierre)
+      tl.to("#s5-pin", { scale: 30, rotation: -45, duration: 0.42, ease: "power3.in", transformOrigin: "50% 50%" }, DUR - 0.42);
+      window.__timelines["s5-visita"] = tl;
+    })();
+  </script>
+</template>
