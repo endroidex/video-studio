@@ -61,7 +61,7 @@
     #s1-disc { position: absolute; left: 490px; top: 1650px; width: 100px; height: 100px; }
   </style>
   <div id="root" data-composition-id="s1-paso" data-width="1080" data-height="1920">
-    <section id="s1-main" class="clip" data-start="0" data-duration="2.3667" data-track-index="1">
+    <section id="s1-main" class="clip" data-start="0" data-duration="2.5667" data-track-index="1">
       <div class="g-black"></div>
       <div id="s1-trail" data-layout-ignore></div>
       <div id="s1-t">
@@ -75,7 +75,7 @@
   </div>
   <script>
     (function () {
-      const S0=0.0, DUR=2.3667, SEG={"0": {"s": 0.4, "e": 2.127, "text": "Cada paso empieza aquí.", "w": [{"t": "Cada", "s": 0.4, "e": 0.57}, {"t": "paso", "s": 0.618, "e": 0.934}, {"t": "empieza", "s": 0.982, "e": 1.491}, {"t": "aquí.", "s": 1.564, "e": 1.855}]}}, SEED=644;
+      const S0=0.0, DUR=2.5667, SEG={"0": {"s": 0.4, "e": 2.38, "text": "Cada paso empieza aquí.", "w": [{"t": "Cada", "s": 0.4, "e": 0.587}, {"t": "paso", "s": 0.64, "e": 1.013}, {"t": "empieza", "s": 1.12, "e": 1.6}, {"t": "aquí.", "s": 1.68, "e": 2.08}]}}, SEED=644;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);

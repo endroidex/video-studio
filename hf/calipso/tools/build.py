@@ -16,7 +16,7 @@ FPS = 30
 
 # ── plan de montaje: (segmento de voz, pausa después en s). El video arranca con LEAD de imagen sola.
 LEAD = 0.40
-PLAN = [("0", 0.35), ("1", 0.30), ("2", 0.10), ("3", 0.35), ("4", 0.40), ("5", 0.35), ("6", 2.40)]
+PLAN = [("0", 0.30), ("1", 0.25), ("2", 0.10), ("3", 0.30), ("4", 0.35), ("5", 0.30), ("6", 2.10)]
 # ── escenas: id, primer segmento, último segmento
 SCENES = [("s1-paso", "0", "0"), ("s2-somos", "1", "1"), ("s3-familia", "2", "3"), ("s4-calidad", "4", "4"),
           ("s5-visita", "5", "5"), ("s6-cierre", "6", "6")]

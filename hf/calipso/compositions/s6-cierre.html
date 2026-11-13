@@ -64,7 +64,7 @@
     #s6-ring2 { position: absolute; left: 30px; top: 200px; width: 1020px; height: 1020px; border-radius: 50%; border: 1px solid rgba(0,0,0,.1); }
   </style>
   <div id="root" data-composition-id="s6-cierre" data-width="1080" data-height="1920">
-    <section id="s6-main" class="clip" data-start="0" data-duration="5.6" data-track-index="1">
+    <section id="s6-main" class="clip" data-start="0" data-duration="5.6667" data-track-index="1">
       <div class="g-pink"></div><div class="grain"></div>
       <div id="s6-ring2" data-layout-ignore></div>
       <div id="s6-ring" data-layout-ignore></div>
@@ -78,7 +78,7 @@
   </div>
   <script>
     (function () {
-      const S0=22.0333, DUR=5.6, SEG={"6": {"s": 22.15, "e": 25.232, "text": "Zapatería Calipso. Tu estilo, a cada paso.", "w": [{"t": "Zapatería", "s": 22.195, "e": 22.705}, {"t": "Calipso.", "s": 22.777, "e": 23.505}, {"t": "Tu", "s": 23.541, "e": 23.577}, {"t": "estilo,", "s": 23.65, "e": 24.305}, {"t": "a", "s": 24.341, "e": 24.377}, {"t": "cada", "s": 24.523, "e": 24.741}, {"t": "paso.", "s": 24.814, "e": 25.232}]}}, SEED=848;
+      const S0=23.7, DUR=5.6667, SEG={"6": {"s": 23.82, "e": 27.26, "text": "Zapaterías Calipso. Tu estilo, a cada paso.", "w": [{"t": "Zapaterías", "s": 23.87, "e": 24.55}, {"t": "Calipso.", "s": 24.67, "e": 25.36}, {"t": "Tu", "s": 25.4, "e": 25.44}, {"t": "estilo,", "s": 25.52, "e": 26.24}, {"t": "a", "s": 26.28, "e": 26.32}, {"t": "cada", "s": 26.48, "e": 26.72}, {"t": "paso.", "s": 26.8, "e": 27.26}]}}, SEED=848;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);

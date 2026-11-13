@@ -82,7 +82,7 @@
     #s3-wipe { position: absolute; inset: 0; background: var(--pearl); }
   </style>
   <div id="root" data-composition-id="s3-familia" data-width="1080" data-height="1920">
-    <section id="s3-main" class="clip" data-start="0" data-duration="6.3666" data-track-index="1">
+    <section id="s3-main" class="clip" data-start="0" data-duration="7.0667" data-track-index="1">
       <div class="g-black"></div>
       <div id="s3-trail" data-layout-ignore></div>
       <div id="s3-A" data-layout-allow-overflow>
@@ -112,7 +112,7 @@
   </div>
   <script>
     (function () {
-      const S0=7.3667, DUR=6.3666, SEG={"2": {"s": 7.495, "e": 10.104, "text": "Zapatos, tacones, botines, botas,", "w": [{"t": "Zapatos,", "s": 7.54, "e": 8.195}, {"t": "tacones,", "s": 8.231, "e": 8.85}, {"t": "botines,", "s": 8.886, "e": 9.613}, {"t": "botas,", "s": 9.759, "e": 10.086}]}, "3": {"s": 10.204, "e": 13.504, "text": "sandalias, huaraches, zapatillas y mucho más.", "w": [{"t": "sandalias,", "s": 10.249, "e": 10.977}, {"t": "huaraches,", "s": 11.013, "e": 11.583}, {"t": "zapatillas", "s": 11.607, "e": 12.286}, {"t": "y", "s": 12.359, "e": 12.431}, {"t": "mucho", "s": 12.577, "e": 12.795}, {"t": "más.", "s": 12.868, "e": 13.449}]}}, SEED=934;
+      const S0=8.0, DUR=7.0667, SEG={"2": {"s": 8.12, "e": 11.23, "text": "Zapatos, tacones, botines, botas,", "w": [{"t": "Zapatos,", "s": 8.17, "e": 8.89}, {"t": "tacones,", "s": 8.93, "e": 9.65}, {"t": "botines,", "s": 9.77, "e": 10.45}, {"t": "botas,", "s": 10.53, "e": 11.09}]}, "3": {"s": 11.33, "e": 14.88, "text": "sandalias, huaraches, zapatillas y mucho más.", "w": [{"t": "sandalias,", "s": 11.38, "e": 12.073}, {"t": "huaraches,", "s": 12.127, "e": 12.7}, {"t": "zapatillas", "s": 12.74, "e": 13.46}, {"t": "y", "s": 13.62, "e": 13.7}, {"t": "mucho", "s": 13.86, "e": 14.1}, {"t": "más.", "s": 14.18, "e": 14.82}]}}, SEED=934;
       window.__QR_D = ""; const ICON_CHECK = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><path d=\"M5 12.500l4.500 4.500L19 7.500\"/></svg>", ICON_GIFT = "<svg class=\"ico\" viewBox=\"0 0 24 24\" ><rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-1.500-3.500-5.500-3.500-5 0M12 7c1.500-3.500 5.500-3.500 5 0\"/></svg>";
       const W=(k,i)=>SEG[k].w[i].s-S0, WE=(k,i)=>SEG[k].w[i].e-S0, LS=k=>SEG[k].s-S0, LE=k=>SEG[k].e-S0;
       const blurIn=(tl,sel,t,st=0.07,d=0.22)=>tl.fromTo(sel,{opacity:0,filter:"blur(12px)"},{opacity:1,filter:"blur(0px)",duration:d,stagger:st,ease:"power2.out"},t);

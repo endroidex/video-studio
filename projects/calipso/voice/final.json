@@ -2,427 +2,427 @@
  "0": {
   "file": "final_0.wav",
   "src": "elevenlabs:dany",
-  "dur": 1.727,
+  "dur": 1.98,
   "text": "Cada paso empieza aquí.",
   "words": [
    {
     "text": "Cada",
     "accent": false,
     "start": 0.0,
-    "end": 0.17
+    "end": 0.187
    },
    {
     "text": "paso",
     "accent": false,
-    "start": 0.218,
-    "end": 0.534
+    "start": 0.24,
+    "end": 0.613
    },
    {
     "text": "empieza",
     "accent": false,
-    "start": 0.582,
-    "end": 1.091
+    "start": 0.72,
+    "end": 1.2
    },
    {
     "text": "aquí.",
     "accent": false,
-    "start": 1.164,
-    "end": 1.455
+    "start": 1.28,
+    "end": 1.68
    }
   ],
   "ok": true,
-  "rate": 2.75,
-  "natural_gap": 0.48,
-  "tempo": 1.1
+  "rate": 2.38,
+  "natural_gap": 0.4,
+  "compacted": 0.0
  },
  "1": {
   "file": "final_1.wav",
   "src": "elevenlabs:dany",
-  "dur": 4.718,
-  "text": "Somos Zapatería Calipso: moda en calzado para la mujer que sabe brillar.",
+  "dur": 5.19,
+  "text": "Somos Zapaterías Calipso: moda en calzado para la mujer que sabe brillar.",
   "words": [
    {
     "text": "Somos",
     "accent": false,
-    "start": 0.045,
-    "end": 0.336
+    "start": 0.05,
+    "end": 0.45
    },
    {
-    "text": "Zapatería",
+    "text": "Zapaterías",
     "accent": false,
-    "start": 0.373,
-    "end": 0.918
+    "start": 0.503,
+    "end": 1.09
    },
    {
     "text": "Calipso:",
     "accent": false,
-    "start": 0.991,
-    "end": 1.791
+    "start": 1.17,
+    "end": 1.97
    },
    {
     "text": "moda",
     "accent": false,
-    "start": 1.864,
-    "end": 2.082
+    "start": 2.05,
+    "end": 2.29
    },
    {
     "text": "en",
     "accent": false,
-    "start": 2.118,
-    "end": 2.155
+    "start": 2.33,
+    "end": 2.37
    },
    {
     "text": "calzado",
     "accent": false,
-    "start": 2.264,
-    "end": 2.664
+    "start": 2.49,
+    "end": 2.93
    },
    {
     "text": "para",
     "accent": false,
-    "start": 2.736,
-    "end": 2.882
+    "start": 3.01,
+    "end": 3.17
    },
    {
     "text": "la",
     "accent": false,
-    "start": 2.955,
-    "end": 2.991
+    "start": 3.25,
+    "end": 3.29
    },
    {
     "text": "mujer",
     "accent": false,
-    "start": 3.027,
-    "end": 3.318
+    "start": 3.33,
+    "end": 3.65
    },
    {
     "text": "que",
     "accent": false,
-    "start": 3.391,
-    "end": 3.536
+    "start": 3.73,
+    "end": 3.89
    },
    {
     "text": "sabe",
     "accent": false,
-    "start": 3.609,
-    "end": 3.9
+    "start": 4.05,
+    "end": 4.29
    },
    {
     "text": "brillar.",
     "accent": false,
-    "start": 3.936,
-    "end": 4.7
+    "start": 4.37,
+    "end": 5.17
    }
   ],
   "ok": true,
-  "rate": 2.57,
+  "rate": 2.34,
   "natural_gap": 0.04,
-  "tempo": 1.1
+  "compacted": 0.0
  },
  "2": {
   "file": "final_2.wav",
   "src": "elevenlabs:dany",
-  "dur": 2.609,
+  "dur": 3.11,
   "text": "Zapatos, tacones, botines, botas,",
   "words": [
    {
     "text": "Zapatos,",
     "accent": false,
-    "start": 0.045,
-    "end": 0.7
+    "start": 0.05,
+    "end": 0.77
    },
    {
     "text": "tacones,",
     "accent": false,
-    "start": 0.736,
-    "end": 1.355
+    "start": 0.81,
+    "end": 1.53
    },
    {
     "text": "botines,",
     "accent": false,
-    "start": 1.391,
-    "end": 2.118
+    "start": 1.65,
+    "end": 2.33
    },
    {
     "text": "botas,",
     "accent": false,
-    "start": 2.264,
-    "end": 2.591
+    "start": 2.41,
+    "end": 2.97
    }
   ],
   "ok": true,
-  "rate": 1.57,
-  "natural_gap": 0.04,
-  "tempo": 1.1
+  "rate": 1.37,
+  "natural_gap": 0.16,
+  "compacted": 0.0
  },
  "3": {
   "file": "final_3.wav",
   "src": "elevenlabs:dany",
-  "dur": 3.3,
+  "dur": 3.55,
   "text": "sandalias, huaraches, zapatillas y mucho más.",
   "words": [
    {
     "text": "sandalias,",
     "accent": false,
-    "start": 0.045,
-    "end": 0.773
+    "start": 0.05,
+    "end": 0.743
    },
    {
     "text": "huaraches,",
     "accent": false,
-    "start": 0.809,
-    "end": 1.379
+    "start": 0.797,
+    "end": 1.37
    },
    {
     "text": "zapatillas",
     "accent": false,
-    "start": 1.403,
-    "end": 2.082
+    "start": 1.41,
+    "end": 2.13
    },
    {
     "text": "y",
     "accent": false,
-    "start": 2.155,
-    "end": 2.227
+    "start": 2.29,
+    "end": 2.37
    },
    {
     "text": "mucho",
     "accent": false,
-    "start": 2.373,
-    "end": 2.591
+    "start": 2.53,
+    "end": 2.77
    },
    {
     "text": "más.",
     "accent": false,
-    "start": 2.664,
-    "end": 3.245
+    "start": 2.85,
+    "end": 3.49
    }
   ],
   "ok": true,
-  "rate": 1.87,
+  "rate": 1.74,
   "natural_gap": 0.08,
-  "tempo": 1.1
+  "compacted": 0.0
  },
  "4": {
   "file": "final_4.wav",
   "src": "elevenlabs:dany",
-  "dur": 5.264,
+  "dur": 5.52,
   "text": "Diseños que te hacen lucir divina, con la calidad que mereces y a precios pensados para ti.",
   "words": [
    {
     "text": "Diseños",
     "accent": false,
-    "start": 0.045,
-    "end": 0.409
+    "start": 0.05,
+    "end": 0.37
    },
    {
     "text": "que",
     "accent": false,
-    "start": 0.445,
-    "end": 0.482
+    "start": 0.45,
+    "end": 0.49
    },
    {
     "text": "te",
     "accent": false,
-    "start": 0.555,
-    "end": 0.627
+    "start": 0.53,
+    "end": 0.61
    },
    {
     "text": "hacen",
     "accent": false,
-    "start": 0.664,
-    "end": 0.845
+    "start": 0.65,
+    "end": 0.85
    },
    {
     "text": "lucir",
     "accent": false,
-    "start": 0.918,
-    "end": 1.209
+    "start": 0.89,
+    "end": 1.17
    },
    {
     "text": "divina,",
     "accent": false,
-    "start": 1.282,
-    "end": 2.009
+    "start": 1.33,
+    "end": 2.13
    },
    {
     "text": "con",
     "accent": false,
-    "start": 2.082,
-    "end": 2.155
+    "start": 2.21,
+    "end": 2.29
    },
    {
     "text": "la",
     "accent": false,
-    "start": 2.191,
-    "end": 2.227
+    "start": 2.33,
+    "end": 2.37
    },
    {
     "text": "calidad",
     "accent": false,
-    "start": 2.3,
-    "end": 2.591
+    "start": 2.45,
+    "end": 2.77
    },
    {
     "text": "que",
     "accent": false,
-    "start": 2.664,
-    "end": 2.736
+    "start": 2.85,
+    "end": 2.93
    },
    {
     "text": "mereces",
     "accent": false,
-    "start": 2.809,
-    "end": 3.245
+    "start": 3.01,
+    "end": 3.49
    },
    {
     "text": "y",
     "accent": false,
-    "start": 3.318,
-    "end": 3.391
+    "start": 3.57,
+    "end": 3.65
    },
    {
     "text": "a",
     "accent": false,
-    "start": 3.427,
-    "end": 3.464
+    "start": 3.69,
+    "end": 3.73
    },
    {
     "text": "precios",
     "accent": false,
-    "start": 3.536,
-    "end": 3.9
+    "start": 3.81,
+    "end": 4.13
    },
    {
     "text": "pensados",
     "accent": false,
-    "start": 3.973,
-    "end": 4.409
+    "start": 4.21,
+    "end": 4.69
    },
    {
     "text": "para",
     "accent": false,
-    "start": 4.482,
-    "end": 4.627
+    "start": 4.77,
+    "end": 4.93
    },
    {
     "text": "ti.",
     "accent": false,
-    "start": 4.7,
-    "end": 5.209
+    "start": 5.01,
+    "end": 5.46
    }
   ],
   "ok": true,
-  "rate": 3.29,
+  "rate": 3.08,
   "natural_gap": 0.08,
-  "tempo": 1.1
+  "compacted": 0.11
  },
  "5": {
   "file": "final_5.wav",
   "src": "elevenlabs:dany",
-  "dur": 2.282,
+  "dur": 2.47,
   "text": "Ven y enamórate de tu próximo par.",
   "words": [
    {
     "text": "Ven",
     "accent": false,
-    "start": 0.045,
-    "end": 0.264
+    "start": 0.05,
+    "end": 0.29
    },
    {
     "text": "y",
     "accent": false,
-    "start": 0.409,
-    "end": 0.445
+    "start": 0.45,
+    "end": 0.49
    },
    {
     "text": "enamórate",
     "accent": false,
-    "start": 0.482,
-    "end": 0.991
+    "start": 0.53,
+    "end": 1.09
    },
    {
     "text": "de",
     "accent": false,
-    "start": 1.027,
-    "end": 1.064
+    "start": 1.17,
+    "end": 1.21
    },
    {
     "text": "tu",
     "accent": false,
-    "start": 1.136,
-    "end": 1.209
+    "start": 1.25,
+    "end": 1.33
    },
    {
     "text": "próximo",
     "accent": false,
-    "start": 1.282,
-    "end": 1.645
+    "start": 1.41,
+    "end": 1.81
    },
    {
     "text": "par.",
     "accent": false,
-    "start": 1.718,
-    "end": 2.227
+    "start": 1.89,
+    "end": 2.45
    }
   ],
   "ok": true,
-  "rate": 3.21,
-  "natural_gap": 0.08,
-  "tempo": 1.1
+  "rate": 2.92,
+  "natural_gap": 0.04,
+  "compacted": 0.0
  },
  "6": {
   "file": "final_6.wav",
   "src": "elevenlabs:dany",
-  "dur": 3.082,
-  "text": "Zapatería Calipso. Tu estilo, a cada paso.",
+  "dur": 3.44,
+  "text": "Zapaterías Calipso. Tu estilo, a cada paso.",
   "words": [
    {
-    "text": "Zapatería",
+    "text": "Zapaterías",
     "accent": false,
-    "start": 0.045,
-    "end": 0.555
+    "start": 0.05,
+    "end": 0.73
    },
    {
     "text": "Calipso.",
     "accent": false,
-    "start": 0.627,
-    "end": 1.355
+    "start": 0.85,
+    "end": 1.54
    },
    {
     "text": "Tu",
     "accent": false,
-    "start": 1.391,
-    "end": 1.427
+    "start": 1.58,
+    "end": 1.62
    },
    {
     "text": "estilo,",
     "accent": false,
-    "start": 1.5,
-    "end": 2.155
+    "start": 1.7,
+    "end": 2.42
    },
    {
     "text": "a",
     "accent": false,
-    "start": 2.191,
-    "end": 2.227
+    "start": 2.46,
+    "end": 2.5
    },
    {
     "text": "cada",
     "accent": false,
-    "start": 2.373,
-    "end": 2.591
+    "start": 2.66,
+    "end": 2.9
    },
    {
     "text": "paso.",
     "accent": false,
-    "start": 2.664,
-    "end": 3.082
+    "start": 2.98,
+    "end": 3.44
    }
   ],
   "ok": true,
-  "rate": 2.23,
+  "rate": 1.97,
   "natural_gap": -0.08,
-  "tempo": 1.1
+  "compacted": 0.07
  }
 }

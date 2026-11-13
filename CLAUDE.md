@@ -12,8 +12,9 @@
 - Voz por defecto para ElevenLabs: `marto`; el usuario puede pedir otra por video (p. ej. `brian` = "Brian - Social Media",
   latinoamericana, ya ágil por naturaleza: no acelerarla). Voz elegida por defecto: `marto` (`voices.json` → `_default`). **Decisión final del usuario:** probó `victor`
   (más grave) y prefirió volver a `marto`. No cambiar de voz sin que lo pida.
-- Ritmo: **un poco más rápido que el natural** → tempo 1.10 con rubberband (el modelo `eleven_v4` ignora `speed`).
-  El natural le pareció lento. Si el video dura más de lo pedido, no importa.
+- Ritmo: **no estirar la voz con rubberband/atempo**: al usuario le sonó "doblada, con flanger" (artefacto de time-stretch).
+  Usar la velocidad natural de la toma; si hace falta agilidad, acortar silencios (`voice_eleven.py compact`) o elegir
+  una voz más ágil. Si el video dura un poco más de lo pedido, no importa.
 - Negocity: las tomas de `marto` a ritmo natural ya existen en el commit `17a86c8` (`projects/negocity/voice/`);
   se pueden recuperar con `git show` y acelerar a 1.10 **sin gastar créditos**. El proyecto quedó montado con `victor`.
 - Pronunciación: `pronunciations.json` (p. ej. "Negocity" se dice **Négocity**, acento en "Ne"; en pantalla siempre "Negocity").
@@ -22,7 +23,7 @@
 ## Clientes
 - **Zapatería Calipso** (`hf/calipso`): vende **solo calzado de mujer** (zapatos, tacones, botines, botas, sandalias,
   huaraches, zapatillas). Mensajes para público femenino: moda, belleza, lucir divina, brillar. Voz: `dany` (mexicana)
-  a tempo 1.10. Paleta #e199c9 / #ddd9da / #000000. Logo: `projects/calipso/brand/logo-negro.png` (extraído sin alterar).
+  a velocidad natural. Siempre "Zapaterías Calipso" (plural: son varias tiendas). Música: su canción `step-in-style.mp3`. Paleta #e199c9 / #ddd9da / #000000. Logo: `projects/calipso/brand/logo-negro.png` (extraído sin alterar).
 
 ## Higgsfield (conector): pocos créditos
 - El usuario tiene muy pocos créditos (plan gratuito, ~9.5). Usar **solo lo necesario** para mejorar los gráficos;

@@ -124,77 +124,22 @@ def whoosh():
 
 
 # ───────────────────────── música
+MUSIC_FILE = HERE / "assets/music/step-in-style.wav"
+
+
 def music():
-    m = np.zeros((N, 2))
-    t_rev = W("1", 1) - 0.08 + 0.05            # el logo aparece en el círculo rosa
-    t_end = W("6", 0) - 0.08 + 0.05            # logo final
-    bars_b = max(4, round((t_end - t_rev) * 112 / 240))     # compases enteros entre los dos impactos, a ~112 BPM
-    bar = (t_end - t_rev) / bars_b
-    beat = bar / 4
-    bpm = 60 / beat
-    # A · tensión (antes de la marca): pulso apagado en La menor, sin bombo
-    nA = int(np.ceil(t_rev / bar))
-    t0 = t_rev - nA * bar
-    for b in range(nA):
-        tb = t0 + b * bar
-        chord = [[45, 52, 57], [41, 48, 53], [45, 52, 57], [43, 50, 55]][(b - nA) % 4]
-        px = A._lp(pad([c + 12 for c in chord], bar * 1.02, 0.002), 1400) * 0.5
-        put(m, px, tb, 0.55, -0.2); put(m, A._lp(pad([c + 12 for c in chord], bar * 1.02, -0.002), 1400) * 0.5, tb, 0.55, 0.2)
-        for q in range(8):
-            if b == nA - 1 and q >= 6:
-                continue
-            put(m, A._lp(pluck(chord[[0, 2, 1, 2, 0, 2, 1, 0][q]] + 12, 0.3, 0.6), 1800), tb + q * beat / 2, 0.32 + 0.06 * (q % 2 == 0), 0.3 if q % 2 else -0.3)
-            if q % 2 == 0:
-                put(m, shaker(), tb + q * beat / 2, 0.5)
-    put(m, A.riser(bar * 0.95, 5), t_rev - bar * 0.95, 0.5)
-    # impacto suave + brillo en la revelación de la tarjeta; brillo al aparecer el logo
-    put(m, boom(), t_rev, 0.75); put(m, shimmer(), t_rev + 0.04, 0.5, 0.25)
-    put(m, shimmer(1.4, 88), W("1", 11), 0.3, -0.25)
-    # B · optimista: Do – Sol – La m – Fa
-    prog = [([60, 64, 67], 48), ([59, 62, 67], 43), ([57, 60, 64], 45), ([57, 60, 65], 41)]
-    arp = [0, 2, 1, 2, 0, 1, 2, 1]
-    for b in range(bars_b):
-        tb = t_rev + b * bar
-        chord, root = prog[b % 4]
-        full = b >= 2                 # el beat completo entra con las herramientas
-        lift = b >= bars_b - 2        # "todo conectado": sube una octava
-        last = b == bars_b - 1
-        put(m, pad(chord, bar * 1.03, 0.003), tb, 0.42, -0.35); put(m, pad(chord, bar * 1.03, -0.003), tb, 0.42, 0.35)
-        for q in range(8):
-            tq = tb + q * beat / 2
-            note = chord[arp[q]] + (24 if lift and q % 2 else 12)
-            put(m, pluck(note, 0.4, 1.2 if lift else 1.0), tq, (0.5 if full else 0.38) * (1.0 if q % 2 == 0 else 0.8), 0.35 if q % 2 else -0.35)
-            if b >= 1:
-                put(m, bass(root, beat * 0.5), tq, 0.5 if q % 2 == 0 else 0.34)
-                put(m, bass(root + 12, beat * 0.45), tq, 0.2)
-            if full:
-                put(m, A._hat(rng), tq, 1.0 if q % 2 else 0.6, 0.15)
-        for q in range(4):
-            tq = tb + q * beat
-            if b >= 1 and not (last and q == 3):
-                put(m, A._kick(), tq, 0.55 if full else 0.4)
-            if full and q in (1, 3) and not (last and q == 3):
-                put(m, clap(), tq, 0.5)
-        if last:                      # redoble suave hacia el cierre
-            for k in range(8):
-                put(m, clap(), tb + 2 * beat + k * beat / 4, 0.14 + 0.05 * k)
-            put(m, A.riser(beat * 2, 9), t_end - beat * 2, 0.45)
-    # C · cierre en calma: impacto suave, acorde sostenido, melodía que resuelve
-    put(m, boom(2.6), t_end, 0.8); put(m, shimmer(2.2), t_end + 0.04, 0.5, -0.2)
-    tail = TOTAL - t_end
-    put(m, pad([60, 64, 67, 74], tail + 0.2, 0.003), t_end, 0.5, -0.3); put(m, pad([60, 64, 67, 74], tail + 0.2, -0.003), t_end, 0.5, 0.3)
-    put(m, bass(36 + 12, 2.5), t_end, 0.5)
-    for k, n_ in enumerate([84, 79, 76, 79, 72, 76, 79, 84, 88]):
-        tk = t_end + bar + k * beat
-        if tk < TOTAL - 1.2:
-            put(m, pluck(n_, 0.9, 1.1), tk, 0.36, 0.3 if k % 2 else -0.3)
-    for ch in range(2):
-        m[:, ch] = A._lp(m[:, ch], 11000)
-    m = np.tanh(m * 0.9)
-    fo = int(1.6 * SR); end = int(TOTAL * SR)
-    m[end - fo:end] *= np.linspace(1, 0, fo)[:, None] ** 1.5
-    m[end:] = 0
-    return m, bpm, t_rev, t_end
+    """Canción del cliente (Step in Style). Se recorta el inicio para que su final natural coincida con el del video."""
+    import pyloudnorm as pyln
+    a, sr = sf.read(MUSIC_FILE, dtype="float64")
+    if a.ndim == 1: a = np.stack([a, a], 1)
+    if sr != SR: a = np.stack([signal.resample_poly(a[:, c], SR, sr) for c in range(2)], 1)
+    a = a * 10 ** ((-14.0 - pyln.Meter(SR).integrated_loudness(a)) / 20)       # referencia común
+    off = max(0.0, len(a) / SR - TOTAL)                                        # su fade-out termina con el video
+    a = a[int(off * SR):]
+    m = np.zeros((N, 2)); n = min(N, len(a)); m[:n] = a[:n]
+    fi = int(0.25 * SR); m[:fi] *= np.linspace(0, 1, fi)[:, None]
+    end = int(TOTAL * SR); fo = int(0.6 * SR); m[end - fo:end] *= np.linspace(1, 0, fo)[:, None]; m[end:] = 0
+    return m, 106.1, off, TOTAL
 
 
 # ───────────────────────── efectos, con las mismas fórmulas de tiempo que las escenas
@@ -262,7 +207,7 @@ def main():
     env = np.abs(signal.hilbert(voice[::48])); env = signal.savgol_filter(env, 301, 2)
     env = np.interp(np.arange(N), np.arange(len(env)) * 48, env)
     talk = signal.sosfiltfilt(signal.butter(1, 2.5, fs=SR, output="sos"), (env > 0.02).astype(float)).clip(0, 1)
-    mgain = 0.62 - 0.36 * talk
+    mgain = 0.80 - 0.46 * talk
     mus = mus * mgain[:, None]
     mix = np.stack([voice, voice], 1) * 1.0 + mus * 0.9 + fx * 0.8
     import pyloudnorm as pyln
@@ -276,7 +221,7 @@ def main():
     for name, st in (("voz", np.stack([voice, voice], 1)), ("musica", mus * 0.9), ("sfx", fx * 0.8)):
         sf.write(out / f"{name}.wav", (st[:end] * g).astype(np.float32), SR, subtype="PCM_16")
     lv = lambda z: meter.integrated_loudness(z[:end] * g)
-    print(f"BPM {bpm:.1f} · revelación {t_rev:.2f}s · cierre {t_end:.2f}s · total {TOTAL:.2f}s")
+    print(f"canción: Step in Style ({bpm:.0f} BPM) · inicio recortado {t_rev:.2f}s · total {TOTAL:.2f}s")
     print(f"mix {meter.integrated_loudness(mix):.1f} LUFS · pico {20*np.log10(np.abs(mix).max()):.1f} dBFS · voz {lv(np.stack([voice,voice],1)):.1f} · música {lv(mus*0.9):.1f} · sfx {lv(fx*0.8):.1f} LUFS")
 
 
