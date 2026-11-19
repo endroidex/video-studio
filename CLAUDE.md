@@ -1,5 +1,7 @@
 # Video Studio — reglas del dueño (leer antes de trabajar)
 
+- **Responder siempre en español** (todas las respuestas, resúmenes y explicaciones al usuario).
+
 ## ElevenLabs: SOLO con orden explícita
 - Usar ElevenLabs **únicamente** cuando el usuario pida explícitamente crear un video con ElevenLabs.
 - **Nunca** para pruebas, demos, muestras ni comparaciones: gasta sus créditos (plan Starter, 40 000 caracteres/mes).
